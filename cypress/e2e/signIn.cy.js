@@ -17,6 +17,8 @@ describe("Success Test Login Suite", () => {
     cy.get("#username").type("hiranga@vclhq.com");
     cy.get("#password").type("!!!Woofy12345");
     cy.get('#kc-login').click();
+
+    cy.get('#input-error').should('be.visible')
   })
 
 });
