@@ -12,4 +12,11 @@ describe("Success Test Login Suite", () => {
 
     cy.url().should("eq","https://clarke-admanager-stg.testlogdia.lk/")
   });
+
+  it("TC_OTT_Login_002", ()=>{
+    cy.get("#username").type("hiranga@vclhq.com");
+    cy.get("#password").type("!!!Woofy12345");
+    cy.get('#kc-login').click();
+  })
+
 });
