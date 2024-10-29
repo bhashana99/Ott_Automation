@@ -44,7 +44,14 @@ describe("Display Creative Happy path", () => {
       ".MuiPaper-root.MuiPaper-outlined.MuiPaper-rounded.css-1rn8j9d"
     ).attachFile("980x551@.png", { subjectType: "drag-n-drop" });
 
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[5]/div[1]/div').should('be.visible').click();
-    cy.get('li:nth-child(3)').should('be.visible').click()
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[5]/div[1]/div')
+      .should("be.visible")
+      .click();
+    cy.get("li:nth-child(3)").should("be.visible").click();
+
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[5]/div[2]/div[1]/div/div').click()
+    cy.get('.MuiButtonBase-root.MuiMenuItem-root.MuiMenuItem-gutters.Mui-selected.MuiMenuItem-root.MuiMenuItem-gutters.Mui-selected.css-1km1ehz').click()
+
+
   });
 });
