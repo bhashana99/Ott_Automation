@@ -34,7 +34,8 @@ describe("Display Creative Happy path", () => {
     cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[1]/div/div').should('be.visible').type('Creative name')
     cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[2]/div/div/div').click();
     cy.xpath('//*[@id="menu-"]/div[3]').should('be.visible')
-    cy.get('[data-value*="uBanner web wide (980 x 551)"]').click()
+    cy.get('[data-value*="uBanner web wide (980 x 551)"]').click();
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[3]/div/label[1]/span[1]').should('be.visible').click()
   })
 });
 
