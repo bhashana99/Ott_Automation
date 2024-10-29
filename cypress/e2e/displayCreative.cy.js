@@ -59,8 +59,14 @@ describe("Display Creative Happy path", () => {
     //table
     // cy.get('table[class="MuiTable-root css-1q7lp8d"]>tbody>tr>').should('have.length','1')
     
+    //1st column
     cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(1)').contains("Creative name")
+
+    //2nd column
     cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(2)').should('be.visible')
+
+    //3rd column
+    cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(3)').contains('https://www.youtube.com/')
 
   });
 
