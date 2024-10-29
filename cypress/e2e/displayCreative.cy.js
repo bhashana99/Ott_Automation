@@ -52,6 +52,9 @@ describe("Display Creative Happy path", () => {
     cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[5]/div[2]/div[1]/div/div').click()
     cy.get('.MuiButtonBase-root.MuiMenuItem-root.MuiMenuItem-gutters.Mui-selected.MuiMenuItem-root.MuiMenuItem-gutters.Mui-selected.css-1km1ehz').click()
 
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[5]/div[2]/div[2]/div/div').type("https://www.youtube.com/")
+
+    cy.get('.css-9h854s').click()
 
   });
 });
