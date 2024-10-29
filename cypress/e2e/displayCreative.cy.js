@@ -42,6 +42,9 @@ describe("Display Creative Happy path", () => {
       .click();
     cy.get(
       ".MuiPaper-root.MuiPaper-outlined.MuiPaper-rounded.css-1rn8j9d"
-    ).attachFile("980x551@.png", {subjectType: 'drag-n-drop'})
+    ).attachFile("980x551@.png", { subjectType: "drag-n-drop" });
+
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[5]/div[1]/div').should('be.visible').click();
+    cy.get('li:nth-child(3)').should('be.visible').click()
   });
 });
