@@ -33,6 +33,8 @@ describe("Display Creative Happy path", () => {
   it("TC_OTT_DC_001",()=>{
     cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[1]/div/div').should('be.visible').type('Creative name')
     cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[2]/div/div/div').click();
-    
+    cy.xpath('//*[@id="menu-"]/div[3]').should('be.visible')
+    cy.get('[data-value*="uBanner web wide (980 x 551)"]').click()
   })
 });
+
