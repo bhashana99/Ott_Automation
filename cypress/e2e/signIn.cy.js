@@ -48,7 +48,7 @@ describe("Success Test Login Suite", () => {
   //Leave username field blank & enter valid password
   it("TC_OTT_Login_005", () => {
     cy.get("#username").should("be.empty");
-    cy.get("#password").type("!!!Woofy12345");
+    cy.get("#password").type("!!!Woofy123");
     cy.get("#kc-login").click();
 
     cy.get("#input-error")
@@ -92,6 +92,16 @@ describe("Success Test Login Suite", () => {
       .contains("Invalid username or password.");
   });
 
+  // Leave username field blank & enter invalid password
+  it("TC_OTT_Login_009", () => {
+    cy.get("#username").should("be.empty");
+    cy.get("#password").type("!!!Woofy12345");
+    cy.get("#kc-login").click();
+
+    cy.get("#input-error")
+      .should("be.visible")
+      .contains("Invalid username or password.");
+  });
 
 
 
