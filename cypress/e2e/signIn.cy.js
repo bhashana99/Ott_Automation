@@ -1,4 +1,3 @@
-
 describe("Success Test Login Suite", () => {
   beforeEach(() => {
     cy.visit("https://clarke-admanager-stg.testlogdia.lk");
@@ -24,39 +23,48 @@ describe("Success Test Login Suite", () => {
       .contains("Invalid username or password.");
   });
 
+  // Enter invalid username & valid Password
+  it("TC_OTT_Login_003", () => {
+    cy.get("#username").type("hiranga1@vclhq.com");
+    cy.get("#password").type("!!!Woofy123");
+    cy.get("#kc-login").click();
 
-    // Enter invalid username & valid Password
-    it("TC_OTT_Login_003", () => {
-      cy.get("#username").type("hiranga1@vclhq.com");
-      cy.get("#password").type("!!!Woofy123");
-      cy.get("#kc-login").click();
-  
-      cy.get("#input-error")
-        .should("be.visible")
-        .contains("Invalid username or password.");
-    });
+    cy.get("#input-error")
+      .should("be.visible")
+      .contains("Invalid username or password.");
+  });
 
-    // Enter invalid username & invalid Password
-    it("TC_OTT_Login_004", () => {
-      cy.get("#username").type("hiranga1@vclhq.com");
-      cy.get("#password").type("!!!Woofy12345");
-      cy.get("#kc-login").click();
-  
-      cy.get("#input-error")
-        .should("be.visible")
-        .contains("Invalid username or password.");
-    });
+  // Enter invalid username & invalid Password
+  it("TC_OTT_Login_004", () => {
+    cy.get("#username").type("hiranga1@vclhq.com");
+    cy.get("#password").type("!!!Woofy12345");
+    cy.get("#kc-login").click();
 
-    //Leave username field blank & enter valid password 
-    it("TC_OTT_Login_005", () => {
-      cy.get("#username").should("be.empty");
-      cy.get("#password").type("!!!Woofy12345");
-      cy.get("#kc-login").click();
-  
-      
+    cy.get("#input-error")
+      .should("be.visible")
+      .contains("Invalid username or password.");
+  });
 
-      cy.get("#input-error")
-        .should("be.visible")
-        .contains("Invalid username or password.");
-    });
+  //Leave username field blank & enter valid password
+  it("TC_OTT_Login_005", () => {
+    cy.get("#username").should("be.empty");
+    cy.get("#password").type("!!!Woofy12345");
+    cy.get("#kc-login").click();
+
+    cy.get("#input-error")
+      .should("be.visible")
+      .contains("Invalid username or password.");
+  });
+
+  // Enter valid username & Leave password field blank
+  it("TC_OTT_Login_006", () => {
+    cy.get("#username").type("hiranga@vclhq.com");
+    cy.get("#password").should("be.empty");
+
+    cy.get("#kc-login").click();
+
+    cy.get("#input-error")
+      .should("be.visible")
+      .contains("Invalid username or password.");
+  });
 });
