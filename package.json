@@ -1,7 +1,4 @@
 {
-  "devDependencies": {
-    "cypress": "^13.15.1"
-  },
   "name": "ott-login-page-automation",
   "version": "1.0.0",
   "main": "cypress.config.js",
@@ -44,6 +41,7 @@
     "common-tags": "^1.8.2",
     "core-util-is": "^1.0.2",
     "cross-spawn": "^7.0.3",
+    "cypress": "^13.15.1",
     "dashdash": "^1.14.1",
     "dayjs": "^1.11.13",
     "debug": "^4.3.7",
@@ -168,6 +166,7 @@
     "wrappy": "^1.0.2",
     "yauzl": "^2.10.0"
   },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

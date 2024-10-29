@@ -1,4 +1,4 @@
-/// <reference types="cypress" />
+
 
 describe("Success Test Login Suite", () => {
   beforeEach(() => {
@@ -18,7 +18,8 @@ describe("Success Test Login Suite", () => {
     cy.get("#password").type("!!!Woofy12345");
     cy.get('#kc-login').click();
 
-    cy.get('#input-error').should('be.visible')
+    cy.get('#input-error').should('be.visible').contains("Invalid username or password.")
+    
   })
 
 });
