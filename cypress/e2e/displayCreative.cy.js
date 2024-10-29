@@ -68,6 +68,13 @@ describe("Display Creative Happy path", () => {
     //3rd column
     cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(3)').contains('https://www.youtube.com/')
 
+    //4th column
+    // cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(4)').contains('980 x 551')
+
+    //5th column
+    cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(5)').contains('clickThrough')
+
+
   });
 
   
