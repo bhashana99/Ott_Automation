@@ -34,4 +34,15 @@ describe("Success Test Login Suite", () => {
         .should("be.visible")
         .contains("Invalid username or password.");
     });
+
+    // Enter invalid username & invalid Password
+    it("TC_OTT_Login_004", () => {
+      cy.get("#username").type("hiranga1@vclhq.com");
+      cy.get("#password").type("!!!Woofy12345");
+      cy.get("#kc-login").click();
+  
+      cy.get("#input-error")
+        .should("be.visible")
+        .contains("Invalid username or password.");
+    });
 });
