@@ -1,3 +1,4 @@
+
 describe("Success Test Login Suite", () => {
   beforeEach(() => {
     cy.visit("https://clarke-admanager-stg.testlogdia.lk");
@@ -41,6 +42,19 @@ describe("Success Test Login Suite", () => {
       cy.get("#password").type("!!!Woofy12345");
       cy.get("#kc-login").click();
   
+      cy.get("#input-error")
+        .should("be.visible")
+        .contains("Invalid username or password.");
+    });
+
+    //Leave username field blank & enter valid password 
+    it("TC_OTT_Login_005", () => {
+      cy.get("#username").should("be.empty");
+      cy.get("#password").type("!!!Woofy12345");
+      cy.get("#kc-login").click();
+  
+      
+
       cy.get("#input-error")
         .should("be.visible")
         .contains("Invalid username or password.");
