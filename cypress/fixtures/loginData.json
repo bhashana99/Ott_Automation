@@ -1,0 +1,8 @@
+{
+   "validUsername" : "hiranga@vclhq.com",
+   "validPassword" : "!!!Woofy123",
+   "invalidUsername" : "hiranga1@vclhq.com",
+   "invalidPassword" : "!!!Woofy12345",
+   "errorMessage" : "Invalid username or password.",
+   "navigateUrl" : "https://clarke-admanager-stg.testlogdia.lk/"
+}
