@@ -1,0 +1,6 @@
+{
+    "loginPageUrl" : "https://clarke-admanager-stg.testlogdia.lk/",
+    "homePageUrl" : "https://clarke-admanager-stg.testlogdia.lk/",
+    "creativePageUrl" : "https://clarke-admanager-stg.testlogdia.lk/delivery/creative",
+    "newDisplayCreativePageUrl" : "https://clarke-admanager-stg.testlogdia.lk/NewDisplayCreative"
+}

@@ -1,40 +1,40 @@
 /// <reference types="cypress" />
 
-describe("Display Creative Happy path", () => {
-  //Login
-  beforeEach(() => {
-    cy.visit("https://clarke-admanager-stg.testlogdia.lk");
-    cy.get("#username").type("hiranga@vclhq.com");
-    cy.get("#password").type("!!!Woofy123");
-    cy.get("#kc-login").click();
-    cy.url().should("eq", "https://clarke-admanager-stg.testlogdia.lk/");
 
-    cy.xpath('//*[@id="root"]/div/nav/div/div/ul/div[2]/div[2]/p')
-      .should("contain", "Delivery")
-      .click();
-    cy.xpath(
-      '//*[@id="root"]/div/nav/div/div/ul/div[3]/div/div/ul/a[1]'
-    ).click();
-    cy.url().should(
-      "eq",
-      "https://clarke-admanager-stg.testlogdia.lk/delivery/creative"
-    );
 
-    cy.xpath(
-      '//*[@id="simple-tabpanel-0"]/div/div/div/div[1]/button[1]'
-    ).click();
-    cy.url().should(
-      "eq",
-      "https://clarke-admanager-stg.testlogdia.lk/NewDisplayCreative"
-    );
+let user;
+let urls;
+
+before(() => {
+  cy.fixture("userInfo.json").then((userInfo) => {
+    user = userInfo;
   });
+  cy.fixture("pagesUrl.json").then((pageUrls) => {
+    urls = pageUrls;
+  });
+ 
+});
 
+//Login
+beforeEach(() => {
+  cy.navigateDisplayCreativePage(
+    urls.loginPageUrl,
+    user.username,
+    user.password,
+    urls.homePageUrl,
+    urls.creativePageUrl,
+    urls.newDisplayCreativePageUrl
+  );
+});
+
+
+describe("Display Creative Happy path", () => {
   //Enter valid form data
   it("TC_OTT_DC_001", () => {
     cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[1]/div/div')
       .should("be.visible")
       .type("Creative name");
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[2]/div/div/div').click();
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[2]/div/div').click()
     cy.xpath('//*[@id="menu-"]/div[3]').should("be.visible");
     cy.get('[data-value*="uBanner web wide (980 x 551)"]').click();
     cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[3]/div/label[1]/span[1]')
@@ -49,33 +49,43 @@ describe("Display Creative Happy path", () => {
       .click();
     cy.get("li:nth-child(3)").should("be.visible").click();
 
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[5]/div[2]/div[1]/div/div').click()
-    cy.get('.MuiButtonBase-root.MuiMenuItem-root.MuiMenuItem-gutters.Mui-selected.MuiMenuItem-root.MuiMenuItem-gutters.Mui-selected.css-1km1ehz').click()
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div[1]/div[5]/div[2]/div[1]/div/div'
+    ).click();
+    cy.get(
+      ".MuiButtonBase-root.MuiMenuItem-root.MuiMenuItem-gutters.Mui-selected.MuiMenuItem-root.MuiMenuItem-gutters.Mui-selected.css-1km1ehz"
+    ).click();
 
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[5]/div[2]/div[2]/div/div').type("https://www.youtube.com/")
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div[1]/div[5]/div[2]/div[2]/div/div'
+    ).type("https://www.youtube.com/");
 
-    cy.get('.css-9h854s').click();
+    cy.get(".css-9h854s").click();
 
     //table
     // cy.get('table[class="MuiTable-root css-1q7lp8d"]>tbody>tr>').should('have.length','1')
-    
+
     //1st column
-    cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(1)').contains("Creative name")
+    cy.get(".MuiTableBody-root > .MuiTableRow-root > :nth-child(1)").contains(
+      "Creative name"
+    );
 
     //2nd column
-    cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(2)').should('be.visible')
+    cy.get(".MuiTableBody-root > .MuiTableRow-root > :nth-child(2)").should(
+      "be.visible"
+    );
 
     //3rd column
-    cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(3)').contains('https://www.youtube.com/')
+    cy.get(".MuiTableBody-root > .MuiTableRow-root > :nth-child(3)").contains(
+      "https://www.youtube.com/"
+    );
 
     //4th column
     // cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(4)').contains('980 x 551')
 
     //5th column
-    cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(5)').contains('clickThrough')
-
-
+    cy.get(".MuiTableBody-root > .MuiTableRow-root > :nth-child(5)").contains(
+      "clickThrough"
+    );
   });
-
-  
 });
