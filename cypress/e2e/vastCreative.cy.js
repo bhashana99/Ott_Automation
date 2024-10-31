@@ -1,28 +1,38 @@
 /// <reference types="cypress" />
 
-describe('Create New Vast Creative',()=>{
-    //Login
-    beforeEach(()=>{
-        cy.visit("https://clarke-admanager-stg.testlogdia.lk");
-        cy.get("#username").type("hiranga@vclhq.com");
-        cy.get("#password").type("!!!Woofy123");
-        cy.get("#kc-login").click();
-        cy.url().should("eq", "https://clarke-admanager-stg.testlogdia.lk/");
-    
-        cy.xpath('//*[@id="root"]/div/nav/div/div/ul/div[2]/div[2]/p')
-          .should("contain", "Delivery")
-          .click();
+let user, urls, formData;
+let durationInSeconds;
 
-        cy.xpath(
-          '//*[@id="root"]/div/nav/div/div/ul/div[3]/div/div/ul/a[2]'
-        ).click();
-        
-        cy.url().should(
-          "eq",
-          "https://clarke-admanager-stg.testlogdia.lk/delivery/creative"
-        );
+before(() => {
+  cy.fixture("userInfo.json").then((userInfo) => {
+    user = userInfo;
+  });
+  cy.fixture("pagesUrl.json").then((pageUrls) => {
+    urls = pageUrls;
+  });
+  cy.fixture('vastData.json').then((data) => {
+    formData = data;
+  })
 
-        cy.get('#simple-tab-1').should('be.visible'); 
-    
-    })
+});
+
+//login 
+beforeEach(() => {
+  cy.navigateVastCreativePage(
+    urls.loginPageUrl,
+    user.username,
+    user.password,
+    urls.homePageUrl,
+    urls.creativePageUrl,
+    urls.vastCreativePageUrl
+  );
+})
+
+
+describe('Create New Vast Creative', () => {
+  it('TC_OTT_VC_001', () => {
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[1]/div/div').should('be.visible').type(formData.creativeName)
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[2]/div/div').should('be.visible').type(formData.adUnitSize)
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[3]/div/label[1]').should('be.visible').contains('Ad Manager Hosted').click()
+  })
 })

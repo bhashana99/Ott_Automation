@@ -12,8 +12,8 @@ before(() => {
   cy.fixture("pagesUrl.json").then((pageUrls) => {
     urls = pageUrls;
   });
-  cy.fixture("formData.json").then((formData) => {
-    this.formData = formData
+  cy.fixture("formData.json").then((data) => {
+    formData = data
   })
 
 });
@@ -70,7 +70,7 @@ describe("Display Creative Happy path", () => {
 
     //1st column
     cy.get(".MuiTableBody-root > .MuiTableRow-root > :nth-child(1)").contains(
-      "Creative name"
+      formData.creativeName
     );
 
     //2nd column
@@ -80,7 +80,7 @@ describe("Display Creative Happy path", () => {
 
     //3rd column
     cy.get(".MuiTableBody-root > .MuiTableRow-root > :nth-child(3)").contains(
-      {formData.clickThroughUrl}
+      formData.clickThroughUrl
     );
 
     //4th column
