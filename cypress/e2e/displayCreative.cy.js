@@ -2,8 +2,8 @@
 
 
 
-let user;
-let urls;
+let user, urls, formData;
+
 
 before(() => {
   cy.fixture("userInfo.json").then((userInfo) => {
@@ -12,7 +12,10 @@ before(() => {
   cy.fixture("pagesUrl.json").then((pageUrls) => {
     urls = pageUrls;
   });
- 
+  cy.fixture("formData.json").then((formData) => {
+    this.formData = formData
+  })
+
 });
 
 //Login
@@ -33,7 +36,7 @@ describe("Display Creative Happy path", () => {
   it("TC_OTT_DC_001", () => {
     cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[1]/div/div')
       .should("be.visible")
-      .type("Creative name");
+      .type(formData.creativeName);
     cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[2]/div/div').click()
     cy.xpath('//*[@id="menu-"]/div[3]').should("be.visible");
     cy.get('[data-value*="uBanner web wide (980 x 551)"]').click();
@@ -47,7 +50,7 @@ describe("Display Creative Happy path", () => {
     cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[5]/div[1]/div')
       .should("be.visible")
       .click();
-    cy.get("li:nth-child(3)").should("be.visible").click();
+    cy.get('li:nth-child(3)').should("be.visible").click();
 
     cy.xpath(
       '//*[@id="root"]/div/main/div/div[1]/div[5]/div[2]/div[1]/div/div'
@@ -58,7 +61,7 @@ describe("Display Creative Happy path", () => {
 
     cy.xpath(
       '//*[@id="root"]/div/main/div/div[1]/div[5]/div[2]/div[2]/div/div'
-    ).type("https://www.youtube.com/");
+    ).type(formData.clickThroughUrl);
 
     cy.get(".css-9h854s").click();
 
@@ -77,7 +80,7 @@ describe("Display Creative Happy path", () => {
 
     //3rd column
     cy.get(".MuiTableBody-root > .MuiTableRow-root > :nth-child(3)").contains(
-      "https://www.youtube.com/"
+      {formData.clickThroughUrl}
     );
 
     //4th column
