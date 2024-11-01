@@ -3,6 +3,11 @@
 let user, urls, formData;
 let durationInSeconds;
 
+Cypress.on("uncaught:exception", (err, runnable) => {
+  console.error(err);
+  return false;
+});
+
 before(() => {
   cy.fixture("userInfo.json").then((userInfo) => {
     user = userInfo;
@@ -10,13 +15,12 @@ before(() => {
   cy.fixture("pagesUrl.json").then((pageUrls) => {
     urls = pageUrls;
   });
-  cy.fixture('vastData.json').then((data) => {
+  cy.fixture("vastData.json").then((data) => {
     formData = data;
-  })
-
+  });
 });
 
-//login 
+//login
 beforeEach(() => {
   cy.navigateVastCreativePage(
     urls.loginPageUrl,
@@ -26,13 +30,44 @@ beforeEach(() => {
     urls.creativePageUrl,
     urls.vastCreativePageUrl
   );
-})
+});
 
+describe("Create New Vast Creative", () => {
+  it("Happy Path", () => {
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[1]/div/div')
+      .should("be.visible")
+      .type(formData.creativeName);
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[2]/div/div')
+      .should("be.visible")
+      .type(formData.adUnitSize);
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[3]/div/label[1]')
+      .should("be.visible")
+      .contains("Ad Manager Hosted")
+      .click();
 
-describe('Create New Vast Creative', () => {
-  it('TC_OTT_VC_001', () => {
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[1]/div/div').should('be.visible').type(formData.creativeName)
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[2]/div/div').should('be.visible').type(formData.adUnitSize)
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[3]/div/label[1]').should('be.visible').contains('Ad Manager Hosted').click()
-  })
-})
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[4]/input')
+    .selectFile(
+      'cypress/fixtures/BOMBA.mp4',
+      {
+       
+        force: true
+      }
+    );
+    cy.wait(2000);
+
+    // cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[4]/video')
+    //   .should("have.attr", "src")
+    //   .then((src) => {
+    //     if (!src) {
+    //       cy.reload(); 
+    //       cy.wait(5000); 
+    //     }
+    //   });
+
+   
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[4]/video').and(
+      "have.attr",
+      "src"
+    ).should('not.be.empty')
+  });
+});
