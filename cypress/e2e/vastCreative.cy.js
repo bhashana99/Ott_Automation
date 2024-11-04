@@ -51,6 +51,7 @@ describe("Create New Vast Creative", () => {
     // );
 
     vast.clickAdvertiserField()
+    vast.selectThirdOptionAdvertiser()
 
 
 
