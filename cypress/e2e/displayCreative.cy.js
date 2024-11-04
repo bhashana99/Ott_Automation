@@ -6,13 +6,13 @@ let user, urls, formData;
 
 
 before(() => {
-  cy.fixture("userInfo.json").then((userInfo) => {
+  cy.fixture("../fixtures/JsonData/userInfo.json").then((userInfo) => {
     user = userInfo;
   });
-  cy.fixture("pagesUrl.json").then((pageUrls) => {
+  cy.fixture("../fixtures/JsonData/pagesUrl.json").then((pageUrls) => {
     urls = pageUrls;
   });
-  cy.fixture("formData.json").then((data) => {
+  cy.fixture("../fixtures/JsonData/formData.json").then((data) => {
     formData = data
   })
 
@@ -20,6 +20,7 @@ before(() => {
 
 //Login
 beforeEach(() => {
+  
   cy.navigateDisplayCreativePage(
     urls.loginPageUrl,
     user.username,

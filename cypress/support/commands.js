@@ -38,7 +38,7 @@ Cypress.Commands.add(
   "navigateCreativePage",
   (loginPageUrl, username, password, homePageUrl, creativePageUrl) => {
     cy.visit(loginPageUrl);
-    
+
     login.setUsername(username);
     login.setPassword(password);
     login.clickLoginButton();
@@ -96,7 +96,7 @@ Cypress.Commands.add(
 
     home.clickVastCreativeNav();
     cy.url().should("eq", creativePageUrl);
-    home.clickVastCreativeBtn()
+    home.clickVastCreativeBtn();
     cy.url().should("eq", vastCreativePageUrl);
   }
 );
