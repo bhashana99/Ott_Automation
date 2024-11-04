@@ -55,6 +55,14 @@ class VastCreativePagePOM {
       .should("contain", "Non-skippable")
       .click();
   }
+
+  clickClickableTypeField(){
+    cy.xpath('//*[@id="select-click-through-url"]').click()
+  }
+
+  selectClickableOption(){
+    cy.get('[data-value = "clickThrough"]').should('contain','Clickable').click()
+  }
 }
 
 export default VastCreativePagePOM;

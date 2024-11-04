@@ -54,5 +54,8 @@ describe("Create New Vast Creative", () => {
     vast.selectThirdOptionAdvertiser();
     vast.clickSkippableVideoField();
     vast.selectNonSkippable();
+    vast.clickClickableTypeField();
+    vast.selectClickableOption()
+
   });
 });
