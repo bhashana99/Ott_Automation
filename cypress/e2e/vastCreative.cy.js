@@ -56,6 +56,7 @@ describe("Create New Vast Creative", () => {
     vast.selectNonSkippable();
     vast.clickClickableTypeField();
     vast.selectClickableOption()
+    vast.setClickThroughUrl(formData.clickThroughUrl)
 
   });
 });

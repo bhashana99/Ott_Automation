@@ -63,6 +63,10 @@ class VastCreativePagePOM {
   selectClickableOption(){
     cy.get('[data-value = "clickThrough"]').should('contain','Clickable').click()
   }
+
+  setClickThroughUrl(url){
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[11]/div/div').type(url)
+  }
 }
 
 export default VastCreativePagePOM;
