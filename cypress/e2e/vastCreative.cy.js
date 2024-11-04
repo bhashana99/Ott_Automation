@@ -1,21 +1,18 @@
 /// <reference types="cypress" />
 
+import VastCreativePagePOM from "../PageObjects/VastCreativePagePOM";
+
 let user, urls, formData;
 let durationInSeconds;
 
-Cypress.on("uncaught:exception", (err, runnable) => {
-  console.error(err);
-  return false;
-});
-
 before(() => {
-  cy.fixture("userInfo.json").then((userInfo) => {
+  cy.fixture("../fixtures/JsonData/userInfo.json").then((userInfo) => {
     user = userInfo;
   });
-  cy.fixture("pagesUrl.json").then((pageUrls) => {
+  cy.fixture("../fixtures/JsonData/pagesUrl.json").then((pageUrls) => {
     urls = pageUrls;
   });
-  cy.fixture("vastData.json").then((data) => {
+  cy.fixture("../fixtures/JsonData/vastData.json").then((data) => {
     formData = data;
   });
 });
@@ -34,38 +31,31 @@ beforeEach(() => {
 
 describe("Create New Vast Creative", () => {
   it("Happy Path", () => {
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[1]/div/div')
-      .should("be.visible")
-      .type(formData.creativeName);
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[2]/div/div')
-      .should("be.visible")
-      .type(formData.adUnitSize);
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[3]/div/label[1]')
-      .should("be.visible")
-      .contains("Ad Manager Hosted")
-      .click();
+    const vast = new VastCreativePagePOM();
 
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[4]/input')
-    .selectFile(
-      'cypress/fixtures/BOMBA.mp4',
-      {
-       
-        force: true
-      }
-    );
+    vast.setVastCreativeName(formData.creativeName);
+    vast.setAdUnitSize(formData.adUnitSize);
+    vast.selectAdManagerHosted();
+
+    const videoPath = "Videos/BOMBA.mp4";
+    vast.attachedVideo(videoPath);
     cy.wait(2000);
-   
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[4]/video')
-    .should(
-      "have.attr",
-      "src"
-    ).and('not.be.empty')
+
+    vast.checkVideoUploadState();
+
+    // vast.selectDurationInSecondsField()
+    // .then(($value) => {
+    //     durationInSeconds = $value.text().trim();
+    //     cy.log(`Duration in Seconds: ${durationInSeconds}`);
+    //   }
+    // );
+
+    vast.clickAdvertiserField()
 
 
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[6]/div/div')
-    .then(($value)=>{
-      durationInSeconds = $value.text().trim();
-      cy.log(`${durationInSeconds}`)
-    })
+
+    
   });
+
+
 });

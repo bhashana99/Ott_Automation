@@ -11,8 +11,6 @@ class LoginPagePOM{
     clickLoginButton(){
         cy.get("#kc-login").click();
     }
-
-
 }
 
 export default LoginPagePOM;
