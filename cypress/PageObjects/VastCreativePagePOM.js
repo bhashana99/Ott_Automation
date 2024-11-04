@@ -1,5 +1,4 @@
 class VastCreativePagePOM {
-    
   setVastCreativeName(creativeName) {
     cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[1]/div/div')
       .should("be.visible")
@@ -40,15 +39,22 @@ class VastCreativePagePOM {
   //   }
 
   clickAdvertiserField() {
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[8]')
-    .click()
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[8]').click();
   }
 
-  selectThirdOptionAdvertiser(){
-    cy.get('[data-value="Nadun"]').should('contain','Nadun').click()
+  selectThirdOptionAdvertiser() {
+    cy.get('[data-value="Nadun"]').should("contain", "Nadun").click();
   }
 
+  clickSkippableVideoField() {
+    cy.get("#skippable-select-id").click();
+  }
 
+  selectNonSkippable() {
+    cy.get('[data-value="nonSkippable"]')
+      .should("contain", "Non-skippable")
+      .click();
+  }
 }
 
 export default VastCreativePagePOM;
