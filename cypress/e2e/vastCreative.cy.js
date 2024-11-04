@@ -54,20 +54,18 @@ describe("Create New Vast Creative", () => {
       }
     );
     cy.wait(2000);
-
-    // cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[4]/video')
-    //   .should("have.attr", "src")
-    //   .then((src) => {
-    //     if (!src) {
-    //       cy.reload(); 
-    //       cy.wait(5000); 
-    //     }
-    //   });
-
    
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[4]/video').and(
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[4]/video')
+    .should(
       "have.attr",
       "src"
-    ).should('not.be.empty')
+    ).and('not.be.empty')
+
+
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[6]/div/div')
+    .then(($value)=>{
+      durationInSeconds = $value.text().trim();
+      cy.log(`${durationInSeconds}`)
+    })
   });
 });
