@@ -65,7 +65,14 @@ class VastCreativePagePOM {
   }
 
   setClickThroughUrl(url){
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[11]/div/div').type(url)
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[11]/div/div')
+    .type(url)
+    
+  }
+
+  clickSaveAndPreviewBtn(){
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[12]/button[2]')
+    .should('contain','Save and preview').click()
   }
 }
 

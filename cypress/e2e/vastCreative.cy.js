@@ -55,8 +55,9 @@ describe("Create New Vast Creative", () => {
     vast.clickSkippableVideoField();
     vast.selectNonSkippable();
     vast.clickClickableTypeField();
-    vast.selectClickableOption()
-    vast.setClickThroughUrl(formData.clickThroughUrl)
-
+    vast.selectClickableOption();
+    vast.setClickThroughUrl(formData.clickThroughUrl);
+    vast.clickSaveAndPreviewBtn();
+    
   });
 });
