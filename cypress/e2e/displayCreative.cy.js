@@ -1,9 +1,7 @@
 /// <reference types="cypress" />
-
-
+import DisplayCreativePagePOM from "../PageObjects/DisplayCreativePagePOM.js";
 
 let user, urls, formData;
-
 
 before(() => {
   cy.fixture("../fixtures/JsonData/userInfo.json").then((userInfo) => {
@@ -13,14 +11,12 @@ before(() => {
     urls = pageUrls;
   });
   cy.fixture("../fixtures/JsonData/formData.json").then((data) => {
-    formData = data
-  })
-
+    formData = data;
+  });
 });
 
 //Login
 beforeEach(() => {
-  
   cy.navigateDisplayCreativePage(
     urls.loginPageUrl,
     user.username,
@@ -31,65 +27,41 @@ beforeEach(() => {
   );
 });
 
-
 describe("Display Creative Happy path", () => {
+  const newDisplayCreative = new DisplayCreativePagePOM();
+
   //Enter valid form data
   it("TC_OTT_DC_001", () => {
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[1]/div/div')
-      .should("be.visible")
-      .type(formData.creativeName);
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[2]/div/div').click()
-    cy.xpath('//*[@id="menu-"]/div[3]').should("be.visible");
-    cy.get('[data-value*="uBanner web wide (980 x 551)"]').click();
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[3]/div/label[1]/span[1]')
-      .should("be.visible")
-      .click();
-    cy.get(
-      ".MuiPaper-root.MuiPaper-outlined.MuiPaper-rounded.css-1rn8j9d"
-    ).attachFile("980x551@.png", { subjectType: "drag-n-drop" });
+    newDisplayCreative.setCreativeName(formData.creativeName);
+    newDisplayCreative.clickBannerSizeField();
+    newDisplayCreative.checkBannerSizeOptionsIsVisibility();
+    newDisplayCreative.selectBannerSize();
+    newDisplayCreative.selectHostType();
 
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[5]/div[1]/div')
-      .should("be.visible")
-      .click();
-    cy.get('li:nth-child(3)').should("be.visible").click();
+    const imagePath = "../fixtures/Images/980x551@.png";
+    newDisplayCreative.uploadImage(imagePath);
 
-    cy.xpath(
-      '//*[@id="root"]/div/main/div/div[1]/div[5]/div[2]/div[1]/div/div'
-    ).click();
-    cy.get(
-      ".MuiButtonBase-root.MuiMenuItem-root.MuiMenuItem-gutters.Mui-selected.MuiMenuItem-root.MuiMenuItem-gutters.Mui-selected.css-1km1ehz"
-    ).click();
+    newDisplayCreative.clickAdvertiserField();
+    newDisplayCreative.selectThirdOptionAdvertiserField();
+    newDisplayCreative.clickClickableTypeField();
+    newDisplayCreative.chooseClickableOption();
+    newDisplayCreative.setClickThroughUrl(formData.clickThroughUrl);
+    newDisplayCreative.clickSaveAndPreviewBtn();
 
-    cy.xpath(
-      '//*[@id="root"]/div/main/div/div[1]/div[5]/div[2]/div[2]/div/div'
-    ).type(formData.clickThroughUrl);
-
-    cy.get(".css-9h854s").click();
-
-    //table
-    // cy.get('table[class="MuiTable-root css-1q7lp8d"]>tbody>tr>').should('have.length','1')
-
+    //Validate Table
     //1st column
-    cy.get(".MuiTableBody-root > .MuiTableRow-root > :nth-child(1)").contains(
-      formData.creativeName
-    );
+    newDisplayCreative.checkFirstColumn(formData.creativeName);
 
     //2nd column
-    cy.get(".MuiTableBody-root > .MuiTableRow-root > :nth-child(2)").should(
-      "be.visible"
-    );
+    newDisplayCreative.checkSecondColumn();
 
     //3rd column
-    cy.get(".MuiTableBody-root > .MuiTableRow-root > :nth-child(3)").contains(
-      formData.clickThroughUrl
-    );
+    newDisplayCreative.checkThirdColumn(formData.clickThroughUrl);
 
     //4th column
     // cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(4)').contains('980 x 551')
 
     //5th column
-    cy.get(".MuiTableBody-root > .MuiTableRow-root > :nth-child(5)").contains(
-      "clickThrough"
-    );
+    newDisplayCreative.checkFifthColumn();
   });
 });
