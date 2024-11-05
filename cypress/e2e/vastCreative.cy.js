@@ -48,7 +48,7 @@ describe("Create New Vast Creative", () => {
       // cy.log(durationInSeconds)
       vast.setDurationFieldValue(durationInSeconds);
     });
-    
+
     vast.clickAdvertiserField();
     vast.selectThirdOptionAdvertiser();
     vast.clickSkippableVideoField();
@@ -57,5 +57,18 @@ describe("Create New Vast Creative", () => {
     vast.selectClickableOption();
     vast.setClickThroughUrl(formData.clickThroughUrl);
     vast.clickSaveAndPreviewBtn();
+
+    cy.wait(1000);
+    //check table
+    vast.checkTableCreativeName(formData.creativeName);
+
+    // vast.checkVideoUploadState().then(($videoUrl)=>{
+    //      let url = $videoUrl;
+    //      cy.log(url)
+    //     //  vast.checkTableVideoUrl(url);
+    // })
+
+    vast.checkTableClickThroughUrl(formData.clickThroughUrl);
+    vast.checkTableAdUnitSize(formData.adUnitSize)
   });
 });
