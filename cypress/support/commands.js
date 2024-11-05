@@ -100,3 +100,16 @@ Cypress.Commands.add(
     cy.url().should("eq", vastCreativePageUrl);
   }
 );
+
+Cypress.Commands.add(
+  "loginToHomePage",
+  (loginPageUrl, username, password, homePageUrl) => {
+    cy.session("loginSession", () => {
+      cy.visit(loginPageUrl);
+      login.setUsername(username);
+      login.setPassword(password);
+      login.clickLoginButton();
+      cy.url().should("eq", homePageUrl);
+    });
+  }
+);

@@ -43,13 +43,12 @@ describe("Create New Vast Creative", () => {
 
     vast.checkVideoUploadState();
 
-    // vast.selectDurationInSecondsField()
-    // .then(($value) => {
-    //     durationInSeconds = $value.text().trim();
-    //     cy.log(`Duration in Seconds: ${durationInSeconds}`);
-    //   }
-    // );
-
+    vast.getDurationInSeconds().then((value) => {
+      durationInSeconds = Math.floor(value);
+      // cy.log(durationInSeconds)
+      vast.setDurationFieldValue(durationInSeconds);
+    });
+    
     vast.clickAdvertiserField();
     vast.selectThirdOptionAdvertiser();
     vast.clickSkippableVideoField();
@@ -58,6 +57,5 @@ describe("Create New Vast Creative", () => {
     vast.selectClickableOption();
     vast.setClickThroughUrl(formData.clickThroughUrl);
     vast.clickSaveAndPreviewBtn();
-    
   });
 });

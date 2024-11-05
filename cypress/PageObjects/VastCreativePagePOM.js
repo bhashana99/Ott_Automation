@@ -33,10 +33,16 @@ class VastCreativePagePOM {
       .and("not.be.empty");
   }
 
-  //   selectDurationInSecondsField(){
-  //    return cy.xpath('*[@id="root"]/div/main/div/div[1]/div[6]/div/div')
+  getDurationInSeconds() {
+    return cy
+      .xpath('//*[@id="root"]/div/main/div/div[1]/div[6]/div/div/input')
+      .should("be.visible")
+      .invoke("val");
+  }
 
-  //   }
+  setDurationFieldValue(value) {
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[7]/div/div').type(value);
+  }
 
   clickAdvertiserField() {
     cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[8]').click();
@@ -56,24 +62,27 @@ class VastCreativePagePOM {
       .click();
   }
 
-  clickClickableTypeField(){
-    cy.xpath('//*[@id="select-click-through-url"]').click()
+  clickClickableTypeField() {
+    cy.xpath('//*[@id="select-click-through-url"]').click();
   }
 
-  selectClickableOption(){
-    cy.get('[data-value = "clickThrough"]').should('contain','Clickable').click()
+  selectClickableOption() {
+    cy.get('[data-value = "clickThrough"]')
+      .should("contain", "Clickable")
+      .click();
   }
 
-  setClickThroughUrl(url){
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[11]/div/div')
-    .type(url)
-    
+  setClickThroughUrl(url) {
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[11]/div/div').type(url);
   }
 
-  clickSaveAndPreviewBtn(){
+  clickSaveAndPreviewBtn() {
     cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[12]/button[2]')
-    .should('contain','Save and preview').click()
+      .should("contain", "Save and preview")
+      .click();
   }
+
+  
 }
 
 export default VastCreativePagePOM;
