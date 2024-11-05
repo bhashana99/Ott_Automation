@@ -3,6 +3,6 @@
     "homePageUrl" : "https://clarke-admanager-stg.testlogdia.lk/",
     "creativePageUrl" : "https://clarke-admanager-stg.testlogdia.lk/delivery/creative",
     "newDisplayCreativePageUrl" : "https://clarke-admanager-stg.testlogdia.lk/NewDisplayCreative",
-    "vastCreativePageUrl" : "https://clarke-admanager-stg.testlogdia.lk/NewVASTCreative"
-
+    "vastCreativePageUrl" : "https://clarke-admanager-stg.testlogdia.lk/NewVASTCreative",
+    "orderPageUrl" : "https://clarke-admanager-stg.testlogdia.lk/delivery/orders"
 }
