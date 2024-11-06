@@ -39,6 +39,15 @@ class CreateNewOrderPagePOM {
       '//*[@id="root"]/div/main/div/div[1]/div[6]/div/label[1]/span[1]/input'
     ).click();
   }
+
+  setScheduleReference(scheduleReference){
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[7]/div/div')
+    .type(scheduleReference)
+  }
+
+ 
+
+
 }
 
 export default CreateNewOrderPagePOM;

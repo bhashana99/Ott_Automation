@@ -1,5 +1,6 @@
 {
     "orderName" : "Order Name",
     "traffickerName": "Trafficker Name",
-    "product" : "Product Field"
+    "product" : "Product Field",
+    "scheduleReference" : "schedule Reference"
 }
