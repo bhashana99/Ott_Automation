@@ -70,6 +70,11 @@ class CreateNewOrderPagePOM {
     cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[12]/div/div/div')
     .click()
   }
+   chooseBillingClientTestClientOne(){
+    cy.get('ul[role="listbox"]').find('li').first().click();
+   }
+
+   
 }
 
 export default CreateNewOrderPagePOM;
