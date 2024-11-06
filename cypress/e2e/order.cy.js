@@ -42,15 +42,14 @@ describe("Create New Order", () => {
     newOrder.setOrderName(orderData.orderName);
     newOrder.setTrafficker(orderData.traffickerName);
     newOrder.setProduct(orderData.product);
-    newOrder.clickSalesPersonDropDown()
+    newOrder.clickSalesPersonDropDown();
     newOrder.chooseSalesPersonDropDownPersonOneOption();
-    newOrder.selectSalesTypeRadioFirstLabel()
-    newOrder.setScheduleReference(orderData.scheduleReference)
-    newOrder.selectInvoiceTypeZero()
+    newOrder.selectSalesTypeRadioFirstLabel();
+    newOrder.setScheduleReference(orderData.scheduleReference);
+    newOrder.selectInvoiceTypeZero();
     newOrder.selectClientType();
-    newOrder.clickEndClientField()
-    newOrder.chooseEndClientNadun()
+    newOrder.clickEndClientField();
+    newOrder.chooseEndClientNadun();
+    newOrder.clickBillingClientField();
   });
-
-  
 });

@@ -40,31 +40,36 @@ class CreateNewOrderPagePOM {
     ).click();
   }
 
-  setScheduleReference(scheduleReference){
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[7]/div/div')
-    .type(scheduleReference)
+  setScheduleReference(scheduleReference) {
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[7]/div/div').type(
+      scheduleReference
+    );
   }
 
-  selectInvoiceTypeZero(){
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[9]/div/label[2]/span[1]/input')
+  selectInvoiceTypeZero() {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div[1]/div[9]/div/label[2]/span[1]/input'
+    ).click();
+  }
+
+  selectClientType() {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div[1]/div[10]/div/label[1]'
+    ).click();
+  }
+
+  clickEndClientField() {
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[11]/div').click();
+  }
+
+  chooseEndClientNadun() {
+    cy.get('[data-value = "Nadun"]').click();
+  }
+
+  clickBillingClientField(){
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[12]/div/div/div')
     .click()
   }
-
-  selectClientType(){
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[10]/div/label[1]')
-    .click()
-  }
-
-  clickEndClientField(){
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[11]/div')
-    .click()
-  }
-
-  chooseEndClientNadun(){
-    cy.get('[data-value = "Nadun"]')
-    .click()
-  }
-
 }
 
 export default CreateNewOrderPagePOM;
