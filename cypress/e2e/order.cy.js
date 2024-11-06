@@ -47,7 +47,7 @@ describe("Create New Order", () => {
     newOrder.selectSalesTypeRadioFirstLabel()
     newOrder.setScheduleReference(orderData.scheduleReference)
     newOrder.selectInvoiceTypeZero()
-    
+    newOrder.selectClientType()
   });
 
   

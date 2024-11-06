@@ -50,7 +50,10 @@ class CreateNewOrderPagePOM {
     .click()
   }
 
-  
+  selectClientType(){
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[10]/div/label[1]')
+    .click()
+  }
 
 }
 
