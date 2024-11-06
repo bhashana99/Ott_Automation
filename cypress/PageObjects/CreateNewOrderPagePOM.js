@@ -60,6 +60,11 @@ class CreateNewOrderPagePOM {
     .click()
   }
 
+  chooseEndClientNadun(){
+    cy.get('[data-value = "Nadun"]')
+    .click()
+  }
+
 }
 
 export default CreateNewOrderPagePOM;

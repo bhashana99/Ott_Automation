@@ -49,6 +49,7 @@ describe("Create New Order", () => {
     newOrder.selectInvoiceTypeZero()
     newOrder.selectClientType();
     newOrder.clickEndClientField()
+    newOrder.chooseEndClientNadun()
   });
 
   
