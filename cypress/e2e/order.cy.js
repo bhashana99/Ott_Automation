@@ -32,5 +32,6 @@ describe("Create New Order", () => {
     home.clickDeliveryDropDown();
     order.clickDeliveryDropDownOrderElement()
     order.checkPageUrl(urls.orderPageUrl)
+    order.clickNewOrderBtn()
   });
 });
