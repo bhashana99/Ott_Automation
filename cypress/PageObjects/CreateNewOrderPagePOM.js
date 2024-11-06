@@ -45,8 +45,12 @@ class CreateNewOrderPagePOM {
     .type(scheduleReference)
   }
 
- 
+  selectInvoiceTypeZero(){
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[9]/div/label[2]/span[1]/input')
+    .click()
+  }
 
+  
 
 }
 

@@ -46,6 +46,7 @@ describe("Create New Order", () => {
     newOrder.chooseSalesPersonDropDownPersonOneOption();
     newOrder.selectSalesTypeRadioFirstLabel()
     newOrder.setScheduleReference(orderData.scheduleReference)
+    newOrder.selectInvoiceTypeZero()
     
   });
 
