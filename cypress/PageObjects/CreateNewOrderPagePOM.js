@@ -74,7 +74,10 @@ class CreateNewOrderPagePOM {
     cy.get('ul[role="listbox"]').find('li').first().click();
    }
 
-   
+   clickAgencyFiled(){
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[13]/div/div/div')
+    .click()
+   }
 }
 
 export default CreateNewOrderPagePOM;
