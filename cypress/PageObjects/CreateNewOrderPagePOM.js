@@ -3,34 +3,42 @@ class CreateNewOrderPagePOM {
     cy.url().should("eq", createNewOrderPageUrl);
   }
 
-  setOrderName(orderName){
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[1]/div/div')
-    .type(orderName)
+  setOrderName(orderName) {
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[1]/div/div').type(
+      orderName
+    );
   }
 
-  setTrafficker(traffickerName){
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[2]/div/div')
-    .type(traffickerName)
+  setTrafficker(traffickerName) {
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[2]/div/div').type(
+      traffickerName
+    );
   }
 
-  setProduct(product){
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[3]/div/div')
-    .type(product)
+  setProduct(product) {
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[3]/div/div').type(
+      product
+    );
   }
 
-  clickSalesPersonDropDown(){
+  clickSalesPersonDropDown() {
     cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[4]/div/div/div')
-    .should('be.visible')
-    .click()
+      .should("be.visible")
+      .click();
   }
 
-  chooseSalesPersonDropDownPersonOneOption(){
+  chooseSalesPersonDropDownPersonOneOption() {
     cy.get('[data-value = "sales person one"]')
-    .should('be.visible')
-    .and('contain','sales person one')
-    .click()
+      .should("be.visible")
+      .and("contain", "sales person one")
+      .click();
   }
 
+  selectSalesTypeRadioFirstLabel() {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div[1]/div[6]/div/label[1]/span[1]/input'
+    ).click();
+  }
 }
 
 export default CreateNewOrderPagePOM;

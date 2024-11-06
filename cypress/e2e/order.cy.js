@@ -43,7 +43,8 @@ describe("Create New Order", () => {
     newOrder.setTrafficker(orderData.traffickerName);
     newOrder.setProduct(orderData.product);
     newOrder.clickSalesPersonDropDown()
-    newOrder.chooseSalesPersonDropDownPersonOneOption()
+    newOrder.chooseSalesPersonDropDownPersonOneOption();
+    newOrder.selectSalesTypeRadioFirstLabel()
   });
 
   
