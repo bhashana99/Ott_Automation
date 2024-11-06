@@ -55,6 +55,11 @@ class CreateNewOrderPagePOM {
     .click()
   }
 
+  clickEndClientField(){
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[11]/div')
+    .click()
+  }
+
 }
 
 export default CreateNewOrderPagePOM;
