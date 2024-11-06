@@ -18,6 +18,19 @@ class CreateNewOrderPagePOM {
     .type(product)
   }
 
+  clickSalesPersonDropDown(){
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[4]/div/div/div')
+    .should('be.visible')
+    .click()
+  }
+
+  chooseSalesPersonDropDownPersonOneOption(){
+    cy.get('[data-value = "sales person one"]')
+    .should('be.visible')
+    .and('contain','sales person one')
+    .click()
+  }
+
 }
 
 export default CreateNewOrderPagePOM;

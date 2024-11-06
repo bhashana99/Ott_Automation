@@ -42,6 +42,8 @@ describe("Create New Order", () => {
     newOrder.setOrderName(orderData.orderName);
     newOrder.setTrafficker(orderData.traffickerName);
     newOrder.setProduct(orderData.product);
+    newOrder.clickSalesPersonDropDown()
+    newOrder.chooseSalesPersonDropDownPersonOneOption()
   });
 
   
