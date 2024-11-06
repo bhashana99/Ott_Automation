@@ -13,6 +13,10 @@ class OrderPagePOM {
     cy.xpath('//*[@id="root"]/div/main/div/div[1]/button')
     .should('have.text','New Order').click()
   }
+
+  
+
+
 }
 
 export default OrderPagePOM;
