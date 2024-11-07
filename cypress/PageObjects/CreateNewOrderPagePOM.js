@@ -66,20 +66,22 @@ class CreateNewOrderPagePOM {
     cy.get('[data-value = "Nadun"]').click();
   }
 
-  clickBillingClientField() {
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[12]/div/div/div').click();
+  clickBillingClientField(){
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[12]/div/div/div')
+    .click()
   }
-  chooseBillingClientTestClientOne() {
-    cy.get('ul[role="listbox"]').find("li").first().click();
-  }
+   chooseBillingClientTestClientOne(){
+    cy.get('ul[role="listbox"]').find('li').first().click();
+   }
 
-  clickAgencyFiled() {
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[13]/div/div/div').click();
-  }
+   clickAgencyFiled(){
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[13]/div/div/div')
+    .click()
+   }
 
-  chooseAgencyFiledTestAgencyOneOption() {
-    cy.get(' li[data value="test agency one"]').click();
-  }
+   chooseAgencyFiledFirstOption(){
+    cy.get('[aria-labelledby="agency-label"]').find('li').first().click()
+   }
 }
 
 export default CreateNewOrderPagePOM;
