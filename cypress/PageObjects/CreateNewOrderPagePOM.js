@@ -162,6 +162,8 @@ class CreateNewOrderPagePOM {
       '//*[@id="root"]/div/main/div/div[1]/div[20]/div/div/div/input[6]'
     ).type(endMinutes);
   }
+
+  
 }
 
 export default CreateNewOrderPagePOM;
