@@ -66,35 +66,36 @@ class CreateNewOrderPagePOM {
     cy.get('[data-value = "Nadun"]').click();
   }
 
-  clickBillingClientField(){
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[12]/div/div/div')
-    .click()
+  clickBillingClientField() {
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[12]/div/div/div').click();
   }
-   chooseBillingClientTestClientOne(){
-    cy.get('ul[role="listbox"]').find('li').first().click();
-   }
+  chooseBillingClientTestClientOne() {
+    cy.get('ul[role="listbox"]').find("li").first().click();
+  }
 
-   clickAgencyFiled(){
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[13]/div/div/div')
-    .click()
-   }
+  clickAgencyFiled() {
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[13]/div/div/div').click();
+  }
 
-   chooseAgencyFiledFirstOption(){
-    cy.get('[aria-labelledby="agency-label"]').find('li').first().click()
-   }
+  chooseAgencyFiledFirstOption() {
+    cy.get('[aria-labelledby="agency-label"]').find("li").first().click();
+  }
 
-   clickMonthField(){
+  clickMonthField() {
     cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[14]/div/div').click();
-   }
+  }
 
-   selectMonth(monthIndex){
-    cy.get('[aria-labelledby="month-label"]').find('li').eq(monthIndex).click()
+  selectMonth(monthIndex) {
+    cy.get('[aria-labelledby="month-label"]').find("li").eq(monthIndex).click();
+  }
+
+  setBudget(budget) {
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[15]/div/div')
+      .click()
+      .type(budget);
+  }
+
   
-   }
-
-   clickTotalBudgetField(){
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[15]/div/div').click()
-   }
 }
 
 export default CreateNewOrderPagePOM;

@@ -2,5 +2,6 @@
     "orderName" : "Order Name",
     "traffickerName": "Trafficker Name",
     "product" : "Product Field",
-    "scheduleReference" : "schedule Reference"
+    "scheduleReference" : "schedule Reference",
+    "budget" : 100000
 }
