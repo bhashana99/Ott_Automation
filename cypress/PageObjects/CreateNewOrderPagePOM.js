@@ -90,12 +90,78 @@ class CreateNewOrderPagePOM {
   }
 
   setBudget(budget) {
-    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[15]/div/div')
-      .click()
-      .type(budget);
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[15]/div/div').type(
+      budget
+    );
   }
 
-  
+  setImpression(impression) {
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[16]/div/div').type(
+      impression
+    );
+  }
+
+  setStartMonth(startMonth) {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div[1]/div[18]/div/div/div/input[2]'
+    ).type(startMonth);
+  }
+  setStartDay(StartDay) {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div[1]/div[18]/div/div/div/input[3]'
+    ).type(StartDay);
+  }
+
+  setStartYear(StartYear) {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div[1]/div[18]/div/div/div/input[4]'
+    ).type(StartYear);
+  }
+
+  clickOutside() {
+    cy.xpath('//*[@id="start-date-label"]').click();
+  }
+
+  setStartHours(startHours) {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div[1]/div[18]/div/div/div/input[5]'
+    ).type(startHours);
+  }
+
+  setStartMinutes(startMinutes) {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div[1]/div[18]/div/div/div/input[6]'
+    ).type(startMinutes);
+  }
+
+  setEndMonth(endMonth) {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div[1]/div[20]/div/div/div/input[2]'
+    ).type(endMonth);
+  }
+  setEndDay(endDay) {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div[1]/div[20]/div/div/div/input[3]'
+    ).type(endDay);
+  }
+
+  setEndYear(endYear) {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div[1]/div[20]/div/div/div/input[4]'
+    ).type(endYear);
+  }
+
+  setEndHours(endHours) {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div[1]/div[20]/div/div/div/input[5]'
+    ).type(endHours);
+  }
+
+  setEndMinutes(endMinutes) {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div[1]/div[20]/div/div/div/input[6]'
+    ).type(endMinutes);
+  }
 }
 
 export default CreateNewOrderPagePOM;

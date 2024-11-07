@@ -3,5 +3,16 @@
     "traffickerName": "Trafficker Name",
     "product" : "Product Field",
     "scheduleReference" : "schedule Reference",
-    "budget" : 100000
+    "budget" : 100000,
+    "impression" : 10000,
+    "startMonth" : 12,
+    "startDay" : 23,
+    "startYear" : 2024,
+    "startHours" : 4,
+    "startMinutes" : 40,
+    "endMonth" : 2,
+    "endDay" : 6,
+    "endYear" : 2026,
+    "endHours" : 4,
+    "endMinutes" : 40
 }
