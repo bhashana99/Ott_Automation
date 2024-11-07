@@ -53,5 +53,6 @@ describe("Create New Order", () => {
     newOrder.clickBillingClientField();
     newOrder.chooseBillingClientTestClientOne();
     newOrder.clickAgencyFiled();
+    newOrder.chooseAgencyFiledTestAgencyOneOption();
   });
 });
