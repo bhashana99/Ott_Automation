@@ -54,7 +54,8 @@ describe("Create New Order", () => {
     newOrder.chooseBillingClientTestClientOne();
     newOrder.clickAgencyFiled();
     newOrder.chooseAgencyFiledFirstOption();
-    // newOrder.clickMonthField();
+    newOrder.clickMonthField();
+    newOrder.selectMonth(5)
 
   });
 });

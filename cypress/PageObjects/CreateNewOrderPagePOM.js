@@ -82,6 +82,15 @@ class CreateNewOrderPagePOM {
    chooseAgencyFiledFirstOption(){
     cy.get('[aria-labelledby="agency-label"]').find('li').first().click()
    }
+
+   clickMonthField(){
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[14]/div/div').click();
+   }
+
+   selectMonth(monthIndex){
+    cy.get('[aria-labelledby="month-label"]').find('li').eq(monthIndex).click()
+  
+   }
 }
 
 export default CreateNewOrderPagePOM;
