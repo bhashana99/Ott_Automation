@@ -91,6 +91,10 @@ class CreateNewOrderPagePOM {
     cy.get('[aria-labelledby="month-label"]').find('li').eq(monthIndex).click()
   
    }
+
+   clickTotalBudgetField(){
+    cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[15]/div/div').click()
+   }
 }
 
 export default CreateNewOrderPagePOM;

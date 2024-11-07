@@ -55,7 +55,8 @@ describe("Create New Order", () => {
     newOrder.clickAgencyFiled();
     newOrder.chooseAgencyFiledFirstOption();
     newOrder.clickMonthField();
-    newOrder.selectMonth(5)
+    newOrder.selectMonth(5);
+    newOrder.clickTotalBudgetField()
 
   });
 });
