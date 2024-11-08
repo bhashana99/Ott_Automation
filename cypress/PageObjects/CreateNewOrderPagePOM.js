@@ -169,36 +169,50 @@ class CreateNewOrderPagePOM {
     ).should("have.length", tableRows);
   }
 
-  addFirstColumnToTable(){
-    cy.xpath('//*[@id="root"]/div/main/div/div[2]/div/div/div/table/tbody/tr[1]/td[4]')
-    .should('contain','ADD')
-    .click()
+  addFirstColumnToTable() {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div[2]/div/div/div/table/tbody/tr[1]/td[4]'
+    )
+      .should("contain", "ADD")
+      .click();
   }
 
-  addThirdColumnToTable(){
-    cy.xpath('//*[@id="root"]/div/main/div/div[2]/div/div/div/table/tbody/tr[3]/td[4]')
-    .should('contain','ADD')
-    .click()
+  addThirdColumnToTable() {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div[2]/div/div/div/table/tbody/tr[3]/td[4]'
+    )
+      .should("contain", "ADD")
+      .click();
   }
 
-  removeFirstColumnInTable(){
-    cy.xpath('//*[@id="root"]/div/main/div/div[3]/div/div/table/tbody/tr[1]/td[4]')
-    .should('contain','RMV')
-    .click()
+  removeFirstColumnInTable() {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div[3]/div/div/table/tbody/tr[1]/td[4]'
+    )
+      .should("contain", "RMV")
+      .click();
   }
 
-  removeThirdColumnInTable(){
-    cy.xpath('//*[@id="root"]/div/main/div/div[3]/div/div/table/tbody/tr[3]/td[4]')
-    .should('contain','RMV')
-    .click()
+  removeThirdColumnInTable() {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div[3]/div/div/table/tbody/tr[3]/td[4]'
+    )
+      .should("contain", "RMV")
+      .click();
   }
 
-  clickSubmitBtn(){
+  clickSubmitBtn() {
     cy.xpath('//*[@id="root"]/div/main/div/button[3]')
-    .should('contain', "Submit")
-    .click()
+      .should("contain", "Submit")
+      .click();
   }
 
+  validateOrderIsCreateSuccessful() {
+    cy.xpath("/html/body/div[2]/div[3]/div").should("be.visible");
+    cy.xpath('/html/body/div[2]/div[3]/div').should('contain',"Success")
+    cy.xpath('/html/body/div[2]/div[3]/div/div[1]').should('contain',"Data has been successfully saved.")
+    
+  }
 }
 
 export default CreateNewOrderPagePOM;

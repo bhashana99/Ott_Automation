@@ -109,6 +109,8 @@ describe("Create New Order", () => {
     newOrder.addFirstColumnToTable();
     newOrder.removeThirdColumnInTable();
     newOrder.removeFirstColumnInTable();
+    
     newOrder.clickSubmitBtn();
+    newOrder.validateOrderIsCreateSuccessful()
   });
 });
