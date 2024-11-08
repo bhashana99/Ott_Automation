@@ -209,9 +209,17 @@ class CreateNewOrderPagePOM {
 
   validateOrderIsCreateSuccessful() {
     cy.xpath("/html/body/div[2]/div[3]/div").should("be.visible");
-    cy.xpath('/html/body/div[2]/div[3]/div').should('contain',"Success")
-    cy.xpath('/html/body/div[2]/div[3]/div/div[1]').should('contain',"Data has been successfully saved.")
-    
+    cy.xpath("/html/body/div[2]/div[3]/div").should("contain", "Success");
+    cy.xpath("/html/body/div[2]/div[3]/div/div[1]").should(
+      "contain",
+      "Data has been successfully saved."
+    );
+  }
+
+  clickCloseBtn() {
+    cy.xpath("/html/body/div[2]/div[3]/div/div[2]/button")
+      .should("contain", "Close")
+      .click();
   }
 }
 
