@@ -186,9 +186,16 @@ class CreateNewOrderPagePOM {
     .should('contain','RMV')
     .click()
   }
+
   removeThirdColumnInTable(){
     cy.xpath('//*[@id="root"]/div/main/div/div[3]/div/div/table/tbody/tr[3]/td[4]')
     .should('contain','RMV')
+    .click()
+  }
+
+  clickSubmitBtn(){
+    cy.xpath('//*[@id="root"]/div/main/div/button[3]')
+    .should('contain', "Submit")
     .click()
   }
 

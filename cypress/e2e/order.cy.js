@@ -24,19 +24,30 @@ const newOrder = new CreateNewOrderPagePOM();
 
 const validateDateGap = () => {
   const startDateTime = new Date(
-    `${orderData.startYear}-${String(orderData.startMonth).padStart(2, '0')}-${String(orderData.startDay).padStart(2, '0')}T${String(orderData.startHours).padStart(2, '0')}:${String(orderData.startMinutes).padStart(2, '0')}:00`
+    `${orderData.startYear}-${String(orderData.startMonth).padStart(
+      2,
+      "0"
+    )}-${String(orderData.startDay).padStart(2, "0")}T${String(
+      orderData.startHours
+    ).padStart(2, "0")}:${String(orderData.startMinutes).padStart(2, "0")}:00`
   );
 
   const endDateTime = new Date(
-    `${orderData.endYear}-${String(orderData.endMonth).padStart(2, '0')}-${String(orderData.endDay).padStart(2, '0')}T${String(orderData.endHours).padStart(2, '0')}:${String(orderData.endMinutes).padStart(2, '0')}:00`
+    `${orderData.endYear}-${String(orderData.endMonth).padStart(
+      2,
+      "0"
+    )}-${String(orderData.endDay).padStart(2, "0")}T${String(
+      orderData.endHours
+    ).padStart(2, "0")}:${String(orderData.endMinutes).padStart(2, "0")}:00`
   );
 
   const differenceInMilliseconds = endDateTime - startDateTime;
   const differenceInHours = differenceInMilliseconds / (1000 * 60 * 60);
 
-  
-
-  expect(differenceInHours).to.be.gte(6, "End date must be at least 6 hours after start date");
+  expect(differenceInHours).to.be.gte(
+    6,
+    "End date must be at least 6 hours after start date"
+  );
 };
 
 //login
@@ -90,13 +101,14 @@ describe("Create New Order", () => {
     newOrder.setEndMinutes(orderData.endMinutes);
     newOrder.clickOutside();
 
-    validateDateGap()
+    validateDateGap();
 
-    newOrder.checkTableNumberOfRows(orderData.tableRows)
-    newOrder.addFirstColumnToTable()
-    newOrder.addThirdColumnToTable()
-    newOrder.addFirstColumnToTable()
-    newOrder.removeThirdColumnInTable()
-    newOrder.removeFirstColumnInTable()
+    newOrder.checkTableNumberOfRows(orderData.tableRows);
+    newOrder.addFirstColumnToTable();
+    newOrder.addThirdColumnToTable();
+    newOrder.addFirstColumnToTable();
+    newOrder.removeThirdColumnInTable();
+    newOrder.removeFirstColumnInTable();
+    newOrder.clickSubmitBtn();
   });
 });
