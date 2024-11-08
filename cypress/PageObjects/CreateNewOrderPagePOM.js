@@ -181,6 +181,16 @@ class CreateNewOrderPagePOM {
     .click()
   }
 
+  removeFirstColumnInTable(){
+    cy.xpath('//*[@id="root"]/div/main/div/div[3]/div/div/table/tbody/tr[1]/td[4]')
+    .should('contain','RMV')
+    .click()
+  }
+  removeThirdColumnInTable(){
+    cy.xpath('//*[@id="root"]/div/main/div/div[3]/div/div/table/tbody/tr[3]/td[4]')
+    .should('contain','RMV')
+    .click()
+  }
 
 }
 

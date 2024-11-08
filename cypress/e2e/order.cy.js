@@ -96,5 +96,7 @@ describe("Create New Order", () => {
     newOrder.addFirstColumnToTable()
     newOrder.addThirdColumnToTable()
     newOrder.addFirstColumnToTable()
+    newOrder.removeThirdColumnInTable()
+    newOrder.removeFirstColumnInTable()
   });
 });
