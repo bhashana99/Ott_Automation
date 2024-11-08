@@ -14,5 +14,6 @@
     "endDay" : 6,
     "endYear" : 2026,
     "endHours" : 4,
-    "endMinutes" : 40
+    "endMinutes" : 40,
+    "tableRows" : 10
 }

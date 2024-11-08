@@ -91,5 +91,7 @@ describe("Create New Order", () => {
     newOrder.clickOutside();
 
     validateDateGap()
+
+    newOrder.checkTableNumberOfRows(orderData.tableRows)
   });
 });

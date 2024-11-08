@@ -163,7 +163,11 @@ class CreateNewOrderPagePOM {
     ).type(endMinutes);
   }
 
-  
+  checkTableNumberOfRows(tableRows){
+    cy.xpath('//*[@id="root"]/div/main/div/div[2]/div/div/div/table/thead/tr/th')
+    .should('have.length', tableRows)
+    
+  }
 }
 
 export default CreateNewOrderPagePOM;
