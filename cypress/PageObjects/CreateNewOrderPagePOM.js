@@ -163,11 +163,25 @@ class CreateNewOrderPagePOM {
     ).type(endMinutes);
   }
 
-  checkTableNumberOfRows(tableRows){
-    cy.xpath('//*[@id="root"]/div/main/div/div[2]/div/div/div/table/thead/tr/th')
-    .should('have.length', tableRows)
-    
+  checkTableNumberOfRows(tableRows) {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div[2]/div/div/div/table/thead/tr/th'
+    ).should("have.length", tableRows);
   }
+
+  addFirstColumnToTable(){
+    cy.xpath('//*[@id="root"]/div/main/div/div[2]/div/div/div/table/tbody/tr[1]/td[4]')
+    .should('contain','ADD')
+    .click()
+  }
+
+  addThirdColumnToTable(){
+    cy.xpath('//*[@id="root"]/div/main/div/div[2]/div/div/div/table/tbody/tr[3]/td[4]')
+    .should('contain','ADD')
+    .click()
+  }
+
+
 }
 
 export default CreateNewOrderPagePOM;

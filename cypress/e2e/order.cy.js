@@ -93,5 +93,8 @@ describe("Create New Order", () => {
     validateDateGap()
 
     newOrder.checkTableNumberOfRows(orderData.tableRows)
+    newOrder.addFirstColumnToTable()
+    newOrder.addThirdColumnToTable()
+    newOrder.addFirstColumnToTable()
   });
 });
