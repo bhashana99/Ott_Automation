@@ -3,8 +3,9 @@
 import HomePagePOM from "../PageObjects/HomePagePOM.js";
 import OrderPagePOM from "../PageObjects/OrderPagePOM.js";
 import CreateNewOrderPagePOM from "../PageObjects/CreateNewOrderPagePOM.js";
+import LineItemPOM from "../PageObjects/LineItemPOM.js";
 
-let user, urls, orderData;
+let user, urls, orderData,lineItemData;
 
 before(() => {
   cy.fixture("../fixtures/JsonData/userInfo.json").then((userInfo) => {
@@ -16,11 +17,16 @@ before(() => {
   cy.fixture("../fixtures/JsonData/newOrder.json").then((data) => {
     orderData = data;
   });
+  cy.fixture("../fixtures/JsonData/lineItem.json").then((data) => {
+    lineItemData = data;
+  });
+  
 });
 
 const home = new HomePagePOM();
 const order = new OrderPagePOM();
 const newOrder = new CreateNewOrderPagePOM();
+const lineItem = new LineItemPOM();
 
 const validateDateGap = () => {
   const startDateTime = new Date(
@@ -115,12 +121,15 @@ describe("Create New Order", () => {
     newOrder.clickCloseBtn();
   });
 
-  it.only("create new line item", ()=> {
+  it.only("create new line item", () => {
     home.clickDeliveryDropDown();
     order.clickDeliveryDropDownOrderElement();
     order.checkPageUrl(urls.orderPageUrl);
 
-  
-    order.selectAdCampaignUsingOrderId(orderData.orderId)
-  })
+    order.selectAdCampaignUsingOrderId(orderData.orderId);
+    order.clickNewLineItemBtn();
+    lineItem.clickVideoIconForCreateVideoLineItem();
+    lineItem.validateIsLineItemPage();
+    lineItem.setLineItemName(lineItemData.lineItemName)
+  });
 });

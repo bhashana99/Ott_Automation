@@ -20,6 +20,14 @@ class OrderPagePOM {
     cy.get('table > tbody > tr:nth-child(1) > td:nth-child(2) > a').click()
   
   }
+
+  clickNewLineItemBtn(){
+    cy.xpath('//*[@id="simple-tabpanel-0"]/div/div[3]/button[1]')
+    .should('contain','New Line Item')
+    .click()
+  }
+
+ 
 }
 
 export default OrderPagePOM;
