@@ -12,6 +12,11 @@ class LineItemPOM{
         cy.xpath('//*[@id="root"]/div/main/div/div/div[1]/div[1]/div/div')
         .type(lineItemName)
     }
+
+    setTrafficker(trafficker){
+        cy.xpath('//*[@id="root"]/div/main/div/div/div[1]/div[2]/div/div')
+        .type(trafficker)
+    }
 }
 
 export default LineItemPOM;

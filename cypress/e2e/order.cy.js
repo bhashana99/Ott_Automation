@@ -5,7 +5,7 @@ import OrderPagePOM from "../PageObjects/OrderPagePOM.js";
 import CreateNewOrderPagePOM from "../PageObjects/CreateNewOrderPagePOM.js";
 import LineItemPOM from "../PageObjects/LineItemPOM.js";
 
-let user, urls, orderData,lineItemData;
+let user, urls, orderData, lineItemData;
 
 before(() => {
   cy.fixture("../fixtures/JsonData/userInfo.json").then((userInfo) => {
@@ -20,7 +20,6 @@ before(() => {
   cy.fixture("../fixtures/JsonData/lineItem.json").then((data) => {
     lineItemData = data;
   });
-  
 });
 
 const home = new HomePagePOM();
@@ -130,6 +129,7 @@ describe("Create New Order", () => {
     order.clickNewLineItemBtn();
     lineItem.clickVideoIconForCreateVideoLineItem();
     lineItem.validateIsLineItemPage();
-    lineItem.setLineItemName(lineItemData.lineItemName)
+    lineItem.setLineItemName(lineItemData.lineItemName);
+    lineItem.setTrafficker(lineItemData.trafficker)
   });
 });
