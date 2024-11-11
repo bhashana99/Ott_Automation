@@ -11,12 +11,15 @@ class OrderPagePOM {
 
   clickNewOrderBtn() {
     cy.xpath('//*[@id="root"]/div/main/div/div[1]/button')
-    .should('have.text','New Order').click()
+      .should("have.text", "New Order")
+      .click();
   }
 
   
-
-
+  selectAdCampaignUsingOrderId(orderId) {
+    cy.get('table > tbody > tr:nth-child(1) > td:nth-child(2) > a').click()
+  
+  }
 }
 
 export default OrderPagePOM;

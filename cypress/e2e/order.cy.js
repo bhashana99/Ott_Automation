@@ -114,4 +114,13 @@ describe("Create New Order", () => {
     newOrder.validateOrderIsCreateSuccessful();
     newOrder.clickCloseBtn();
   });
+
+  it.only("create new line item", ()=> {
+    home.clickDeliveryDropDown();
+    order.clickDeliveryDropDownOrderElement();
+    order.checkPageUrl(urls.orderPageUrl);
+
+  
+    order.selectAdCampaignUsingOrderId(orderData.orderId)
+  })
 });
