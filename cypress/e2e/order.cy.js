@@ -158,6 +158,7 @@ describe("Create New Order", () => {
     
     lineItem.clickSubmitBtn()
     lineItem.validateLineItemIsCreateSuccessful()
+    lineItem.clickCloseBtn()
 
   });
 });
