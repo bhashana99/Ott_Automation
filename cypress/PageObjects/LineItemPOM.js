@@ -35,10 +35,16 @@ class LineItemPOM {
     //   });
   }
 
-  setTargetImpression(targetImpression){
+  setTargetImpression(targetImpression) {
     cy.xpath('//*[@id="root"]/div/main/div/div/div[1]/div[5]/div/div')
-    .click()
-    .type(targetImpression)
+      .click()
+      .type(targetImpression);
+  }
+
+  setCPM(cpm) {
+    cy.xpath('//*[@id="root"]/div/main/div/div/div[1]/div[6]/div/div')
+      .click()
+      .type(cpm);
   }
 }
 

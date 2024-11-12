@@ -130,8 +130,9 @@ describe("Create New Order", () => {
     lineItem.clickVideoIconForCreateVideoLineItem();
     lineItem.validateIsLineItemPage();
     lineItem.setLineItemName(lineItemData.lineItemName);
-    lineItem.setTrafficker(lineItemData.trafficker)
-    lineItem.chooseFirstUrlFromTable()
-    lineItem.setTargetImpression(lineItemData.targetImpressions)
+    lineItem.setTrafficker(lineItemData.trafficker);
+    lineItem.chooseFirstUrlFromTable();
+    lineItem.setTargetImpression(lineItemData.targetImpressions);
+    lineItem.setCPM(lineItemData.cpm)
   });
 });
