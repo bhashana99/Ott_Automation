@@ -157,6 +157,7 @@ describe("Create New Order", () => {
     lineItem.chooseLowPriority() 
     
     lineItem.clickSubmitBtn()
+    lineItem.validateLineItemIsCreateSuccessful()
 
   });
 });

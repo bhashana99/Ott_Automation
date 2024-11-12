@@ -144,7 +144,15 @@ class LineItemPOM {
       .click()
     }
 
-    
+    validateLineItemIsCreateSuccessful() {
+      cy.xpath("/html/body/div[2]/div[3]/div").should("be.visible")
+      .and("contain", "Success");
+      cy.xpath("/html/body/div[2]/div[3]/div/div[1]").should(
+        "contain",
+        "Data has been successfully saved."
+      );
+    }
+  
 }
 
 export default LineItemPOM;
