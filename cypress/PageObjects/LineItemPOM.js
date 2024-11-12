@@ -127,6 +127,10 @@ class LineItemPOM {
         cy.xpath('//*[@id="root"]/div/main/div/div/div[1]/div[14]/div[1]/div').click()
     }  
   
+    chooseMediumPriority(){
+        cy.get('[data-value = "medium-priority"]').click()
+    }
+    
 
 }
 
