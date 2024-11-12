@@ -139,8 +139,11 @@ describe("Create New Order", () => {
     lineItem.setStartMonth(lineItemData.startMonth);
     lineItem.setStartDay(lineItemData.startDay);
     lineItem.setStartYear(lineItemData.startYear);
-    lineItem.clickOutside()
-    lineItem.setStartHours(lineItemData.startHours)
-    lineItem.setStartMinutes(lineItemData.startMinutes)
+    lineItem.clickOutside();
+    lineItem.setStartHours(lineItemData.startHours);
+    lineItem.setStartMinutes(lineItemData.startMinutes);
+    lineItem.clickOutside();
+    lineItem.setEndMonth(lineItemData.endMonth)
+  
   });
 });

@@ -93,7 +93,12 @@ class LineItemPOM {
     ).type(startMinutes);
   }
 
-  
+  setEndMonth(endMonth) {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div/div[1]/div[13]/div/div/div/input[2]'
+    ).type(endMonth);
+}
+
 
 }
 
