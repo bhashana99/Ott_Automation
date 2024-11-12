@@ -146,5 +146,7 @@ describe("Create New Order", () => {
     lineItem.setEndMonth(lineItemData.endMonth);
     lineItem.setEndDay(lineItemData.endDay);
     lineItem.setEndYear(lineItemData.endYear);
+    lineItem.clickOutside();
+    lineItem.setEndHours(lineItemData.endHours)
   });
 });

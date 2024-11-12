@@ -111,6 +111,14 @@ class LineItemPOM {
     ).type(endYear);
   }
 
+  setEndHours(endHours) {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div/div[1]/div[13]/div/div/div/input[5]'
+    ).type(endHours);
+  }
+
+  
+
 }
 
 export default LineItemPOM;
