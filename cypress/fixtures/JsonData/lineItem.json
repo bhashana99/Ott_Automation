@@ -7,7 +7,7 @@
     "cpc" : 7,
     "startMonth" : 12,
     "startDay" : 23,
-    "startYear" : 2024,
+    "startYear" : 2025,
     "startHours" : 4,
     "startMinutes" : 40,
     "endMonth" : 2,
@@ -15,6 +15,6 @@
     "endYear" : 2026,
     "endHours" : 4,
     "endMinutes" : 40
-    
+
 
 }

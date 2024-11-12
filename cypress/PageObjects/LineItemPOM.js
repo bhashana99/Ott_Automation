@@ -70,6 +70,12 @@ class LineItemPOM {
       '//*[@id="root"]/div/main/div/div/div[1]/div[11]/div/div/div/input[3]'
     ).type(startDay);
   }
+
+  setStartYear(StartYear) {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div/div[1]/div[11]/div/div/div/input[4]'
+    ).type(StartYear);
+  }  
 }
 
 export default LineItemPOM;

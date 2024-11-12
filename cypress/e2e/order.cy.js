@@ -138,5 +138,7 @@ describe("Create New Order", () => {
     lineItem.setCPC(lineItemData.cpc);
     lineItem.setStartMonth(lineItemData.startMonth);
     lineItem.setStartDay(lineItemData.startDay);
+    lineItem.setStartYear(lineItemData.startYear);
+    
   });
 });
