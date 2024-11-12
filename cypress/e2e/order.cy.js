@@ -150,5 +150,7 @@ describe("Create New Order", () => {
     lineItem.setEndHours(lineItemData.endHours);
     lineItem.setEndMinutes(lineItemData.endMinutes);
     lineItem.clickOutside();
+
+    lineItem.clickPriorityField()
   });
 });
