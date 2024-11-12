@@ -152,6 +152,8 @@ describe("Create New Order", () => {
     lineItem.clickOutside();
 
     lineItem.clickPriorityField()
-    lineItem.chooseMediumPriority()
+    // lineItem.chooseMediumPriority()
+    lineItem.chooseHighPriority()
+
   });
 });

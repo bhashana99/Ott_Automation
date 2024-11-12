@@ -130,7 +130,10 @@ class LineItemPOM {
     chooseMediumPriority(){
         cy.get('[data-value = "medium-priority"]').click()
     }
-    
+    chooseHighPriority(){
+        cy.get('[data-value = "high-priority"]').click()
+    }
+   
 
 }
 
