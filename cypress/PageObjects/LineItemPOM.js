@@ -58,6 +58,16 @@ class LineItemPOM {
       .click()
       .type(cpc);
   }
+
+  setStartMonth(startMonth) {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div/div[1]/div[11]/div/div/div/input[2]'
+    ).type(startMonth);
+  }
+
+  
+
+  
 }
 
 export default LineItemPOM;

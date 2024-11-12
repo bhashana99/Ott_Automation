@@ -135,6 +135,7 @@ describe("Create New Order", () => {
     lineItem.setTargetImpression(lineItemData.targetImpressions);
     lineItem.setCPM(lineItemData.cpm);
     lineItem.setTargetClicks(lineItemData.targetClicks);
-    lineItem.setCPC(lineItemData.cpc)
+    lineItem.setCPC(lineItemData.cpc);
+    lineItem.setStartMonth(lineItemData.startMonth)
   });
 });
