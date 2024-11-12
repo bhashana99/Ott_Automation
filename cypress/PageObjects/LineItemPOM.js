@@ -75,7 +75,7 @@ class LineItemPOM {
     cy.xpath(
       '//*[@id="root"]/div/main/div/div/div[1]/div[11]/div/div/div/input[4]'
     ).type(StartYear);
-  }  
+  }
 
   clickOutside() {
     cy.xpath('//*[@id="root"]/div/main/div/div/div[1]/div[10]').click();
@@ -97,8 +97,19 @@ class LineItemPOM {
     cy.xpath(
       '//*[@id="root"]/div/main/div/div/div[1]/div[13]/div/div/div/input[2]'
     ).type(endMonth);
-}
+  }
 
+  setEndDay(endDay) {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div/div[1]/div[13]/div/div/div/input[3]'
+    ).type(endDay);
+  }
+
+  setEndYear(endYear) {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div/div[1]/div[13]/div/div/div/input[4]'
+    ).type(endYear);
+  }
 
 }
 

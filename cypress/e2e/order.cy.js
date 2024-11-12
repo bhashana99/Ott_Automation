@@ -143,7 +143,8 @@ describe("Create New Order", () => {
     lineItem.setStartHours(lineItemData.startHours);
     lineItem.setStartMinutes(lineItemData.startMinutes);
     lineItem.clickOutside();
-    lineItem.setEndMonth(lineItemData.endMonth)
-  
+    lineItem.setEndMonth(lineItemData.endMonth);
+    lineItem.setEndDay(lineItemData.endDay);
+    lineItem.setEndYear(lineItemData.endYear);
   });
 });
