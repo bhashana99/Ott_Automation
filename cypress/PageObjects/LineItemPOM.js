@@ -47,10 +47,16 @@ class LineItemPOM {
       .type(cpm);
   }
 
-  setTargetClicks(targetClicks){
+  setTargetClicks(targetClicks) {
     cy.xpath('//*[@id="root"]/div/main/div/div/div[1]/div[8]/div/div')
-    .click()
-    .type(targetClicks)
+      .click()
+      .type(targetClicks);
+  }
+
+  setCPC(cpc) {
+    cy.xpath('//*[@id="root"]/div/main/div/div/div[1]/div[9]/div/div')
+      .click()
+      .type(cpc);
   }
 }
 
