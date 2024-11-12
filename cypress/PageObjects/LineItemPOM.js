@@ -138,6 +138,12 @@ class LineItemPOM {
         cy.get('[data-value = "low-priority"]').click()
     }
 
+    clickSubmitBtn(){
+      cy.xpath('//*[@id="root"]/div/main/div/div/button[3]')
+      .should('contain','Submit')
+      .click()
+    }
+
     
 }
 
