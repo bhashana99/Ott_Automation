@@ -131,5 +131,7 @@ describe("Create New Order", () => {
     lineItem.validateIsLineItemPage();
     lineItem.setLineItemName(lineItemData.lineItemName);
     lineItem.setTrafficker(lineItemData.trafficker)
+    lineItem.chooseFirstUrlFromTable()
+    lineItem.setTargetImpression(lineItemData.targetImpressions)
   });
 });

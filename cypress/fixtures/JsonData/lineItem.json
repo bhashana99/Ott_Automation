@@ -1,4 +1,8 @@
 {
     "lineItemName" : "Line Item name",
-    "trafficker" : "Nadun trafficker"
+    "trafficker" : "Nadun trafficker",
+    "targetImpressions" : 400,
+    "cpm" : 100,
+    "TargetClicks" : 100,
+    "cpc" : 7
 }

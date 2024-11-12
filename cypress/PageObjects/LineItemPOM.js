@@ -34,6 +34,12 @@ class LineItemPOM {
     //     cy.log(`URL: ${tableUrl}`);
     //   });
   }
+
+  setTargetImpression(targetImpression){
+    cy.xpath('//*[@id="root"]/div/main/div/div/div[1]/div[5]/div/div')
+    .click()
+    .type(targetImpression)
+  }
 }
 
 export default LineItemPOM;
