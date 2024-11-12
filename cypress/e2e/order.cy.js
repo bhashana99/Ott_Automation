@@ -133,6 +133,7 @@ describe("Create New Order", () => {
     lineItem.setTrafficker(lineItemData.trafficker);
     lineItem.chooseFirstUrlFromTable();
     lineItem.setTargetImpression(lineItemData.targetImpressions);
-    lineItem.setCPM(lineItemData.cpm)
+    lineItem.setCPM(lineItemData.cpm);
+    lineItem.setTargetClicks(lineItemData.targetClicks)
   });
 });

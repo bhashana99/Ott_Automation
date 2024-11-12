@@ -46,6 +46,12 @@ class LineItemPOM {
       .click()
       .type(cpm);
   }
+
+  setTargetClicks(targetClicks){
+    cy.xpath('//*[@id="root"]/div/main/div/div/div[1]/div[8]/div/div')
+    .click()
+    .type(targetClicks)
+  }
 }
 
 export default LineItemPOM;

@@ -3,6 +3,6 @@
     "trafficker" : "Nadun trafficker",
     "targetImpressions" : 400,
     "cpm" : 100,
-    "TargetClicks" : 100,
+    "targetClicks" : 100,
     "cpc" : 7
 }
