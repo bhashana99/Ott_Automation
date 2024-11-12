@@ -134,7 +134,11 @@ class LineItemPOM {
         cy.get('[data-value = "high-priority"]').click()
     }
    
+    chooseLowPriority(){
+        cy.get('[data-value = "low-priority"]').click()
+    }
 
+    
 }
 
 export default LineItemPOM;
