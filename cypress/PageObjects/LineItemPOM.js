@@ -76,6 +76,12 @@ class LineItemPOM {
       '//*[@id="root"]/div/main/div/div/div[1]/div[11]/div/div/div/input[4]'
     ).type(StartYear);
   }  
+
+  clickOutside() {
+    cy.xpath('//*[@id="root"]/div/main/div/div/div[1]/div[10]').click();
+  }
+
+  
 }
 
 export default LineItemPOM;
