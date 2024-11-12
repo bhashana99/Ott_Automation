@@ -141,5 +141,6 @@ describe("Create New Order", () => {
     lineItem.setStartYear(lineItemData.startYear);
     lineItem.clickOutside()
     lineItem.setStartHours(lineItemData.startHours)
+    lineItem.setStartMinutes(lineItemData.startMinutes)
   });
 });

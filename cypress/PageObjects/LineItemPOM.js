@@ -87,6 +87,12 @@ class LineItemPOM {
     ).type(startHours);
   }
 
+  setStartMinutes(startMinutes) {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div/div[1]/div[11]/div/div/div/input[6]'
+    ).type(startMinutes);
+  }
+
   
 
 }
