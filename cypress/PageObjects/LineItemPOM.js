@@ -3,6 +3,9 @@ class LineItemPOM {
     cy.xpath('//*[@id="root"]/div/main/div/div/div[1]').click();
   }
 
+  clickUIBannerForCreateLineItem(){
+    cy.xpath('//*[@id="root"]/div/main/div/div/div[2]').click()
+  }
   validateIsLineItemPage() {
     cy.xpath('//*[@id="root"]/div/main/div/div/h5').should(
       "contain",
@@ -26,6 +29,7 @@ class LineItemPOM {
       '//*[@id="root"]/div/main/div/div/div[2]/div/div/table/tbody/tr/td[8]/button'
     ).click();
 
+    
     // cy.xpath(
     //   '//*[@id="root"]/div/main/div/div/div[2]/div/div/table/tbody/tr/td[3]'
     // )
@@ -33,6 +37,11 @@ class LineItemPOM {
     //   .then((tableUrl) => {
     //     cy.log(`URL: ${tableUrl}`);
     //   });
+  }
+
+  chooseFirstUrlWhenHaveMultipleUrl(){
+    cy.xpath('//*[@id="root"]/div/main/div/div/div[2]/div/div/table/tbody/tr[1]/td[8]/button')
+    .click()
   }
 
   setTargetImpression(targetImpression) {

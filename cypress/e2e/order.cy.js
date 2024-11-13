@@ -120,7 +120,7 @@ describe("Create New Order", () => {
     newOrder.clickCloseBtn();
   });
 
-  it.only("create new line item", () => {
+  it("create new video line item", () => {
     home.clickDeliveryDropDown();
     order.clickDeliveryDropDownOrderElement();
     order.checkPageUrl(urls.orderPageUrl);
@@ -161,4 +161,49 @@ describe("Create New Order", () => {
     lineItem.clickCloseBtn()
 
   });
+
+  it.only("create new UI Banner line item", () => {
+    home.clickDeliveryDropDown();
+    order.clickDeliveryDropDownOrderElement();
+    order.checkPageUrl(urls.orderPageUrl);
+    
+    order.selectAdCampaignUsingOrderId(orderData.orderId);
+    
+    order.clickNewLineItemBtn();
+   
+    lineItem.clickUIBannerForCreateLineItem();
+    lineItem.validateIsLineItemPage();
+    lineItem.setLineItemName(lineItemData.lineItemName);
+    lineItem.setTrafficker(lineItemData.trafficker);
+    lineItem.chooseFirstUrlWhenHaveMultipleUrl();
+    lineItem.setTargetImpression(lineItemData.targetImpressions);
+    lineItem.setCPM(lineItemData.cpm);
+    lineItem.setTargetClicks(lineItemData.targetClicks);
+    lineItem.setCPC(lineItemData.cpc);
+    lineItem.setStartMonth(lineItemData.startMonth);
+    lineItem.setStartDay(lineItemData.startDay);
+    lineItem.setStartYear(lineItemData.startYear);
+    lineItem.clickOutside();
+    lineItem.setStartHours(lineItemData.startHours);
+    lineItem.setStartMinutes(lineItemData.startMinutes);
+    lineItem.clickOutside();
+    lineItem.setEndMonth(lineItemData.endMonth);
+    lineItem.setEndDay(lineItemData.endDay);
+    lineItem.setEndYear(lineItemData.endYear);
+    lineItem.clickOutside();
+
+    lineItem.setEndHours(lineItemData.endHours);
+    lineItem.setEndMinutes(lineItemData.endMinutes);
+    lineItem.clickOutside();
+
+    lineItem.clickPriorityField()
+    // lineItem.chooseMediumPriority()
+    // lineItem.chooseHighPriority()
+    lineItem.chooseLowPriority() 
+    
+    lineItem.clickSubmitBtn()
+    lineItem.validateLineItemIsCreateSuccessful()
+    lineItem.clickCloseBtn()
+  })
+
 });

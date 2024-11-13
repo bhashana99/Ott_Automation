@@ -15,20 +15,57 @@ class OrderPagePOM {
       .click();
   }
 
-  
+  // selectAdCampaignUsingOrderId(orderId) {
+  //   cy.get('table > tbody > tr:nth-child(1) > td:nth-child(2) > a').click()
+
+  // }
+
   selectAdCampaignUsingOrderId(orderId) {
-    cy.get('table > tbody > tr:nth-child(1) > td:nth-child(2) > a').click()
-  
-  }
+    let orderFound = false;
 
-  clickNewLineItemBtn(){
+    const searchAndClickOrderID = () => {
+        cy.get("table tbody tr").then(($rows) => {
+            Cypress._.some($rows, ($row) => {
+                const text = Cypress.$($row).find("td a").text();
+                if (text == orderId) {
+                    cy.wrap($row).find("td a").click();
+                    orderFound = true; 
+                    return true; 
+                }
+            });
+        });
+    };
+
+    const paginateAndSearch = () => {
+        searchAndClickOrderID();
+
+        cy.get("body").then(($body) => {
+            if (orderFound) return; 
+
+            if ($body.find('[aria-label="Go to next page"]').is(":visible")) {
+                cy.get('[aria-label="Go to next page"]')
+                    .click()
+                    .then(() => {
+                        cy.wait(1000); 
+                        paginateAndSearch(); 
+                    });
+            } else if (!orderFound) {
+                
+                cy.log(`Order ID ${orderId} not found.`);
+                expect(orderFound, `Order ID ${orderId} should exist in the table`).to.be.true;
+            }
+        });
+    };
+
+  
+    paginateAndSearch();
+}
+
+  clickNewLineItemBtn() {
     cy.xpath('//*[@id="simple-tabpanel-0"]/div/div[3]/button[1]')
-    .should('contain','New Line Item')
-    .click()
+      .should("contain", "New Line Item")
+      .click()
   }
-
-  
- 
 }
 
 export default OrderPagePOM;
