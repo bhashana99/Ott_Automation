@@ -211,7 +211,7 @@ describe("Create New Order", () => {
     order.checkPageUrl(urls.orderPageUrl);
 
     order.selectAdCampaignUsingOrderId(orderData.orderId);
-order.clickViewAndEditOrderTab()
+    order.clickViewAndEditOrderTab();
+    order.checkIsOrderDetailsPage();
   });
-
 });

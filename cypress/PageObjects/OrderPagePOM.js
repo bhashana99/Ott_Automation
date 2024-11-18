@@ -73,6 +73,10 @@ class OrderPagePOM {
     .click()
   }
 
+  checkIsOrderDetailsPage(){
+    cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/div/h2')
+    .should('contain','Order Details')
+  }
   
 }
 
