@@ -230,6 +230,8 @@ describe("Create New Order", () => {
     orderEdit.clickAgencyRadio();
     orderEdit.checkAgencyFieldIsVisible();
     orderEdit.editAgency();
+
+    orderEdit.editMonth(orderData.newMonthIndex)
     // orderEdit.clickSubmitButton();
     // orderEdit.checkSuccessAlert();
     // orderEdit.closeSuccessAlert()

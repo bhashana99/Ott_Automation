@@ -93,6 +93,16 @@ class OrderEditPOM {
       .click();
   }
 
+  editMonth(newMonthIndex) {
+    cy.xpath(
+      '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[11]/div/div'
+    ).click();
+
+    cy.get('[aria-labelledby="month-label"]')
+      .find("li")
+      .eq(newMonthIndex)
+      .click();
+  }
   clickSubmitButton() {
     cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/button[2]')
       .should("contain", "Submit")
