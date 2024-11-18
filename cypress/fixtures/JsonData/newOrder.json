@@ -17,5 +17,7 @@
     "endMinutes" : 40,
     "tableRows" : 10,
     "orderId" : 26517,
-    "newOrderName" : "Edit Order name"
+    "newOrderName" : "Edited Order name",
+    "newTrafficker" : "Edited Trafficker",
+    "newProductName" : "Edited Product Name"
 }

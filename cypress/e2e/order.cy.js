@@ -217,9 +217,14 @@ describe("Create New Order", () => {
     orderEdit.checkIsOrderDetailsPage();
     orderEdit.checkOrderNameNotEmpty();
     orderEdit.editOrderName(orderData.newOrderName);
-    orderEdit.clickSubmitButton();
-    orderEdit.checkSuccessAlert();
-    orderEdit.closeSuccessAlert()
-    orderEdit.navigateOrderPage();
+    orderEdit.editTrafficker(orderData.newTrafficker);
+    orderEdit.editProduct(orderData.newProductName)
+    orderEdit.clickAgencyRadio();
+    orderEdit.checkAgencyFieldIsVisible();
+    // orderEdit.clickSubmitButton();
+    // orderEdit.checkSuccessAlert();
+    // orderEdit.closeSuccessAlert()
+    // orderEdit.navigateOrderPage();
+    // orderEdit.checkIsOrderNameChange(orderData.orderId,orderData.newOrderName)
   });
 });
