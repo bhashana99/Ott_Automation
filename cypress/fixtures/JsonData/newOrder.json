@@ -21,5 +21,6 @@
     "newTrafficker" : "Edited Trafficker",
     "newProductName" : "Edited Product Name",
     "newScheduleReference" : "Edited Reference Name",
-    "newMonthIndex":2
+    "newMonthIndex":2,
+    "newBudget":2000
 }

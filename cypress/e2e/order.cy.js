@@ -232,6 +232,7 @@ describe("Create New Order", () => {
     orderEdit.editAgency();
 
     orderEdit.editMonth(orderData.newMonthIndex)
+    orderEdit.editBudget(orderData.newBudget)
     // orderEdit.clickSubmitButton();
     // orderEdit.checkSuccessAlert();
     // orderEdit.closeSuccessAlert()

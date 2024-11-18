@@ -103,6 +103,14 @@ class OrderEditPOM {
       .eq(newMonthIndex)
       .click();
   }
+
+
+  editBudget(newBudget){
+    cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/div/div/div[16]/div/div')
+    .type(newBudget)
+  }
+
+
   clickSubmitButton() {
     cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/button[2]')
       .should("contain", "Submit")
