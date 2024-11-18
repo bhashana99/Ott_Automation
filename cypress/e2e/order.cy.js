@@ -151,26 +151,25 @@ describe("Create New Order", () => {
     lineItem.setEndMinutes(lineItemData.endMinutes);
     lineItem.clickOutside();
 
-    lineItem.clickPriorityField()
+    lineItem.clickPriorityField();
     // lineItem.chooseMediumPriority()
     // lineItem.chooseHighPriority()
-    lineItem.chooseLowPriority() 
-    
-    lineItem.clickSubmitBtn()
-    lineItem.validateLineItemIsCreateSuccessful()
-    lineItem.clickCloseBtn()
+    lineItem.chooseLowPriority();
 
+    lineItem.clickSubmitBtn();
+    lineItem.validateLineItemIsCreateSuccessful();
+    lineItem.clickCloseBtn();
   });
 
-  it.only("create new UI Banner line item", () => {
+  it("create new UI Banner line item", () => {
     home.clickDeliveryDropDown();
     order.clickDeliveryDropDownOrderElement();
     order.checkPageUrl(urls.orderPageUrl);
-    
+
     order.selectAdCampaignUsingOrderId(orderData.orderId);
-    
+
     order.clickNewLineItemBtn();
-   
+
     lineItem.clickUIBannerForCreateLineItem();
     lineItem.validateIsLineItemPage();
     lineItem.setLineItemName(lineItemData.lineItemName);
@@ -196,14 +195,23 @@ describe("Create New Order", () => {
     lineItem.setEndMinutes(lineItemData.endMinutes);
     lineItem.clickOutside();
 
-    lineItem.clickPriorityField()
+    lineItem.clickPriorityField();
     // lineItem.chooseMediumPriority()
     // lineItem.chooseHighPriority()
-    lineItem.chooseLowPriority() 
-    
-    lineItem.clickSubmitBtn()
-    lineItem.validateLineItemIsCreateSuccessful()
-    lineItem.clickCloseBtn()
-  })
+    lineItem.chooseLowPriority();
+
+    lineItem.clickSubmitBtn();
+    lineItem.validateLineItemIsCreateSuccessful();
+    lineItem.clickCloseBtn();
+  });
+
+  it.only("view and edit order details", () => {
+    home.clickDeliveryDropDown();
+    order.clickDeliveryDropDownOrderElement();
+    order.checkPageUrl(urls.orderPageUrl);
+
+    order.selectAdCampaignUsingOrderId(orderData.orderId);
+order.clickViewAndEditOrderTab()
+  });
 
 });

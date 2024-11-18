@@ -3,8 +3,9 @@ class LineItemPOM {
     cy.xpath('//*[@id="root"]/div/main/div/div/div[1]').click();
   }
 
+  
   clickUIBannerForCreateLineItem(){
-    cy.xpath('//*[@id="root"]/div/main/div/div/div[2]').click()
+    cy.xpath('//*[@id="root"]/div/main/div/div/div[2]/button').click()
   }
   validateIsLineItemPage() {
     cy.xpath('//*[@id="root"]/div/main/div/div/h5').should(

@@ -2,7 +2,7 @@
 let data;
 
 before(()=>{
-  cy.fixture('loginData.json').then((loginData) => {
+  cy.fixture('../fixtures/JsonData/loginData.json').then((loginData) => {
     data = loginData;
   })
 })

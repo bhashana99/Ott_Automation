@@ -66,6 +66,14 @@ class OrderPagePOM {
       .should("contain", "New Line Item")
       .click()
   }
+
+  clickViewAndEditOrderTab(){
+    cy.xpath('//*[@id="simple-tab-1"]')
+    .should('contain','VIEW & EDIT ORDER')
+    .click()
+  }
+
+  
 }
 
 export default OrderPagePOM;
