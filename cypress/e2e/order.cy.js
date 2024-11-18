@@ -4,6 +4,7 @@ import HomePagePOM from "../PageObjects/HomePagePOM.js";
 import OrderPagePOM from "../PageObjects/OrderPagePOM.js";
 import CreateNewOrderPagePOM from "../PageObjects/CreateNewOrderPagePOM.js";
 import LineItemPOM from "../PageObjects/LineItemPOM.js";
+import OrderEditPOM from "../PageObjects/OrderEditPagePOM.js";
 
 let user, urls, orderData, lineItemData;
 
@@ -26,6 +27,7 @@ const home = new HomePagePOM();
 const order = new OrderPagePOM();
 const newOrder = new CreateNewOrderPagePOM();
 const lineItem = new LineItemPOM();
+const orderEdit = new OrderEditPOM();
 
 const validateDateGap = () => {
   const startDateTime = new Date(
@@ -205,13 +207,18 @@ describe("Create New Order", () => {
     lineItem.clickCloseBtn();
   });
 
-  it.only("view and edit order details", () => {
+  it.only("view and edit order details- order Name", () => {
     home.clickDeliveryDropDown();
     order.clickDeliveryDropDownOrderElement();
     order.checkPageUrl(urls.orderPageUrl);
 
     order.selectAdCampaignUsingOrderId(orderData.orderId);
     order.clickViewAndEditOrderTab();
-    order.checkIsOrderDetailsPage();
+    orderEdit.checkIsOrderDetailsPage();
+    orderEdit.checkOrderNameNotEmpty();
+    orderEdit.editOrderName(orderData.newOrderName);
+    orderEdit.clickSubmitButton()
+    orderEdit.checkSuccessAlert()
+
   });
 });

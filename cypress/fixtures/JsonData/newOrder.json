@@ -16,5 +16,6 @@
     "endHours" : 4,
     "endMinutes" : 40,
     "tableRows" : 10,
-    "orderId" : 26517
+    "orderId" : 26517,
+    "newOrderName" : "Edit Order name"
 }
