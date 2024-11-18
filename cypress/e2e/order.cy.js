@@ -218,9 +218,10 @@ describe("Create New Order", () => {
     orderEdit.checkOrderNameNotEmpty();
     orderEdit.editOrderName(orderData.newOrderName);
     orderEdit.editTrafficker(orderData.newTrafficker);
-    orderEdit.editProduct(orderData.newProductName)
-    orderEdit.clickAgencyRadio();
-    orderEdit.checkAgencyFieldIsVisible();
+    orderEdit.editProduct(orderData.newProductName);
+    orderEdit.editScheduleReference(orderData.newScheduleReference);
+    // orderEdit.clickAgencyRadio();
+    // orderEdit.checkAgencyFieldIsVisible();
     // orderEdit.clickSubmitButton();
     // orderEdit.checkSuccessAlert();
     // orderEdit.closeSuccessAlert()

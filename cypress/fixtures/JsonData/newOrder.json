@@ -19,5 +19,6 @@
     "orderId" : 26517,
     "newOrderName" : "Edited Order name",
     "newTrafficker" : "Edited Trafficker",
-    "newProductName" : "Edited Product Name"
+    "newProductName" : "Edited Product Name",
+    "newScheduleReference" : "Edited Reference Name"
 }
