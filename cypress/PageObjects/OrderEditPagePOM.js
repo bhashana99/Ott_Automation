@@ -38,23 +38,50 @@ class OrderEditPOM {
 
   editSaleTypeGeneral(){
     cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/div/div/div[6]/div/label[1]')
+    .should('contain','General')
     .click()
   }
 
-  clickSubmitButton() {
-    cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/button[2]')
-      .should("contain", "Submit")
+  editSaleTypeTrading(){
+    cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/div/div/div[6]/div/label[2]')
+    .should('contain','Trading')
+    .click()
+  }
+
+  editSaleTypeContra(){
+    cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/div/div/div[6]/div/label[3]')
+    .should('contain','Contra')
+    .click()
+  }
+
+  editInvoiceType15(){
+    cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/div/div/div[8]/div/label[1]')
+    .should('contain','15%')
+    .click()
+  }
+
+  editInvoiceTypeZero(){
+    cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/div/div/div[8]/div/label[2]')
+    .should('contain','0%')
+    .click()
+  }
+
+  clickAgencyRadio() {
+    cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/div/div/div[9]/div/label[1]')
+      .should("contain", "Agency")
       .click();
   }
 
-  checkSuccessAlert() {
-    cy.xpath("/html/body/div[2]/div[3]/div/h2").should("contain", "Success");
+  clickDirectRadio() {
+    cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/div/div/div[9]/div/label[2]')
+      .should("contain", "Direct Client")
+      .click();
   }
 
-  closeSuccessAlert() {
-    cy.xpath("/html/body/div[2]/div[3]/div/div[2]/button")
-      .should("contain", "Close")
-      .click();
+  checkAgencyFieldIsVisible() {
+    cy.xpath(
+      '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[10]/div/div'
+    ).should("be.visible");
   }
 
   navigateOrderPage() {
@@ -107,17 +134,22 @@ class OrderEditPOM {
     paginateAndSearch();
   }
 
-  clickAgencyRadio() {
-    cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/div/div/div[9]/div/label[1]')
-      .should("contain", "Agency")
+  clickSubmitButton() {
+    cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/button[2]')
+      .should("contain", "Submit")
       .click();
   }
 
-  checkAgencyFieldIsVisible() {
-    cy.xpath(
-      '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[10]/div/div'
-    ).should("be.visible");
+  checkSuccessAlert() {
+    cy.xpath("/html/body/div[2]/div[3]/div/h2").should("contain", "Success");
   }
+
+  closeSuccessAlert() {
+    cy.xpath("/html/body/div[2]/div[3]/div/div[2]/button")
+      .should("contain", "Close")
+      .click();
+  }
+ 
 }
 
 export default OrderEditPOM;

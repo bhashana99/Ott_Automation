@@ -220,9 +220,16 @@ describe("Create New Order", () => {
     orderEdit.editTrafficker(orderData.newTrafficker);
     orderEdit.editProduct(orderData.newProductName);
     orderEdit.editScheduleReference(orderData.newScheduleReference);
-    orderEdit.editSaleTypeGeneral()
-    // orderEdit.clickAgencyRadio();
-    // orderEdit.checkAgencyFieldIsVisible();
+    orderEdit.editSaleTypeGeneral();
+    orderEdit.editSaleTypeTrading();
+    orderEdit.editSaleTypeContra();
+    orderEdit.editInvoiceType15();
+    orderEdit.editInvoiceTypeZero();
+
+    orderEdit.clickDirectRadio();
+    orderEdit.clickAgencyRadio();
+    orderEdit.checkAgencyFieldIsVisible();
+    
     // orderEdit.clickSubmitButton();
     // orderEdit.checkSuccessAlert();
     // orderEdit.closeSuccessAlert()
