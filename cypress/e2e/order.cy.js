@@ -229,7 +229,7 @@ describe("Create New Order", () => {
     orderEdit.clickDirectRadio();
     orderEdit.clickAgencyRadio();
     orderEdit.checkAgencyFieldIsVisible();
-    
+    orderEdit.editAgency();
     // orderEdit.clickSubmitButton();
     // orderEdit.checkSuccessAlert();
     // orderEdit.closeSuccessAlert()

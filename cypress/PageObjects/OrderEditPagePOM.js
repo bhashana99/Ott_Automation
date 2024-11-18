@@ -30,40 +30,40 @@ class OrderEditPOM {
       .type(newProductName);
   }
 
-  editScheduleReference(newScheduleReference){
+  editScheduleReference(newScheduleReference) {
     cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/div/div/div[4]/div/div')
-    .clear()
-    .type(newScheduleReference)
+      .clear()
+      .type(newScheduleReference);
   }
 
-  editSaleTypeGeneral(){
+  editSaleTypeGeneral() {
     cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/div/div/div[6]/div/label[1]')
-    .should('contain','General')
-    .click()
+      .should("contain", "General")
+      .click();
   }
 
-  editSaleTypeTrading(){
+  editSaleTypeTrading() {
     cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/div/div/div[6]/div/label[2]')
-    .should('contain','Trading')
-    .click()
+      .should("contain", "Trading")
+      .click();
   }
 
-  editSaleTypeContra(){
+  editSaleTypeContra() {
     cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/div/div/div[6]/div/label[3]')
-    .should('contain','Contra')
-    .click()
+      .should("contain", "Contra")
+      .click();
   }
 
-  editInvoiceType15(){
+  editInvoiceType15() {
     cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/div/div/div[8]/div/label[1]')
-    .should('contain','15%')
-    .click()
+      .should("contain", "15%")
+      .click();
   }
 
-  editInvoiceTypeZero(){
+  editInvoiceTypeZero() {
     cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/div/div/div[8]/div/label[2]')
-    .should('contain','0%')
-    .click()
+      .should("contain", "0%")
+      .click();
   }
 
   clickAgencyRadio() {
@@ -82,6 +82,31 @@ class OrderEditPOM {
     cy.xpath(
       '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[10]/div/div'
     ).should("be.visible");
+  }
+
+  editAgency() {
+    cy.xpath(
+      '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[10]/div/div'
+    ).click();
+    cy.xpath('//*[@id="menu-"]/div[3]/ul/li')
+      .should("contain", "test agency one")
+      .click();
+  }
+
+  clickSubmitButton() {
+    cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/button[2]')
+      .should("contain", "Submit")
+      .click();
+  }
+
+  checkSuccessAlert() {
+    cy.xpath("/html/body/div[2]/div[3]/div/h2").should("contain", "Success");
+  }
+
+  closeSuccessAlert() {
+    cy.xpath("/html/body/div[2]/div[3]/div/div[2]/button")
+      .should("contain", "Close")
+      .click();
   }
 
   navigateOrderPage() {
@@ -133,23 +158,6 @@ class OrderEditPOM {
 
     paginateAndSearch();
   }
-
-  clickSubmitButton() {
-    cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/button[2]')
-      .should("contain", "Submit")
-      .click();
-  }
-
-  checkSuccessAlert() {
-    cy.xpath("/html/body/div[2]/div[3]/div/h2").should("contain", "Success");
-  }
-
-  closeSuccessAlert() {
-    cy.xpath("/html/body/div[2]/div[3]/div/div[2]/button")
-      .should("contain", "Close")
-      .click();
-  }
- 
 }
 
 export default OrderEditPOM;
