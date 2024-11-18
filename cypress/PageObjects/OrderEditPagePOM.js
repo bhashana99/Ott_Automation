@@ -36,6 +36,11 @@ class OrderEditPOM {
     .type(newScheduleReference)
   }
 
+  editSaleTypeGeneral(){
+    cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/div/div/div[6]/div/label[1]')
+    .click()
+  }
+
   clickSubmitButton() {
     cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/button[2]')
       .should("contain", "Submit")
