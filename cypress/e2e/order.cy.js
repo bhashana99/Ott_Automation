@@ -217,8 +217,9 @@ describe("Create New Order", () => {
     orderEdit.checkIsOrderDetailsPage();
     orderEdit.checkOrderNameNotEmpty();
     orderEdit.editOrderName(orderData.newOrderName);
-    orderEdit.clickSubmitButton()
-    orderEdit.checkSuccessAlert()
-
+    orderEdit.clickSubmitButton();
+    orderEdit.checkSuccessAlert();
+    orderEdit.closeSuccessAlert()
+    orderEdit.navigateOrderPage();
   });
 });

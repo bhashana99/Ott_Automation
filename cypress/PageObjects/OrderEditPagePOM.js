@@ -18,18 +18,26 @@ class OrderEditPOM {
     ).type(newOrderName);
   }
 
-  clickSubmitButton(){
+  clickSubmitButton() {
     cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/button[2]')
-    .should('contain','Submit')
+      .should("contain", "Submit")
+      .click();
+  }
+
+  checkSuccessAlert() {
+    cy.xpath("/html/body/div[2]/div[3]/div/h2").should("contain", "Success");
+  }
+  closeSuccessAlert(){
+    cy.xpath('/html/body/div[2]/div[3]/div/div[2]/button')
+    .should('contain','Close')
     .click()
   }
 
-  checkSuccessAlert(){
-    cy.xpath('/html/body/div[2]/div[3]/div/h2')
-    .should('contain','Success')
+  navigateOrderPage() {
+    cy.xpath(
+      '//*[@id="root"]/div/nav/div/div/ul/div[3]/div/div/ul/a[2]'
+    ).click();
   }
-
-
 }
 
 export default OrderEditPOM;
