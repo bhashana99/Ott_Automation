@@ -22,5 +22,6 @@
     "newProductName" : "Edited Product Name",
     "newScheduleReference" : "Edited Reference Name",
     "newMonthIndex":2,
-    "newBudget":2000
+    "newBudget":2000,
+    "newImpression": 10000
 }

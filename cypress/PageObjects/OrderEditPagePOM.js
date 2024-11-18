@@ -110,6 +110,10 @@ class OrderEditPOM {
     .type(newBudget)
   }
 
+  editImpressionCount(newImpression){
+    cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/div/div/div[18]/div/div')
+    .type(newImpression)
+  }
 
   clickSubmitButton() {
     cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/button[2]')

@@ -233,6 +233,7 @@ describe("Create New Order", () => {
 
     orderEdit.editMonth(orderData.newMonthIndex)
     orderEdit.editBudget(orderData.newBudget)
+    orderEdit.editImpressionCount(orderData.newImpression)
     // orderEdit.clickSubmitButton();
     // orderEdit.checkSuccessAlert();
     // orderEdit.closeSuccessAlert()
