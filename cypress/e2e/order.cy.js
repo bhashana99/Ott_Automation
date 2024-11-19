@@ -231,9 +231,11 @@ describe("Create New Order", () => {
     orderEdit.checkAgencyFieldIsVisible();
     orderEdit.editAgency();
 
-    orderEdit.editMonth(orderData.newMonthIndex)
-    orderEdit.editBudget(orderData.newBudget)
-    orderEdit.editImpressionCount(orderData.newImpression)
+    orderEdit.editMonth(orderData.newMonthIndex);
+    orderEdit.editBudget(orderData.newBudget);
+    orderEdit.editImpressionCount(orderData.newImpression);
+
+    orderEdit.checkAndEditStartDateField()
     // orderEdit.clickSubmitButton();
     // orderEdit.checkSuccessAlert();
     // orderEdit.closeSuccessAlert()

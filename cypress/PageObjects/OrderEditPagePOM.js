@@ -104,15 +104,30 @@ class OrderEditPOM {
       .click();
   }
 
-
-  editBudget(newBudget){
-    cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/div/div/div[16]/div/div')
-    .type(newBudget)
+  editBudget(newBudget) {
+    cy.xpath(
+      '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[16]/div/div'
+    ).type(newBudget);
   }
 
-  editImpressionCount(newImpression){
-    cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/div/div/div[18]/div/div')
-    .type(newImpression)
+  editImpressionCount(newImpression) {
+    cy.xpath(
+      '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[18]/div/div'
+    ).type(newImpression);
+  }
+
+  checkAndEditStartDateField() {
+    const currentDate = new Date();
+    let startYear;
+
+    cy.xpath(
+      '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[4]'
+    )
+      .invoke("val") // Use "val" to get the value of the input field
+      .then((startYear1) => {
+        startYear = startYear1;
+        cy.log(`Start Year: ${startYear}`);
+      });
   }
 
   clickSubmitButton() {
