@@ -236,11 +236,14 @@ describe("Create New Order", () => {
     orderEdit.editImpressionCount(orderData.newImpression);
 
     orderEdit.checkStartDateFieldDisability();
-    orderEdit.editStartMonth(orderData.editStartMonth);
-    orderEdit.editStartDay(orderData.editStartDay);
+
+    // orderEdit.editStartMonth(orderData.editStartMonth);
+    // orderEdit.editStartDay(orderData.editStartDay);
     
-    orderEdit.editStartYear(orderData.editStartYear)
-    orderEdit.clickOutside();
+    // orderEdit.editStartYear(orderData.editStartYear)
+    // orderEdit.clickOutside();
+
+    orderEdit.clickAddRemoveCreativeBtn();
     // orderEdit.clickSubmitButton();
     // orderEdit.checkSuccessAlert();
     // orderEdit.closeSuccessAlert()

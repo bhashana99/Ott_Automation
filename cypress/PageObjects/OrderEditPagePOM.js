@@ -118,124 +118,132 @@ class OrderEditPOM {
 
   checkStartDateFieldDisability() {
     const currentDate = new Date();
-    
+
     cy.xpath(
-        '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[4]'
+      '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[4]'
     )
-    .invoke("val")
-    .then((startYear) => {
+      .invoke("val")
+      .then((startYear) => {
         cy.log(`Start Year: ${startYear}`);
 
         cy.xpath(
-            '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[2]'
+          '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[2]'
         )
-        .invoke("val")
-        .then((startMonth) => {
+          .invoke("val")
+          .then((startMonth) => {
             cy.log(`Start Month: ${startMonth}`);
 
             cy.xpath(
-                '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[3]'
+              '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[3]'
             )
-            .invoke("val")
-            .then((startDate) => {
+              .invoke("val")
+              .then((startDate) => {
                 cy.log(`Start Date: ${startDate}`);
 
                 cy.xpath(
-                    '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[5]'
+                  '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[5]'
                 )
-                .invoke("val")
-                .then((startHour) => {
+                  .invoke("val")
+                  .then((startHour) => {
                     cy.log(`Start Hour: ${startHour}`);
 
                     cy.xpath(
-                        '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[6]'
+                      '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[6]'
                     )
-                    .invoke("val")
-                    .then((startMinute) => {
+                      .invoke("val")
+                      .then((startMinute) => {
                         cy.log(`Start Minute: ${startMinute}`);
 
                         cy.xpath(
-                            '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/select'
+                          '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/select'
                         )
-                        .invoke("val")
-                        .then((amPm) => {
+                          .invoke("val")
+                          .then((amPm) => {
                             cy.log(`AM/PM: ${amPm}`);
 
-                            
                             let adjustedHour = parseInt(startHour, 10);
                             if (amPm === "pm" && adjustedHour < 12) {
-                                adjustedHour += 12; 
+                              adjustedHour += 12;
                             } else if (amPm === "am" && adjustedHour === 12) {
-                                adjustedHour = 0; 
+                              adjustedHour = 0;
                             }
 
-                            
-                            const paddedMonth = startMonth.padStart(2, '0');
-                            const paddedDate = startDate.padStart(2, '0');
-                            const paddedHour = adjustedHour.toString().padStart(2, '0');
-                            const paddedMinute = startMinute.padStart(2, '0');
+                            const paddedMonth = startMonth.padStart(2, "0");
+                            const paddedDate = startDate.padStart(2, "0");
+                            const paddedHour = adjustedHour
+                              .toString()
+                              .padStart(2, "0");
+                            const paddedMinute = startMinute.padStart(2, "0");
 
-                            
                             const startDateTime = `${startYear}-${paddedMonth}-${paddedDate}T${paddedHour}:${paddedMinute}:00`;
 
-                            cy.log(`Full Start Date (ISO 8601 format): ${startDateTime}`);
-                            
-                            
+                            cy.log(
+                              `Full Start Date (ISO 8601 format): ${startDateTime}`
+                            );
+
                             const startDateTimeObj = new Date(startDateTime);
-                            cy.log(`Start DateTime object: ${startDateTimeObj}`);
+                            cy.log(
+                              `Start DateTime object: ${startDateTimeObj}`
+                            );
 
-                            
                             if (startDateTimeObj < currentDate) {
-                                cy.log("The start date is in the past.");
-                                cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[2]')
-                                .should('have.attr',"disabled")
+                              cy.log("The start date is in the past.");
+                              cy.xpath(
+                                '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[2]'
+                              ).should("have.attr", "disabled");
 
-                                cy.log("The start date can not change.");
+                              cy.log("The start date can not change.");
                             } else {
-                                cy.log("The start date can change.");
+                              cy.log("The start date can change.");
                             }
-                        });
-                    });
-                });
-            });
-        });
-    });
-}
+                          });
+                      });
+                  });
+              });
+          });
+      });
+  }
 
-editStartMonth(editStartMonth) {
-  cy.xpath(
-    '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[2]'
-  ).type(editStartMonth);
-}
-editStartDay(editStartDay) {
-  cy.xpath(
-    '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[3]'
-  ).type(editStartDay);
-}
+  editStartMonth(editStartMonth) {
+    cy.xpath(
+      '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[2]'
+    ).type(editStartMonth);
+  }
+  editStartDay(editStartDay) {
+    cy.xpath(
+      '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[3]'
+    ).type(editStartDay);
+  }
 
-editStartYear(editStartYear) {
-  cy.xpath(
-    '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[4]'
-  ).type(editStartYear);
-}
+  editStartYear(editStartYear) {
+    cy.xpath(
+      '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[4]'
+    ).type(editStartYear);
+  }
 
-clickOutside() {
-  cy.xpath('//*[@id="start-date-label"]').click();
-}
+  clickOutside() {
+    cy.xpath('//*[@id="start-date-label"]').click();
+  }
 
-editStartHours(editStartHours) {
-  cy.xpath(
-    '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[5]'
-  ).type(editStartHours);
-}
+  editStartHours(editStartHours) {
+    cy.xpath(
+      '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[5]'
+    ).type(editStartHours);
+  }
 
-editStartMinutes(editStartMinutes) {
-  cy.xpath(
-    '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[6]'
-  ).type(editStartMinutes);
-}
+  editStartMinutes(editStartMinutes) {
+    cy.xpath(
+      '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[6]'
+    ).type(editStartMinutes);
+  }
 
-  
+  clickAddRemoveCreativeBtn() {
+    cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/button[3]').should(
+      "not.have.attr",
+      "disabled"
+    );
+    cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/button[3]').click()
+  }
 
   clickSubmitButton() {
     cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/button[2]')
@@ -267,14 +275,14 @@ editStartMinutes(editStartMinutes) {
         const text = Cypress.$($row).find("td a").text();
         if (text == orderId) {
           cy.wrap($row)
-            .find("td:nth-child(1)") 
+            .find("td:nth-child(1)")
             .invoke("text")
             .then((orderName) => {
               const trimmedOrderName = orderName.trim();
-              expect(trimmedOrderName).to.eq(newOrderName); 
+              expect(trimmedOrderName).to.eq(newOrderName);
             });
           orderFound = true;
-          return false; 
+          return false;
         }
       });
     };
@@ -283,14 +291,14 @@ editStartMinutes(editStartMinutes) {
       searchAndValidateOrderName();
 
       cy.get("body").then(($body) => {
-        if (orderFound) return; 
+        if (orderFound) return;
 
         if ($body.find('[aria-label="Go to next page"]').is(":visible")) {
           cy.get('[aria-label="Go to next page"]')
             .click()
             .then(() => {
-              cy.wait(1000); 
-              paginateAndSearch(); 
+              cy.wait(1000);
+              paginateAndSearch();
             });
         } else if (!orderFound) {
           cy.log(`Order ID ${orderId} not found.`);
