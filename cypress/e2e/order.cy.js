@@ -245,9 +245,12 @@ describe("Create New Order", () => {
 
     orderEdit.clickAddRemoveCreativeBtn();
     orderEdit.removeFirstCreative()
+    orderEdit.addFirstCreative()
+    orderEdit.editCreativePageSubmitBtn()
     // orderEdit.clickSubmitButton();
-    // orderEdit.checkSuccessAlert();
-    // orderEdit.closeSuccessAlert()
+    orderEdit.checkSuccessAlert();
+    orderEdit.closeSuccessAlert()
+    orderEdit.navigateLineItemDetailsPageInEditCreativePage()
     // orderEdit.navigateOrderPage();
     // orderEdit.checkIsOrderNameChange(orderData.orderId,orderData.newOrderName)
   });
