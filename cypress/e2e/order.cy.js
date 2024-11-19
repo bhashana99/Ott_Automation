@@ -244,6 +244,7 @@ describe("Create New Order", () => {
     // orderEdit.clickOutside();
 
     orderEdit.clickAddRemoveCreativeBtn();
+    orderEdit.removeFirstCreative()
     // orderEdit.clickSubmitButton();
     // orderEdit.checkSuccessAlert();
     // orderEdit.closeSuccessAlert()

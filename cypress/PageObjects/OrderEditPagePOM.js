@@ -245,6 +245,11 @@ class OrderEditPOM {
     cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/button[3]').click()
   }
 
+  removeFirstCreative(){
+    cy.xpath('//*[@id="root"]/div/main/div/div[3]/div/div/table/tbody/tr/td[4]/button')
+    .click()
+  }
+
   clickSubmitButton() {
     cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/button[2]')
       .should("contain", "Submit")
