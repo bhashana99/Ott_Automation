@@ -116,19 +116,126 @@ class OrderEditPOM {
     ).type(newImpression);
   }
 
-  checkAndEditStartDateField() {
+  checkStartDateFieldDisability() {
     const currentDate = new Date();
-    let startYear;
-
+    
     cy.xpath(
-      '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[4]'
+        '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[4]'
     )
-      .invoke("val") // Use "val" to get the value of the input field
-      .then((startYear1) => {
-        startYear = startYear1;
+    .invoke("val")
+    .then((startYear) => {
         cy.log(`Start Year: ${startYear}`);
-      });
-  }
+
+        cy.xpath(
+            '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[2]'
+        )
+        .invoke("val")
+        .then((startMonth) => {
+            cy.log(`Start Month: ${startMonth}`);
+
+            cy.xpath(
+                '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[3]'
+            )
+            .invoke("val")
+            .then((startDate) => {
+                cy.log(`Start Date: ${startDate}`);
+
+                cy.xpath(
+                    '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[5]'
+                )
+                .invoke("val")
+                .then((startHour) => {
+                    cy.log(`Start Hour: ${startHour}`);
+
+                    cy.xpath(
+                        '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[6]'
+                    )
+                    .invoke("val")
+                    .then((startMinute) => {
+                        cy.log(`Start Minute: ${startMinute}`);
+
+                        cy.xpath(
+                            '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/select'
+                        )
+                        .invoke("val")
+                        .then((amPm) => {
+                            cy.log(`AM/PM: ${amPm}`);
+
+                            
+                            let adjustedHour = parseInt(startHour, 10);
+                            if (amPm === "pm" && adjustedHour < 12) {
+                                adjustedHour += 12; 
+                            } else if (amPm === "am" && adjustedHour === 12) {
+                                adjustedHour = 0; 
+                            }
+
+                            
+                            const paddedMonth = startMonth.padStart(2, '0');
+                            const paddedDate = startDate.padStart(2, '0');
+                            const paddedHour = adjustedHour.toString().padStart(2, '0');
+                            const paddedMinute = startMinute.padStart(2, '0');
+
+                            
+                            const startDateTime = `${startYear}-${paddedMonth}-${paddedDate}T${paddedHour}:${paddedMinute}:00`;
+
+                            cy.log(`Full Start Date (ISO 8601 format): ${startDateTime}`);
+                            
+                            
+                            const startDateTimeObj = new Date(startDateTime);
+                            cy.log(`Start DateTime object: ${startDateTimeObj}`);
+
+                            
+                            if (startDateTimeObj < currentDate) {
+                                cy.log("The start date is in the past.");
+                                cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[2]')
+                                .should('have.attr',"disabled")
+
+                                cy.log("The start date can not change.");
+                            } else {
+                                cy.log("The start date can change.");
+                            }
+                        });
+                    });
+                });
+            });
+        });
+    });
+}
+
+editStartMonth(editStartMonth) {
+  cy.xpath(
+    '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[2]'
+  ).type(editStartMonth);
+}
+editStartDay(editStartDay) {
+  cy.xpath(
+    '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[3]'
+  ).type(editStartDay);
+}
+
+editStartYear(editStartYear) {
+  cy.xpath(
+    '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[4]'
+  ).type(editStartYear);
+}
+
+clickOutside() {
+  cy.xpath('//*[@id="start-date-label"]').click();
+}
+
+editStartHours(editStartHours) {
+  cy.xpath(
+    '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[5]'
+  ).type(editStartHours);
+}
+
+editStartMinutes(editStartMinutes) {
+  cy.xpath(
+    '//*[@id="simple-tabpanel-1"]/div/div/div/div/div[21]/div/div/div/input[6]'
+  ).type(editStartMinutes);
+}
+
+  
 
   clickSubmitButton() {
     cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/button[2]')
@@ -160,14 +267,14 @@ class OrderEditPOM {
         const text = Cypress.$($row).find("td a").text();
         if (text == orderId) {
           cy.wrap($row)
-            .find("td:nth-child(1)") // Assuming the order name is in the second column
-            .invoke("text") // Extract the text content of the order name
+            .find("td:nth-child(1)") 
+            .invoke("text")
             .then((orderName) => {
               const trimmedOrderName = orderName.trim();
-              expect(trimmedOrderName).to.eq(newOrderName); // Assert it matches the edited name
+              expect(trimmedOrderName).to.eq(newOrderName); 
             });
           orderFound = true;
-          return false; // Break out of the loop
+          return false; 
         }
       });
     };
@@ -176,14 +283,14 @@ class OrderEditPOM {
       searchAndValidateOrderName();
 
       cy.get("body").then(($body) => {
-        if (orderFound) return; // Exit if the order has been found
+        if (orderFound) return; 
 
         if ($body.find('[aria-label="Go to next page"]').is(":visible")) {
           cy.get('[aria-label="Go to next page"]')
             .click()
             .then(() => {
-              cy.wait(1000); // Wait for the next page to load
-              paginateAndSearch(); // Recursively search the next page
+              cy.wait(1000); 
+              paginateAndSearch(); 
             });
         } else if (!orderFound) {
           cy.log(`Order ID ${orderId} not found.`);

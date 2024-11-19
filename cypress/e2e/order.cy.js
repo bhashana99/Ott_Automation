@@ -235,7 +235,12 @@ describe("Create New Order", () => {
     orderEdit.editBudget(orderData.newBudget);
     orderEdit.editImpressionCount(orderData.newImpression);
 
-    orderEdit.checkAndEditStartDateField()
+    orderEdit.checkStartDateFieldDisability();
+    orderEdit.editStartMonth(orderData.editStartMonth);
+    orderEdit.editStartDay(orderData.editStartDay);
+    
+    orderEdit.editStartYear(orderData.editStartYear)
+    orderEdit.clickOutside();
     // orderEdit.clickSubmitButton();
     // orderEdit.checkSuccessAlert();
     // orderEdit.closeSuccessAlert()
