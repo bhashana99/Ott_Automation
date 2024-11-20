@@ -19,79 +19,82 @@ class LineItemEditPagePOM {
       .click();
   }
 
-  checkLineItemNameNotEmpty(){
-    cy.wait(1000)
+  checkLineItemNameNotEmpty() {
+    cy.wait(1000);
     cy.xpath('//*[@id="simple-tabpanel-2"]/div/div/div/div[1]/div[1]/div/div')
-    .invoke("text")
-    .should("not.be.empty");
+      .invoke("text")
+      .should("not.be.empty");
   }
 
-  changeLineItemName(newLineItemName){
+  changeLineItemName(newLineItemName) {
     cy.xpath('//*[@id="simple-tabpanel-2"]/div/div/div/div[1]/div[1]/div/div')
-    .clear()
-    .type(newLineItemName)
+      .clear()
+      .type(newLineItemName);
   }
 
-  changeTraffickerName(newTraffickerName){
+  changeTraffickerName(newTraffickerName) {
     cy.xpath('//*[@id="simple-tabpanel-2"]/div/div/div/div[1]/div[2]/div/div')
-    .clear()
-    .type(newTraffickerName) 
+      .clear()
+      .type(newTraffickerName);
   }
 
-  changeTargetImpression(newTargetImpression){
+  changeTargetImpression(newTargetImpression) {
     cy.xpath('//*[@id="simple-tabpanel-2"]/div/div/div/div[1]/div[5]/div/div')
-    .clear()
-    .type(newTargetImpression)
+      .clear()
+      .type(newTargetImpression);
   }
 
-  changeCPM(newCPM){
+  changeCPM(newCPM) {
     cy.xpath('//*[@id="simple-tabpanel-2"]/div/div/div/div[1]/div[6]/div/div')
-    .clear()
-    .type(newCPM)
+      .clear()
+      .type(newCPM);
   }
 
-  changeTargetClicks(newTargetClicks){
+  changeTargetClicks(newTargetClicks) {
     cy.xpath('//*[@id="simple-tabpanel-2"]/div/div/div/div[1]/div[8]/div/div')
-    .clear()
-    .type(newTargetClicks)
+      .clear()
+      .type(newTargetClicks);
   }
 
-  changeCPC(newCPC){
+  changeCPC(newCPC) {
     cy.xpath('//*[@id="simple-tabpanel-2"]/div/div/div/div[1]/div[9]/div/div')
-    .clear()
-    .type(newCPC)
+      .clear()
+      .type(newCPC);
   }
 
-  clickPriorityField(){
-    cy.xpath('//*[@id="simple-tabpanel-2"]/div/div/div/div[1]/div[14]/div[1]/div').click()
-}  
+  clickPriorityField() {
+    cy.xpath(
+      '//*[@id="simple-tabpanel-2"]/div/div/div/div[1]/div[14]/div[1]/div'
+    ).click();
+  }
 
-chooseMediumPriority(){
-    cy.get('[data-value = "medium-priority"]').click()
-}
-chooseHighPriority(){
-    cy.get('[data-value = "high-priority"]').click()
-}
+  chooseMediumPriority() {
+    cy.get('[data-value = "medium-priority"]').click();
+  }
+  chooseHighPriority() {
+    cy.get('[data-value = "high-priority"]').click();
+  }
 
-chooseLowPriority(){
-    cy.get('[data-value = "low-priority"]').click()
-}
+  chooseLowPriority() {
+    cy.get('[data-value = "low-priority"]').click();
+  }
 
-clickSubmitBtn(){
+  clickSubmitBtn() {
     cy.xpath('//*[@id="simple-tabpanel-2"]/div/div/div/button[3]')
-    .should('contain','Submit')
-    .click()
-}
+      .should("contain", "Submit")
+      .click();
+  }
 
-clickBackBtn(){
+  clickBackBtn() {
     cy.xpath('//*[@id="simple-tabpanel-2"]/div/div/div/button[2]')
-    .should('contain','Back')
-    .click()
-}
-  
-validateLineItemIsCreateSuccessful() {
-    cy.xpath("/html/body/div[2]/div[3]/div").should("be.visible")
-    .and("contain", "Success");
+      .should("contain", "Back")
+      .click();
+  }
+
+  validateLineItemIsCreateSuccessful() {
+    cy.xpath("/html/body/div[2]/div[3]/div")
+      .should("be.visible")
+      .and("contain", "Success");
     cy.xpath("/html/body/div[2]/div[3]/div/div[1]").should(
       "contain",
       "Data has been successfully saved."
@@ -103,7 +106,6 @@ validateLineItemIsCreateSuccessful() {
       .should("contain", "Close")
       .click();
   }
-
 }
 
 export default LineItemEditPagePOM;

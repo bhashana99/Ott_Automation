@@ -69,6 +69,6 @@ describe("Create New Vast Creative", () => {
     // })
 
     vast.checkTableClickThroughUrl(formData.clickThroughUrl);
-    vast.checkTableAdUnitSize(formData.adUnitSize)
+    vast.checkTableAdUnitSize(formData.adUnitSize);
   });
 });

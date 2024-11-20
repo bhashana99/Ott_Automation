@@ -242,27 +242,27 @@ class OrderEditPOM {
       "not.have.attr",
       "disabled"
     );
-    cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/button[3]').click()
+    cy.xpath('//*[@id="simple-tabpanel-1"]/div/div/button[3]').click();
   }
 
-  removeFirstCreative(){
-    cy.xpath('//*[@id="root"]/div/main/div/div[3]/div/div/table/tbody/tr/td[4]/button')
-    .click()
+  removeFirstCreative() {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div[3]/div/div/table/tbody/tr/td[4]/button'
+    ).click();
   }
 
-  addFirstCreative(){
-    cy.xpath('//*[@id="root"]/div/main/div/div[2]/div/div/div/table/tbody/tr/td[4]/button')
-    .click()
+  addFirstCreative() {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div[2]/div/div/div/table/tbody/tr/td[4]/button'
+    ).click();
   }
 
-  editCreativePageSubmitBtn(){
-    cy.xpath('//*[@id="root"]/div/main/div/button[3]')
-    .click()
+  editCreativePageSubmitBtn() {
+    cy.xpath('//*[@id="root"]/div/main/div/button[3]').click();
   }
 
-  navigateLineItemDetailsPageInEditCreativePage(){
-    cy.xpath('//*[@id="root"]/div/main/div/button[2]')
-    .click()
+  navigateLineItemDetailsPageInEditCreativePage() {
+    cy.xpath('//*[@id="root"]/div/main/div/button[2]').click();
   }
 
   clickSubmitButton() {

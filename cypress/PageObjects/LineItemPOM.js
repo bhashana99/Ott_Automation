@@ -3,9 +3,8 @@ class LineItemPOM {
     cy.xpath('//*[@id="root"]/div/main/div/div/div[1]').click();
   }
 
-  
-  clickUIBannerForCreateLineItem(){
-    cy.xpath('//*[@id="root"]/div/main/div/div/div[2]/button').click()
+  clickUIBannerForCreateLineItem() {
+    cy.xpath('//*[@id="root"]/div/main/div/div/div[2]/button').click();
   }
   validateIsLineItemPage() {
     cy.xpath('//*[@id="root"]/div/main/div/div/h5').should(
@@ -30,7 +29,6 @@ class LineItemPOM {
       '//*[@id="root"]/div/main/div/div/div[2]/div/div/table/tbody/tr/td[8]/button'
     ).click();
 
-    
     // cy.xpath(
     //   '//*[@id="root"]/div/main/div/div/div[2]/div/div/table/tbody/tr/td[3]'
     // )
@@ -40,9 +38,10 @@ class LineItemPOM {
     //   });
   }
 
-  chooseFirstUrlWhenHaveMultipleUrl(){
-    cy.xpath('//*[@id="root"]/div/main/div/div/div[2]/div/div/table/tbody/tr[1]/td[8]/button')
-    .click()
+  chooseFirstUrlWhenHaveMultipleUrl() {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div/div[2]/div/div/table/tbody/tr[1]/td[8]/button'
+    ).click();
   }
 
   setTargetImpression(targetImpression) {
@@ -133,42 +132,44 @@ class LineItemPOM {
     ).type(endMinutes);
   }
 
-    clickPriorityField(){
-        cy.xpath('//*[@id="root"]/div/main/div/div/div[1]/div[14]/div[1]/div').click()
-    }  
-  
-    chooseMediumPriority(){
-        cy.get('[data-value = "medium-priority"]').click()
-    }
-    chooseHighPriority(){
-        cy.get('[data-value = "high-priority"]').click()
-    }
-   
-    chooseLowPriority(){
-        cy.get('[data-value = "low-priority"]').click()
-    }
+  clickPriorityField() {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div/div[1]/div[14]/div[1]/div'
+    ).click();
+  }
 
-    clickSubmitBtn(){
-      cy.xpath('//*[@id="root"]/div/main/div/div/button[3]')
-      .should('contain','Submit')
-      .click()
-    }
+  chooseMediumPriority() {
+    cy.get('[data-value = "medium-priority"]').click();
+  }
+  chooseHighPriority() {
+    cy.get('[data-value = "high-priority"]').click();
+  }
 
-    validateLineItemIsCreateSuccessful() {
-      cy.xpath("/html/body/div[2]/div[3]/div").should("be.visible")
+  chooseLowPriority() {
+    cy.get('[data-value = "low-priority"]').click();
+  }
+
+  clickSubmitBtn() {
+    cy.xpath('//*[@id="root"]/div/main/div/div/button[3]')
+      .should("contain", "Submit")
+      .click();
+  }
+
+  validateLineItemIsCreateSuccessful() {
+    cy.xpath("/html/body/div[2]/div[3]/div")
+      .should("be.visible")
       .and("contain", "Success");
-      cy.xpath("/html/body/div[2]/div[3]/div/div[1]").should(
-        "contain",
-        "Data has been successfully saved."
-      );
-    }
+    cy.xpath("/html/body/div[2]/div[3]/div/div[1]").should(
+      "contain",
+      "Data has been successfully saved."
+    );
+  }
 
-    clickCloseBtn() {
-      cy.xpath("/html/body/div[2]/div[3]/div/div[2]/button")
-        .should("contain", "Close")
-        .click();
-    }
-  
+  clickCloseBtn() {
+    cy.xpath("/html/body/div[2]/div[3]/div/div[2]/button")
+      .should("contain", "Close")
+      .click();
+  }
 }
 
 export default LineItemPOM;

@@ -69,6 +69,7 @@ class CreateNewOrderPagePOM {
   clickBillingClientField() {
     cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[12]/div/div/div').click();
   }
+  
   chooseBillingClientTestClientOne() {
     cy.get('ul[role="listbox"]').find("li").first().click();
   }
@@ -106,6 +107,7 @@ class CreateNewOrderPagePOM {
       '//*[@id="root"]/div/main/div/div[1]/div[18]/div/div/div/input[2]'
     ).type(startMonth);
   }
+
   setStartDay(StartDay) {
     cy.xpath(
       '//*[@id="root"]/div/main/div/div[1]/div[18]/div/div/div/input[3]'
@@ -139,6 +141,7 @@ class CreateNewOrderPagePOM {
       '//*[@id="root"]/div/main/div/div[1]/div[20]/div/div/div/input[2]'
     ).type(endMonth);
   }
+
   setEndDay(endDay) {
     cy.xpath(
       '//*[@id="root"]/div/main/div/div[1]/div[20]/div/div/div/input[3]'

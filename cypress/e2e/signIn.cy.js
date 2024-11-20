@@ -1,19 +1,16 @@
-
 let data;
 
-before(()=>{
-  cy.fixture('../fixtures/JsonData/loginData.json').then((loginData) => {
+before(() => {
+  cy.fixture("../fixtures/JsonData/loginData.json").then((loginData) => {
     data = loginData;
-  })
-})
+  });
+});
 
 beforeEach(() => {
-  cy.loginPageNavigate()
+  cy.loginPageNavigate();
 });
 
 describe("Success Test Login Suite", () => {
- 
-
   // Enter valid username & Password
   it("TC_OTT_Login_001", () => {
     cy.get("#username").type(data.validUsername);
@@ -29,9 +26,7 @@ describe("Success Test Login Suite", () => {
     cy.get("#password").type(data.invalidPassword);
     cy.get("#kc-login").click();
 
-    cy.get("#input-error")
-      .should("be.visible")
-      .contains(data.errorMessage);
+    cy.get("#input-error").should("be.visible").contains(data.errorMessage);
   });
 
   // Enter invalid username & valid Password
@@ -40,9 +35,7 @@ describe("Success Test Login Suite", () => {
     cy.get("#password").type(data.validPassword);
     cy.get("#kc-login").click();
 
-    cy.get("#input-error")
-      .should("be.visible")
-      .contains(data.errorMessage);
+    cy.get("#input-error").should("be.visible").contains(data.errorMessage);
   });
 
   // Enter invalid username & invalid Password
@@ -51,9 +44,7 @@ describe("Success Test Login Suite", () => {
     cy.get("#password").type(data.invalidPassword);
     cy.get("#kc-login").click();
 
-    cy.get("#input-error")
-      .should("be.visible")
-      .contains(data.errorMessage);
+    cy.get("#input-error").should("be.visible").contains(data.errorMessage);
   });
 
   //Leave username field blank & enter valid password
@@ -62,9 +53,7 @@ describe("Success Test Login Suite", () => {
     cy.get("#password").type(data.validPassword);
     cy.get("#kc-login").click();
 
-    cy.get("#input-error")
-      .should("be.visible")
-      .contains(data.errorMessage);
+    cy.get("#input-error").should("be.visible").contains(data.errorMessage);
   });
 
   // Enter valid username & Leave password field blank
@@ -74,9 +63,7 @@ describe("Success Test Login Suite", () => {
 
     cy.get("#kc-login").click();
 
-    cy.get("#input-error")
-      .should("be.visible")
-      .contains(data.errorMessage);
+    cy.get("#input-error").should("be.visible").contains(data.errorMessage);
   });
 
   // Leave username field & password field blank
@@ -86,9 +73,7 @@ describe("Success Test Login Suite", () => {
 
     cy.get("#kc-login").click();
 
-    cy.get("#input-error")
-      .should("be.visible")
-      .contains(data.errorMessage);
+    cy.get("#input-error").should("be.visible").contains(data.errorMessage);
   });
 
   //Enter invalid username & Leave password field blank
@@ -98,9 +83,7 @@ describe("Success Test Login Suite", () => {
 
     cy.get("#kc-login").click();
 
-    cy.get("#input-error")
-      .should("be.visible")
-      .contains(data.errorMessage);
+    cy.get("#input-error").should("be.visible").contains(data.errorMessage);
   });
 
   // Leave username field blank & enter invalid password
@@ -109,9 +92,6 @@ describe("Success Test Login Suite", () => {
     cy.get("#password").type(data.invalidPassword);
     cy.get("#kc-login").click();
 
-    cy.get("#input-error")
-      .should("be.visible")
-      .contains(data.errorMessage);
-
+    cy.get("#input-error").should("be.visible").contains(data.errorMessage);
   });
 });

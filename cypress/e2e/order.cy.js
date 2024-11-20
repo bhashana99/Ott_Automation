@@ -164,7 +164,7 @@ describe("Create New Order", () => {
     lineItem.clickCloseBtn();
   });
 
-  it("create new UI Banner line item", () => {
+  it.only("create new UI Banner line item", () => {
     order.clickDeliveryDropDownOrderElement();
     order.checkPageUrl(urls.orderPageUrl);
 
@@ -257,7 +257,7 @@ describe("Create New Order", () => {
     // orderEdit.checkIsOrderNameChange(orderData.orderId,orderData.newOrderName)
   });
 
-  it.only("View And Edit Line Item", () => {
+  it("View And Edit Line Item", () => {
     order.clickDeliveryDropDownOrderElement();
     order.checkPageUrl(urls.orderPageUrl);
     order.selectAdCampaignUsingOrderId(orderData.orderId);
@@ -270,14 +270,14 @@ describe("Create New Order", () => {
     lineItemEdit.changeTargetImpression(lineItemData.newTargetImpression);
     lineItemEdit.changeCPM(lineItemData.newCPM);
     lineItemEdit.changeTargetClicks(lineItemData.newTargetClicks);
-    lineItemEdit.changeCPC(lineItemData.newCPC)
-    lineItemEdit.clickPriorityField()
-    lineItemEdit.chooseHighPriority()
+    lineItemEdit.changeCPC(lineItemData.newCPC);
+    lineItemEdit.clickPriorityField();
+    lineItemEdit.chooseHighPriority();
     // lineItemEdit.chooseMediumPriority()
     // lineItemEdit.chooseLowPriority()
-    lineItemEdit.clickSubmitBtn()
+    lineItemEdit.clickSubmitBtn();
     // lineItemEdit.clickBackBtn()
     lineItemEdit.validateLineItemIsCreateSuccessful();
-    lineItemEdit.clickCloseBtn()
+    lineItemEdit.clickCloseBtn();
   });
 });

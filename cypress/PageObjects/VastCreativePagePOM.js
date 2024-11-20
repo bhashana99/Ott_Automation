@@ -30,8 +30,7 @@ class VastCreativePagePOM {
   checkVideoUploadState() {
     cy.xpath('//*[@id="root"]/div/main/div/div[1]/div[4]/video')
       .should("have.attr", "src")
-      .and("not.be.empty")
-      
+      .and("not.be.empty");
   }
 
   getDurationInSeconds() {
@@ -83,9 +82,10 @@ class VastCreativePagePOM {
       .click();
   }
 
-  checkTableCreativeName(inputName){
-    cy.xpath('//*[@id="root"]/div/main/div/div[2]/div/table/tbody/tr/td[1]')
-    .should('contain',inputName)
+  checkTableCreativeName(inputName) {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div[2]/div/table/tbody/tr/td[1]'
+    ).should("contain", inputName);
   }
 
   // checkTableVideoUrl(url){
@@ -93,17 +93,17 @@ class VastCreativePagePOM {
   //   .should('contain',url)
   // }
 
-  checkTableClickThroughUrl(clickUrl){
-    cy.xpath('//*[@id="root"]/div/main/div/div[2]/div/table/tbody/tr/td[4]')
-    .should('contain',clickUrl)
+  checkTableClickThroughUrl(clickUrl) {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div[2]/div/table/tbody/tr/td[4]'
+    ).should("contain", clickUrl);
   }
 
-  checkTableAdUnitSize(size){
-    cy.xpath('//*[@id="root"]/div/main/div/div[2]/div/table/tbody/tr/td[5]')
-    .should('contain',size)
+  checkTableAdUnitSize(size) {
+    cy.xpath(
+      '//*[@id="root"]/div/main/div/div[2]/div/table/tbody/tr/td[5]'
+    ).should("contain", size);
   }
-
- 
 }
 
 export default VastCreativePagePOM;

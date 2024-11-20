@@ -24,58 +24,53 @@ class OrderPagePOM {
     let orderFound = false;
 
     const searchAndClickOrderID = () => {
-        cy.get("table tbody tr").then(($rows) => {
-            Cypress._.some($rows, ($row) => {
-                const text = Cypress.$($row).find("td a").text();
-                if (text == orderId) {
-                    cy.wrap($row).find("td a").click();
-                    orderFound = true; 
-                    return true; 
-                }
-            });
+      cy.get("table tbody tr").then(($rows) => {
+        Cypress._.some($rows, ($row) => {
+          const text = Cypress.$($row).find("td a").text();
+          if (text == orderId) {
+            cy.wrap($row).find("td a").click();
+            orderFound = true;
+            return true;
+          }
         });
+      });
     };
 
     const paginateAndSearch = () => {
-        searchAndClickOrderID();
+      searchAndClickOrderID();
 
-        cy.get("body").then(($body) => {
-            if (orderFound) return; 
+      cy.get("body").then(($body) => {
+        if (orderFound) return;
 
-            if ($body.find('[aria-label="Go to next page"]').is(":visible")) {
-                cy.get('[aria-label="Go to next page"]')
-                    .click()
-                    .then(() => {
-                        cy.wait(1000); 
-                        paginateAndSearch(); 
-                    });
-            } else if (!orderFound) {
-                
-                cy.log(`Order ID ${orderId} not found.`);
-                expect(orderFound, `Order ID ${orderId} should exist in the table`).to.be.true;
-            }
-        });
+        if ($body.find('[aria-label="Go to next page"]').is(":visible")) {
+          cy.get('[aria-label="Go to next page"]')
+            .click()
+            .then(() => {
+              cy.wait(1000);
+              paginateAndSearch();
+            });
+        } else if (!orderFound) {
+          cy.log(`Order ID ${orderId} not found.`);
+          expect(orderFound, `Order ID ${orderId} should exist in the table`).to
+            .be.true;
+        }
+      });
     };
 
-  
     paginateAndSearch();
-}
+  }
 
   clickNewLineItemBtn() {
     cy.xpath('//*[@id="simple-tabpanel-0"]/div/div[3]/button[1]')
       .should("contain", "New Line Item")
-      .click()
+      .click();
   }
 
-  clickViewAndEditOrderTab(){
+  clickViewAndEditOrderTab() {
     cy.xpath('//*[@id="simple-tab-1"]')
-    .should('contain','VIEW & EDIT ORDER')
-    .click()
+      .should("contain", "VIEW & EDIT ORDER")
+      .click();
   }
-
-
-  
-  
 }
 
 export default OrderPagePOM;

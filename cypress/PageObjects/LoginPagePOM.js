@@ -1,16 +1,15 @@
-class LoginPagePOM{
+class LoginPagePOM {
+  setUsername(username) {
+    cy.get("#username").type(username);
+  }
 
-    setUsername(username){
-        cy.get("#username").type(username);
-    }
+  setPassword(password) {
+    cy.get("#password").type(password);
+  }
 
-    setPassword(password){
-        cy.get("#password").type(password);
-    }
-
-    clickLoginButton(){
-        cy.get("#kc-login").click();
-    }
+  clickLoginButton() {
+    cy.get("#kc-login").click();
+  }
 }
 
 export default LoginPagePOM;
