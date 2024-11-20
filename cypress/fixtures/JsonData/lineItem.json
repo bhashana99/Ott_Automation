@@ -18,6 +18,7 @@
     "newLineItemName" : "New Line Item Name",
     "newTraffickerName" :" New Trafficker Name",
     "newTargetImpression" : 2,
-    "newCPM" : 2
+    "newCPM" : 2,
+    "newTargetClicks":3
 
 }

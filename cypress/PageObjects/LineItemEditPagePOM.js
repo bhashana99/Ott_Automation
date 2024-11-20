@@ -50,6 +50,12 @@ class LineItemEditPagePOM {
     .type(newCPM)
   }
 
+  changeTargetClicks(newTargetClicks){
+    cy.xpath('//*[@id="simple-tabpanel-2"]/div/div/div/div[1]/div[8]/div/div')
+    .clear()
+    .type(newTargetClicks)
+  }
+
 }
 
 export default LineItemEditPagePOM;

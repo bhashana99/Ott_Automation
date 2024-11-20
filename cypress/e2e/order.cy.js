@@ -269,5 +269,6 @@ describe("Create New Order", () => {
     lineItemEdit.changeTraffickerName(lineItemData.newTraffickerName)
     lineItemEdit.changeTargetImpression(lineItemData.newTargetImpression)
     lineItemEdit.changeCPM(lineItemData.newCPM)
+    lineItemEdit.changeTargetClicks(lineItemData.newTargetClicks)
   });
 });
