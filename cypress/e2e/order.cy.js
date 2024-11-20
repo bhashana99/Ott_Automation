@@ -5,6 +5,7 @@ import OrderPagePOM from "../PageObjects/OrderPagePOM.js";
 import CreateNewOrderPagePOM from "../PageObjects/CreateNewOrderPagePOM.js";
 import LineItemPOM from "../PageObjects/LineItemPOM.js";
 import OrderEditPOM from "../PageObjects/OrderEditPagePOM.js";
+import LineItemEditPagePOM from "../PageObjects/LineItemEditPagePOM.js";
 
 let user, urls, orderData, lineItemData;
 
@@ -28,6 +29,7 @@ const order = new OrderPagePOM();
 const newOrder = new CreateNewOrderPagePOM();
 const lineItem = new LineItemPOM();
 const orderEdit = new OrderEditPOM();
+const lineItemEdit = new LineItemEditPagePOM();
 
 const validateDateGap = () => {
   const startDateTime = new Date(
@@ -65,11 +67,12 @@ beforeEach(() => {
     user.password,
     urls.homePageUrl
   );
+  home.clickDeliveryDropDown();
 });
 
 describe("Create New Order", () => {
   it("Navigate create new order page", () => {
-    home.clickDeliveryDropDown();
+    
     order.clickDeliveryDropDownOrderElement();
     order.checkPageUrl(urls.orderPageUrl);
     order.clickNewOrderBtn();
@@ -123,7 +126,7 @@ describe("Create New Order", () => {
   });
 
   it("create new video line item", () => {
-    home.clickDeliveryDropDown();
+    
     order.clickDeliveryDropDownOrderElement();
     order.checkPageUrl(urls.orderPageUrl);
 
@@ -164,7 +167,7 @@ describe("Create New Order", () => {
   });
 
   it("create new UI Banner line item", () => {
-    home.clickDeliveryDropDown();
+  
     order.clickDeliveryDropDownOrderElement();
     order.checkPageUrl(urls.orderPageUrl);
 
@@ -188,9 +191,12 @@ describe("Create New Order", () => {
     lineItem.setStartHours(lineItemData.startHours);
     lineItem.setStartMinutes(lineItemData.startMinutes);
     lineItem.clickOutside();
-    lineItem.setEndMonth(lineItemData.endMonth);
-    lineItem.setEndDay(lineItemData.endDay);
     lineItem.setEndYear(lineItemData.endYear);
+    lineItem.clickOutside();
+    lineItem.setEndMonth(lineItemData.endMonth);
+    lineItem.clickOutside();
+    lineItem.setEndDay(lineItemData.endDay);
+    
     lineItem.clickOutside();
 
     lineItem.setEndHours(lineItemData.endHours);
@@ -207,8 +213,8 @@ describe("Create New Order", () => {
     lineItem.clickCloseBtn();
   });
 
-  it.only("view and edit order details- order Name", () => {
-    home.clickDeliveryDropDown();
+  it("view and edit order details", () => {
+   
     order.clickDeliveryDropDownOrderElement();
     order.checkPageUrl(urls.orderPageUrl);
 
@@ -254,4 +260,13 @@ describe("Create New Order", () => {
     // orderEdit.navigateOrderPage();
     // orderEdit.checkIsOrderNameChange(orderData.orderId,orderData.newOrderName)
   });
+
+  it.only("View And Edit Line Item",()=>{
+    order.clickDeliveryDropDownOrderElement();
+    order.checkPageUrl(urls.orderPageUrl);
+    order.selectAdCampaignUsingOrderId(orderData.orderId);
+    lineItemEdit.checkTableHasLineItem();
+  })
+
+
 });
