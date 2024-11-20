@@ -266,6 +266,7 @@ describe("Create New Order", () => {
     order.checkPageUrl(urls.orderPageUrl);
     order.selectAdCampaignUsingOrderId(orderData.orderId);
     lineItemEdit.checkTableHasLineItem();
+    lineItemEdit.selectFirstLineItemInTheTable()
   })
 
 
