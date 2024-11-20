@@ -82,6 +82,12 @@ clickSubmitBtn(){
     .should('contain','Submit')
     .click()
 }
+
+clickBackBtn(){
+    cy.xpath('//*[@id="simple-tabpanel-2"]/div/div/div/button[2]')
+    .should('contain','Back')
+    .click()
+}
   
 
 }
