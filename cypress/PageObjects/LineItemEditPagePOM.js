@@ -76,6 +76,11 @@ chooseHighPriority(){
 chooseLowPriority(){
     cy.get('[data-value = "low-priority"]').click()
 }
+
+clickSubmitBtn(){
+    cy.xpath('//*[@id="simple-tabpanel-2"]/div/div/div/button[3]')
+    .click()
+}
   
 
 }

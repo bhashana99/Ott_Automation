@@ -275,5 +275,6 @@ describe("Create New Order", () => {
     lineItemEdit.chooseHighPriority()
     // lineItemEdit.chooseMediumPriority()
     // lineItemEdit.chooseLowPriority()
+    lineItemEdit.clickSubmitBtn()
   });
 });
