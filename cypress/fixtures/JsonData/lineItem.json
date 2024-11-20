@@ -15,6 +15,7 @@
     "endYear" : 2025,
     "endHours" : 4,
     "endMinutes" : 40,
-    "newLineItemName" : "New Line Item Name"
+    "newLineItemName" : "New Line Item Name",
+    "newTraffickerName" :" New Trafficker Name"
 
 }

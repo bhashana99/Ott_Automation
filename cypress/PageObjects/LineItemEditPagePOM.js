@@ -31,6 +31,14 @@ class LineItemEditPagePOM {
     .clear()
     .type(newLineItemName)
   }
+
+  changeTraffickerName(newTraffickerName){
+    cy.xpath('//*[@id="simple-tabpanel-2"]/div/div/div/div[1]/div[2]/div/div')
+    .clear()
+    .type(newTraffickerName) 
+  }
+
+
 }
 
 export default LineItemEditPagePOM;
