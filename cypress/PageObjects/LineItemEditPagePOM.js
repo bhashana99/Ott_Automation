@@ -25,6 +25,12 @@ class LineItemEditPagePOM {
     .invoke("text")
     .should("not.be.empty");
   }
+
+  changeLineItemName(newLineItemName){
+    cy.xpath('//*[@id="simple-tabpanel-2"]/div/div/div/div[1]/div[1]/div/div')
+    .clear()
+    .type(newLineItemName)
+  }
 }
 
 export default LineItemEditPagePOM;

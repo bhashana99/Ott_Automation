@@ -265,5 +265,6 @@ describe("Create New Order", () => {
     lineItemEdit.selectFirstLineItemInTheTable();
     lineItemEdit.clickViewAndEditLineItemTab();
     lineItemEdit.checkLineItemNameNotEmpty()
+    lineItemEdit.changeLineItemName(lineItemData.newLineItemName)
   });
 });
