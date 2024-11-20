@@ -16,6 +16,8 @@
     "endHours" : 4,
     "endMinutes" : 40,
     "newLineItemName" : "New Line Item Name",
-    "newTraffickerName" :" New Trafficker Name"
+    "newTraffickerName" :" New Trafficker Name",
+    "newTargetImpression" : 2,
+    "newCPM" : 2
 
 }

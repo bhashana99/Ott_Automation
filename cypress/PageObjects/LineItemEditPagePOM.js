@@ -38,6 +38,17 @@ class LineItemEditPagePOM {
     .type(newTraffickerName) 
   }
 
+  changeTargetImpression(newTargetImpression){
+    cy.xpath('//*[@id="simple-tabpanel-2"]/div/div/div/div[1]/div[5]/div/div')
+    .clear()
+    .type(newTargetImpression)
+  }
+
+  changeCPM(newCPM){
+    cy.xpath('//*[@id="simple-tabpanel-2"]/div/div/div/div[1]/div[6]/div/div')
+    .clear()
+    .type(newCPM)
+  }
 
 }
 
