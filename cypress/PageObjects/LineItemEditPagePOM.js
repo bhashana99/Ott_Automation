@@ -98,6 +98,12 @@ validateLineItemIsCreateSuccessful() {
     );
   }
 
+  clickCloseBtn() {
+    cy.xpath("/html/body/div[2]/div[3]/div/div[2]/button")
+      .should("contain", "Close")
+      .click();
+  }
+
 }
 
 export default LineItemEditPagePOM;

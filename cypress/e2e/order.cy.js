@@ -277,6 +277,7 @@ describe("Create New Order", () => {
     // lineItemEdit.chooseLowPriority()
     lineItemEdit.clickSubmitBtn()
     // lineItemEdit.clickBackBtn()
-    lineItemEdit.validateLineItemIsCreateSuccessful()
+    lineItemEdit.validateLineItemIsCreateSuccessful();
+    lineItemEdit.clickCloseBtn()
   });
 });
