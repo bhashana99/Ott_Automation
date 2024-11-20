@@ -19,6 +19,7 @@
     "newTraffickerName" :" New Trafficker Name",
     "newTargetImpression" : 2,
     "newCPM" : 2,
-    "newTargetClicks":3
+    "newTargetClicks":3,
+    "newCPC" : 3
 
 }

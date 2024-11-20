@@ -264,11 +264,12 @@ describe("Create New Order", () => {
     lineItemEdit.checkTableHasLineItem();
     lineItemEdit.selectFirstLineItemInTheTable();
     lineItemEdit.clickViewAndEditLineItemTab();
-    lineItemEdit.checkLineItemNameNotEmpty()
-    lineItemEdit.changeLineItemName(lineItemData.newLineItemName)
-    lineItemEdit.changeTraffickerName(lineItemData.newTraffickerName)
-    lineItemEdit.changeTargetImpression(lineItemData.newTargetImpression)
-    lineItemEdit.changeCPM(lineItemData.newCPM)
-    lineItemEdit.changeTargetClicks(lineItemData.newTargetClicks)
+    lineItemEdit.checkLineItemNameNotEmpty();
+    lineItemEdit.changeLineItemName(lineItemData.newLineItemName);
+    lineItemEdit.changeTraffickerName(lineItemData.newTraffickerName);
+    lineItemEdit.changeTargetImpression(lineItemData.newTargetImpression);
+    lineItemEdit.changeCPM(lineItemData.newCPM);
+    lineItemEdit.changeTargetClicks(lineItemData.newTargetClicks);
+    lineItemEdit.changeCPC(lineItemData.newCPC)
   });
 });
