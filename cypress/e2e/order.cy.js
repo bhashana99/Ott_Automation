@@ -72,7 +72,6 @@ beforeEach(() => {
 
 describe("Create New Order", () => {
   it("Navigate create new order page", () => {
-    
     order.clickDeliveryDropDownOrderElement();
     order.checkPageUrl(urls.orderPageUrl);
     order.clickNewOrderBtn();
@@ -126,7 +125,6 @@ describe("Create New Order", () => {
   });
 
   it("create new video line item", () => {
-    
     order.clickDeliveryDropDownOrderElement();
     order.checkPageUrl(urls.orderPageUrl);
 
@@ -167,7 +165,6 @@ describe("Create New Order", () => {
   });
 
   it("create new UI Banner line item", () => {
-  
     order.clickDeliveryDropDownOrderElement();
     order.checkPageUrl(urls.orderPageUrl);
 
@@ -196,7 +193,7 @@ describe("Create New Order", () => {
     lineItem.setEndMonth(lineItemData.endMonth);
     lineItem.clickOutside();
     lineItem.setEndDay(lineItemData.endDay);
-    
+
     lineItem.clickOutside();
 
     lineItem.setEndHours(lineItemData.endHours);
@@ -214,7 +211,6 @@ describe("Create New Order", () => {
   });
 
   it("view and edit order details", () => {
-   
     order.clickDeliveryDropDownOrderElement();
     order.checkPageUrl(urls.orderPageUrl);
 
@@ -245,29 +241,29 @@ describe("Create New Order", () => {
 
     // orderEdit.editStartMonth(orderData.editStartMonth);
     // orderEdit.editStartDay(orderData.editStartDay);
-    
+
     // orderEdit.editStartYear(orderData.editStartYear)
     // orderEdit.clickOutside();
 
     orderEdit.clickAddRemoveCreativeBtn();
-    orderEdit.removeFirstCreative()
-    orderEdit.addFirstCreative()
-    orderEdit.editCreativePageSubmitBtn()
+    orderEdit.removeFirstCreative();
+    orderEdit.addFirstCreative();
+    orderEdit.editCreativePageSubmitBtn();
     // orderEdit.clickSubmitButton();
     orderEdit.checkSuccessAlert();
-    orderEdit.closeSuccessAlert()
-    orderEdit.navigateLineItemDetailsPageInEditCreativePage()
+    orderEdit.closeSuccessAlert();
+    orderEdit.navigateLineItemDetailsPageInEditCreativePage();
     // orderEdit.navigateOrderPage();
     // orderEdit.checkIsOrderNameChange(orderData.orderId,orderData.newOrderName)
   });
 
-  it.only("View And Edit Line Item",()=>{
+  it.only("View And Edit Line Item", () => {
     order.clickDeliveryDropDownOrderElement();
     order.checkPageUrl(urls.orderPageUrl);
     order.selectAdCampaignUsingOrderId(orderData.orderId);
     lineItemEdit.checkTableHasLineItem();
-    lineItemEdit.selectFirstLineItemInTheTable()
-  })
-
-
+    lineItemEdit.selectFirstLineItemInTheTable();
+    lineItemEdit.clickViewAndEditLineItemTab();
+    lineItemEdit.checkLineItemNameNotEmpty()
+  });
 });
