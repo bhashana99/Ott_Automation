@@ -62,6 +62,22 @@ class LineItemEditPagePOM {
     .type(newCPC)
   }
 
+  clickPriorityField(){
+    cy.xpath('//*[@id="simple-tabpanel-2"]/div/div/div/div[1]/div[14]/div[1]/div').click()
+}  
+
+chooseMediumPriority(){
+    cy.get('[data-value = "medium-priority"]').click()
+}
+chooseHighPriority(){
+    cy.get('[data-value = "high-priority"]').click()
+}
+
+chooseLowPriority(){
+    cy.get('[data-value = "low-priority"]').click()
+}
+  
+
 }
 
 export default LineItemEditPagePOM;

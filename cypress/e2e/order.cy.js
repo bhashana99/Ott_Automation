@@ -271,5 +271,9 @@ describe("Create New Order", () => {
     lineItemEdit.changeCPM(lineItemData.newCPM);
     lineItemEdit.changeTargetClicks(lineItemData.newTargetClicks);
     lineItemEdit.changeCPC(lineItemData.newCPC)
+    lineItemEdit.clickPriorityField()
+    lineItemEdit.chooseHighPriority()
+    // lineItemEdit.chooseMediumPriority()
+    // lineItemEdit.chooseLowPriority()
   });
 });
