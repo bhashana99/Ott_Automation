@@ -171,26 +171,45 @@ class LineItemPOM {
       .click();
   }
 
-  storeLineID(){
+  storeLineID() {
     cy.xpath('//*[@id="enhanced-table-checkbox-0"]')
-    .invoke('text').then((lineID) => {
-          cy.log(`Line ID: ${lineID}`);
-        });
+      .invoke("text")
+      .then((lineID) => {
+        cy.log(`Line ID: ${lineID}`);
+      });
   }
 
-  checkStatus(){
-  
+  checkStatus() {
     cy.xpath('//*[@id="simple-tabpanel-0"]/div/div[1]/table/tbody/tr[1]/td[4]')
-    .invoke('text').then((status) => {
-      cy.log(`status: ${status}`);
-      if(`${status}` == 'Paused'){
-        cy.log("It's Paused Baby")
-      }else if(`${status}` == 'Active'){
-        cy.log("It's Active")
-      }
-    });
+      .invoke("text")
+      .then((status) => {
+        cy.log(`status: ${status}`);
+        if (`${status}` == "Paused") {
+          cy.log("It's Paused Baby");
+        } else if (`${status}` == "Active") {
+          cy.log("It's Active");
+        }
+      });
   }
 
+  checkEndDate() {
+    cy.xpath('//*[@id="simple-tabpanel-0"]/div/div[1]/table/tbody/tr[1]/td[11]')
+      .invoke("text")
+      .then((date) => {
+        cy.log(`End Date from UI: ${date}`);
+        const today = new Date();
+        cy.log(`Today's Date: ${today}`);
+        const endDate = new Date(date); 
+        
+        if (isNaN(endDate)) {
+          cy.log("Invalid date format, cannot compare!");
+        } else if (today > endDate) {
+          cy.log("Cannot pause");    
+        } else {
+          cy.log("Can change");
+        }
+      });
+  }
 }
 
 export default LineItemPOM;
