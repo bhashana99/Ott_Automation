@@ -274,8 +274,7 @@ describe("Create New Order", () => {
     order.selectAdCampaignUsingOrderId(orderData.orderId);
     lineItemEdit.checkTableHasLineItem();
     lineItemEdit.selectFirstLineItemInTheTable();
-    lineItem.storeLineID();
-    lineItem.checkStatus();
-    lineItem.checkEndDate()
+    lineItem.lineItemPauseMethod()
+
   });
 });

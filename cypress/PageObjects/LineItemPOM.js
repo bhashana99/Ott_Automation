@@ -176,6 +176,8 @@ class LineItemPOM {
       .invoke("text")
       .then((lineID) => {
         cy.log(`Line ID: ${lineID}`);
+        
+        cy.wrap(lineID.trim()).as('lineID'); 
       });
   }
 
@@ -210,6 +212,32 @@ class LineItemPOM {
         }
       });
   }
+  
+  clickPauseBtn(){
+    cy.xpath('//*[@id="simple-tabpanel-0"]/div/div[3]/button[2]')
+    .should('contain','Pause')
+    .click()
+  }
+
+  validateSuccessMessage(){
+    cy.xpath('/html/body/div[2]/div[3]/div')
+    .should('be.visible')
+    .and('contain','Line Item(s) Status Updated');
+
+    cy.get('@lineID').then((lineID) => {
+      cy.xpath('/html/body/div[2]/div[3]/div/div[1]')
+        .should('contain', lineID);
+    });
+  }
+
+  lineItemPauseMethod(){
+    this.storeLineID()
+    this.checkStatus()
+    this.checkEndDate()
+    this.clickPauseBtn()
+    this.validateSuccessMessage()
+  }
+
 }
 
 export default LineItemPOM;
