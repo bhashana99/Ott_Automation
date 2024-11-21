@@ -187,9 +187,10 @@ class LineItemPOM {
       .then((status) => {
         cy.log(`status: ${status}`);
         if (`${status}` == "Paused") {
-          cy.log("It's Paused Baby");
+          cy.log("It's Paused ");
         } else if (`${status}` == "Active") {
           cy.log("It's Active");
+          this.checkEndDate()
         }
       });
   }
@@ -208,7 +209,8 @@ class LineItemPOM {
         } else if (today > endDate) {
           cy.log("Cannot pause");    
         } else {
-          cy.log("Can change");
+         this.clickPauseBtn()
+         this.validateSuccessMessage()
         }
       });
   }
@@ -237,9 +239,7 @@ class LineItemPOM {
   lineItemPauseMethod(){
     this.storeLineID()
     this.checkStatus()
-    this.checkEndDate()
-    this.clickPauseBtn()
-    this.validateSuccessMessage()
+    
   }
 
 }
