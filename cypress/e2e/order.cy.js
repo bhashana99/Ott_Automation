@@ -68,12 +68,12 @@ beforeEach(() => {
     urls.homePageUrl
   );
   home.clickDeliveryDropDown();
+  order.clickDeliveryDropDownOrderElement();
+  order.checkPageUrl(urls.orderPageUrl);
 });
 
 describe("Create New Order", () => {
   it("Navigate create new order page", () => {
-    order.clickDeliveryDropDownOrderElement();
-    order.checkPageUrl(urls.orderPageUrl);
     order.clickNewOrderBtn();
     newOrder.checkCreateNewOrderPageUrl(urls.createNewOrderPageUrl);
     newOrder.setOrderName(orderData.orderName);
@@ -125,9 +125,6 @@ describe("Create New Order", () => {
   });
 
   it("create new video line item", () => {
-    order.clickDeliveryDropDownOrderElement();
-    order.checkPageUrl(urls.orderPageUrl);
-
     order.selectAdCampaignUsingOrderId(orderData.orderId);
     order.clickNewLineItemBtn();
     lineItem.clickVideoIconForCreateVideoLineItem();
@@ -164,10 +161,7 @@ describe("Create New Order", () => {
     lineItem.clickCloseBtn();
   });
 
-  it.only("create new UI Banner line item", () => {
-    order.clickDeliveryDropDownOrderElement();
-    order.checkPageUrl(urls.orderPageUrl);
-
+  it("create new UI Banner line item", () => {
     order.selectAdCampaignUsingOrderId(orderData.orderId);
 
     order.clickNewLineItemBtn();
@@ -211,9 +205,6 @@ describe("Create New Order", () => {
   });
 
   it("view and edit order details", () => {
-    order.clickDeliveryDropDownOrderElement();
-    order.checkPageUrl(urls.orderPageUrl);
-
     order.selectAdCampaignUsingOrderId(orderData.orderId);
     order.clickViewAndEditOrderTab();
     orderEdit.checkIsOrderDetailsPage();
@@ -258,8 +249,6 @@ describe("Create New Order", () => {
   });
 
   it("View And Edit Line Item", () => {
-    order.clickDeliveryDropDownOrderElement();
-    order.checkPageUrl(urls.orderPageUrl);
     order.selectAdCampaignUsingOrderId(orderData.orderId);
     lineItemEdit.checkTableHasLineItem();
     lineItemEdit.selectFirstLineItemInTheTable();
@@ -279,5 +268,13 @@ describe("Create New Order", () => {
     // lineItemEdit.clickBackBtn()
     lineItemEdit.validateLineItemIsCreateSuccessful();
     lineItemEdit.clickCloseBtn();
+  });
+
+  it.only("Pause Line Item", () => {
+    order.selectAdCampaignUsingOrderId(orderData.orderId);
+    lineItemEdit.checkTableHasLineItem();
+    lineItemEdit.selectFirstLineItemInTheTable();
+    lineItem.storeLineID()
+ 
   });
 });

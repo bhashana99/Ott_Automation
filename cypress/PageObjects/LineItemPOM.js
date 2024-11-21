@@ -170,6 +170,16 @@ class LineItemPOM {
       .should("contain", "Close")
       .click();
   }
+
+  storeLineID(){
+    cy.xpath('//*[@id="enhanced-table-checkbox-0"]')
+    .invoke('text').then((lineID) => {
+          cy.log(`Line ID: ${lineID}`);
+        });
+  }
+
+  
+
 }
 
 export default LineItemPOM;

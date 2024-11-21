@@ -12,13 +12,7 @@ Cypress.Commands.add("loginPageNavigate", () => {
 Cypress.Commands.add(
   "navigateCreativePage",
   (loginPageUrl, username, password, homePageUrl, creativePageUrl) => {
-    cy.visit(loginPageUrl);
-
-    login.setUsername(username);
-    login.setPassword(password);
-    login.clickLoginButton();
-
-    cy.url().should("eq", homePageUrl);
+    cy.loginToHomePage(loginPageUrl, username, password, homePageUrl);
 
     home.clickDeliveryDropDown();
     home.clickDeliveryDropDownCreativeElement();
