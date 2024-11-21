@@ -178,7 +178,18 @@ class LineItemPOM {
         });
   }
 
+  checkStatus(){
   
+    cy.xpath('//*[@id="simple-tabpanel-0"]/div/div[1]/table/tbody/tr[1]/td[4]')
+    .invoke('text').then((status) => {
+      cy.log(`status: ${status}`);
+      if(`${status}` == 'Paused'){
+        cy.log("It's Paused Baby")
+      }else if(`${status}` == 'Active'){
+        cy.log("It's Active")
+      }
+    });
+  }
 
 }
 

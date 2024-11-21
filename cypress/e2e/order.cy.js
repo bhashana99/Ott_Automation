@@ -275,6 +275,6 @@ describe("Create New Order", () => {
     lineItemEdit.checkTableHasLineItem();
     lineItemEdit.selectFirstLineItemInTheTable();
     lineItem.storeLineID()
- 
+    lineItem.checkStatus()
   });
 });
