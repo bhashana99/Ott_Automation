@@ -228,6 +228,10 @@ class LineItemPOM {
       cy.xpath('/html/body/div[2]/div[3]/div/div[1]')
         .should('contain', lineID);
     });
+
+    cy.xpath('/html/body/div[2]/div[3]/div/div[2]/button')
+    .should('contain','OK')
+    .click()
   }
 
   lineItemPauseMethod(){
