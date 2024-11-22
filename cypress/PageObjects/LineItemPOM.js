@@ -188,6 +188,7 @@ class LineItemPOM {
         cy.log(`status: ${status}`);
         if (`${status}` == "Paused") {
           cy.log("It's Paused ");
+          // this.lineItemResumeMethod()
         } else if (`${status}` == "Active") {
           cy.log("It's Active");
           this.checkEndDate()
@@ -240,6 +241,18 @@ class LineItemPOM {
     this.storeLineID()
     this.checkStatus()
     
+  }
+
+  clickResumeBtn(){
+    cy.xpath('//*[@id="simple-tabpanel-0"]/div/div[3]/button[3]')
+    .click()
+  }
+
+  lineItemResumeMethod(){
+    this.storeLineID()
+    this.checkStatus()
+    this.clickResumeBtn()
+    this.validateSuccessMessage()
   }
 
 }

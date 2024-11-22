@@ -270,11 +270,23 @@ describe("Create New Order", () => {
     lineItemEdit.clickCloseBtn();
   });
 
-  it.only("Pause Line Item", () => {
+  it("Pause Line Item", () => {
     order.selectAdCampaignUsingOrderId(orderData.orderId);
     lineItemEdit.checkTableHasLineItem();
     lineItemEdit.selectFirstLineItemInTheTable();
-    lineItem.lineItemPauseMethod()
+    lineItem.lineItemPauseMethod();
+    
+  });
+
+  it.only("Resume Line Item", () => {
+    order.selectAdCampaignUsingOrderId(orderData.orderId);
+    lineItemEdit.checkTableHasLineItem();
+    lineItemEdit.selectFirstLineItemInTheTable();
+    
+    lineItem.lineItemResumeMethod();
 
   });
+
+
+
 });
