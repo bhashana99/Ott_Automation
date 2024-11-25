@@ -255,6 +255,30 @@ class LineItemPOM {
     this.validateSuccessMessage()
   }
 
+  getLineItemDetails(){
+    cy.xpath('//*[@id="enhanced-table-checkbox-0"]')
+    .invoke('text')
+      .then((lineItemId)=>{
+      cy.wrap(lineItemId.trim()).as('lineItemId')
+      })
+    
+  }
+
+  navigateToAllLineItemsPage(){
+    cy.xpath('//*[@id="root"]/div/nav/div/div/ul/div[3]/div/div/ul/a[3]')
+    .should('be.visible')
+    .click()
+  }
+
+  checkLineItemsTable(){
+    this.getLineItemDetails()
+    this.navigateToAllLineItemsPage()
+    cy.get('@lineItemId').then((lineItemId)=>{
+      cy.xpath('//*[@id="root"]/div/main/div/div/div[2]/div/div/div/table/tbody/tr[1]/td[2]')
+      .should('contain',lineItemId)
+    })
+  }
+
 }
 
 export default LineItemPOM;

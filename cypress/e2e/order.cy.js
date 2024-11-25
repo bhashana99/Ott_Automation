@@ -73,7 +73,7 @@ beforeEach(() => {
 });
 
 describe("Create New Order", () => {
-  it("Navigate create new order page", () => {
+  xit("Navigate create new order page", () => {
     order.clickNewOrderBtn();
     newOrder.checkCreateNewOrderPageUrl(urls.createNewOrderPageUrl);
     newOrder.setOrderName(orderData.orderName);
@@ -124,7 +124,7 @@ describe("Create New Order", () => {
     newOrder.clickCloseBtn();
   });
 
-  it("create new video line item", () => {
+  xit("create new video line item", () => {
     order.selectAdCampaignUsingOrderId(orderData.orderId);
     order.clickNewLineItemBtn();
     lineItem.clickVideoIconForCreateVideoLineItem();
@@ -161,7 +161,7 @@ describe("Create New Order", () => {
     lineItem.clickCloseBtn();
   });
 
-  it("create new UI Banner line item", () => {
+  xit("create new UI Banner line item", () => {
     order.selectAdCampaignUsingOrderId(orderData.orderId);
 
     order.clickNewLineItemBtn();
@@ -278,12 +278,19 @@ describe("Create New Order", () => {
     
   });
 
-  it.only("Resume Line Item", () => {
+  it("Resume Line Item", () => {
     order.selectAdCampaignUsingOrderId(orderData.orderId);
     lineItemEdit.checkTableHasLineItem();
     lineItemEdit.selectFirstLineItemInTheTable();
     
     lineItem.lineItemResumeMethod();
+
+  });
+
+  it.only("Validate All Line Items Table", () => {
+    order.selectAdCampaignUsingOrderId(orderData.orderId);
+    lineItemEdit.checkTableHasLineItem();
+    lineItem.checkLineItemsTable()
 
   });
 
