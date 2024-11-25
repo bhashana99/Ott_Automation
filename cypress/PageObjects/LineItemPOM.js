@@ -256,15 +256,22 @@ class LineItemPOM {
     cy.xpath('//*[@id="enhanced-table-checkbox-0"]')
       .invoke("text")
       .then((lineItemId) => {
-        cy.log(`${lineItemId}`)
+        cy.log(`${lineItemId}`);
         cy.wrap(lineItemId.trim()).as("lineItemId");
       });
-    
-      cy.xpath('//*[@id="simple-tabpanel-0"]/div/div[1]/table/tbody/tr[1]/td[3]')
+
+    cy.xpath('//*[@id="simple-tabpanel-0"]/div/div[1]/table/tbody/tr[1]/td[3]')
       .invoke("text")
       .then((lineItemName) => {
-        cy.log(`${lineItemName}`)
+        cy.log(`${lineItemName}`);
         cy.wrap(lineItemName.trim()).as("lineItemName");
+      });
+
+    cy.xpath('//*[@id="simple-tabpanel-0"]/div/div[1]/table/tbody/tr[1]/td[4]')
+      .invoke("text")
+      .then((status) => {
+        cy.log(`${status}`);
+        cy.wrap(status.trim()).as("status");
       });
   }
 
@@ -277,57 +284,62 @@ class LineItemPOM {
   checkLineItemsTable() {
     this.getLineItemDetails();
     this.navigateToAllLineItemsPage();
-   
-     
-   
-    this.selectLineItemUsingLineId()
+
+    this.selectLineItemUsingLineId();
   }
 
   selectLineItemUsingLineId() {
     cy.get("@lineItemId").then((lineItemId) => {
-    cy.get("@lineItemName").then((lineItemName) => {
-      let LineItemFound = false;
+      cy.get("@lineItemName").then((lineItemName) => {
+        cy.get("@status").then((status) => {
+          let LineItemFound = false;
 
-      const searchAndLineItemID = () => {
-        cy.get("table tbody tr").then(($rows) => {
-          Cypress._.some($rows, ($row) => {
-            const text = Cypress.$($row).find('td:nth-child(2)').text();
-            if (text == lineItemId) {
-              LineItemFound = true;
-              
-              cy.wrap($row).find('td:nth-child(1)').should('contain',`${lineItemName}`)
-              cy.log('line item found')
-              return true;
-            }
-          });
-        });
-      };
+          const searchAndLineItemID = () => {
+            cy.get("table tbody tr").then(($rows) => {
+              Cypress._.some($rows, ($row) => {
+                const text = Cypress.$($row).find("td:nth-child(2)").text();
+                if (text == lineItemId) {
+                  LineItemFound = true;
 
-      const paginateAndSearch = () => {
-        searchAndLineItemID();
-
-        cy.get("body").then(($body) => {
-          if (LineItemFound) return;
-
-          if ($body.find('[aria-label="Go to next page"]')) {
-            cy.get('[aria-label="Go to next page"]')
-              .click()
-              .then(() => {
-                cy.wait(1000);
-                paginateAndSearch();
+                  cy.wrap($row)
+                    .find("td:nth-child(1)")
+                    .should("contain", `${lineItemName}`);
+                  cy.wrap($row)
+                    .find("td:nth-child(4)")
+                    .should("contain", `${status}`);
+                  cy.log("line item found");
+                  return true;
+                }
               });
-          } else if (!LineItemFound) {
-            cy.log(`LineItem ID ${lineItemId} not found.`);
-            expect(
-              LineItemFound,
-              `LineItem ID ${lineItemId} should exist in the table`
-            ).to.be.true;
-          }
-        });
-      };
+            });
+          };
 
-      paginateAndSearch();
-    });
+          const paginateAndSearch = () => {
+            searchAndLineItemID();
+
+            cy.get("body").then(($body) => {
+              if (LineItemFound) return;
+
+              if ($body.find('[aria-label="Go to next page"]')) {
+                cy.get('[aria-label="Go to next page"]')
+                  .click()
+                  .then(() => {
+                    cy.wait(1000);
+                    paginateAndSearch();
+                  });
+              } else if (!LineItemFound) {
+                cy.log(`LineItem ID ${lineItemId} not found.`);
+                expect(
+                  LineItemFound,
+                  `LineItem ID ${lineItemId} should exist in the table`
+                ).to.be.true;
+              }
+            });
+          };
+
+          paginateAndSearch();
+        });
+      });
     });
   }
 }
