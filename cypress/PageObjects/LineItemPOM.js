@@ -259,6 +259,13 @@ class LineItemPOM {
         cy.log(`${lineItemId}`)
         cy.wrap(lineItemId.trim()).as("lineItemId");
       });
+    
+      cy.xpath('//*[@id="simple-tabpanel-0"]/div/div[1]/table/tbody/tr[1]/td[3]')
+      .invoke("text")
+      .then((lineItemName) => {
+        cy.log(`${lineItemName}`)
+        cy.wrap(lineItemName.trim()).as("lineItemName");
+      });
   }
 
   navigateToAllLineItemsPage() {
@@ -278,6 +285,7 @@ class LineItemPOM {
 
   selectLineItemUsingLineId() {
     cy.get("@lineItemId").then((lineItemId) => {
+    cy.get("@lineItemName").then((lineItemName) => {
       let LineItemFound = false;
 
       const searchAndLineItemID = () => {
@@ -285,9 +293,10 @@ class LineItemPOM {
           Cypress._.some($rows, ($row) => {
             const text = Cypress.$($row).find('td:nth-child(2)').text();
             if (text == lineItemId) {
-              cy.wrap($row).find('td:nth-child(2)')
-              cy.log('line item found')
               LineItemFound = true;
+              
+              cy.wrap($row).find('td:nth-child(1)').should('contain',`${lineItemName}`)
+              cy.log('line item found')
               return true;
             }
           });
@@ -318,6 +327,7 @@ class LineItemPOM {
       };
 
       paginateAndSearch();
+    });
     });
   }
 }
