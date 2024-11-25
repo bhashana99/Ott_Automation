@@ -176,8 +176,8 @@ class LineItemPOM {
       .invoke("text")
       .then((lineID) => {
         cy.log(`Line ID: ${lineID}`);
-        
-        cy.wrap(lineID.trim()).as('lineID'); 
+
+        cy.wrap(lineID.trim()).as("lineID");
       });
   }
 
@@ -191,7 +191,7 @@ class LineItemPOM {
           // this.lineItemResumeMethod()
         } else if (`${status}` == "Active") {
           cy.log("It's Active");
-          this.checkEndDate()
+          this.checkEndDate();
         }
       });
   }
@@ -203,82 +203,123 @@ class LineItemPOM {
         cy.log(`End Date from UI: ${date}`);
         const today = new Date();
         cy.log(`Today's Date: ${today}`);
-        const endDate = new Date(date); 
-        
+        const endDate = new Date(date);
+
         if (isNaN(endDate)) {
           cy.log("Invalid date format, cannot compare!");
         } else if (today > endDate) {
-          cy.log("Cannot pause");    
+          cy.log("Cannot pause");
         } else {
-         this.clickPauseBtn()
-         this.validateSuccessMessage()
+          this.clickPauseBtn();
+          this.validateSuccessMessage();
         }
       });
   }
-  
-  clickPauseBtn(){
+
+  clickPauseBtn() {
     cy.xpath('//*[@id="simple-tabpanel-0"]/div/div[3]/button[2]')
-    .should('contain','Pause')
-    .click()
+      .should("contain", "Pause")
+      .click();
   }
 
-  validateSuccessMessage(){
-    cy.xpath('/html/body/div[2]/div[3]/div')
-    .should('be.visible')
-    .and('contain','Line Item(s) Status Updated');
+  validateSuccessMessage() {
+    cy.xpath("/html/body/div[2]/div[3]/div")
+      .should("be.visible")
+      .and("contain", "Line Item(s) Status Updated");
 
-    cy.get('@lineID').then((lineID) => {
-      cy.xpath('/html/body/div[2]/div[3]/div/div[1]')
-        .should('contain', lineID);
+    cy.get("@lineID").then((lineID) => {
+      cy.xpath("/html/body/div[2]/div[3]/div/div[1]").should("contain", lineID);
     });
 
-    cy.xpath('/html/body/div[2]/div[3]/div/div[2]/button')
-    .should('contain','OK')
-    .click()
+    cy.xpath("/html/body/div[2]/div[3]/div/div[2]/button")
+      .should("contain", "OK")
+      .click();
   }
 
-  lineItemPauseMethod(){
-    this.storeLineID()
-    this.checkStatus()
-    
+  lineItemPauseMethod() {
+    this.storeLineID();
+    this.checkStatus();
   }
 
-  clickResumeBtn(){
-    cy.xpath('//*[@id="simple-tabpanel-0"]/div/div[3]/button[3]')
-    .click()
+  clickResumeBtn() {
+    cy.xpath('//*[@id="simple-tabpanel-0"]/div/div[3]/button[3]').click();
   }
 
-  lineItemResumeMethod(){
-    this.storeLineID()
-    this.checkStatus()
-    this.clickResumeBtn()
-    this.validateSuccessMessage()
+  lineItemResumeMethod() {
+    this.storeLineID();
+    this.checkStatus();
+    this.clickResumeBtn();
+    this.validateSuccessMessage();
   }
 
-  getLineItemDetails(){
+  getLineItemDetails() {
     cy.xpath('//*[@id="enhanced-table-checkbox-0"]')
-    .invoke('text')
-      .then((lineItemId)=>{
-      cy.wrap(lineItemId.trim()).as('lineItemId')
-      })
-    
+      .invoke("text")
+      .then((lineItemId) => {
+        cy.log(`${lineItemId}`)
+        cy.wrap(lineItemId.trim()).as("lineItemId");
+      });
   }
 
-  navigateToAllLineItemsPage(){
+  navigateToAllLineItemsPage() {
     cy.xpath('//*[@id="root"]/div/nav/div/div/ul/div[3]/div/div/ul/a[3]')
-    .should('be.visible')
-    .click()
+      .should("be.visible")
+      .click();
   }
 
-  checkLineItemsTable(){
-    this.getLineItemDetails()
-    this.navigateToAllLineItemsPage()
-    cy.get('@lineItemId').then((lineItemId)=>{
-      cy.xpath('//*[@id="root"]/div/main/div/div/div[2]/div/div/div/table/tbody/tr[1]/td[2]')
-      .should('contain',lineItemId)
-    })
+  checkLineItemsTable() {
+    this.getLineItemDetails();
+    this.navigateToAllLineItemsPage();
+   
+     
+   
+    this.selectLineItemUsingLineId()
   }
 
+  selectLineItemUsingLineId() {
+    cy.get("@lineItemId").then((lineItemId) => {
+      let LineItemFound = false;
+
+      const searchAndLineItemID = () => {
+        cy.get("table tbody tr").then(($rows) => {
+          Cypress._.some($rows, ($row) => {
+            const text = Cypress.$($row).find('td:nth-child(2)').text();
+            if (text == lineItemId) {
+              cy.wrap($row).find('td:nth-child(2)')
+              cy.log('line item found')
+              LineItemFound = true;
+              return true;
+            }
+          });
+        });
+      };
+
+      const paginateAndSearch = () => {
+        searchAndLineItemID();
+
+        cy.get("body").then(($body) => {
+          if (LineItemFound) return;
+
+          if ($body.find('[aria-label="Go to next page"]')) {
+            cy.get('[aria-label="Go to next page"]')
+              .click()
+              .then(() => {
+                cy.wait(1000);
+                paginateAndSearch();
+              });
+          } else if (!LineItemFound) {
+            cy.log(`LineItem ID ${lineItemId} not found.`);
+            expect(
+              LineItemFound,
+              `LineItem ID ${lineItemId} should exist in the table`
+            ).to.be.true;
+          }
+        });
+      };
+
+      paginateAndSearch();
+    });
+  }
 }
 
 export default LineItemPOM;
