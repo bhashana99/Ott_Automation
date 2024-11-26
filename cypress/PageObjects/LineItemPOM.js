@@ -286,6 +286,12 @@ class LineItemPOM {
         cy.log(`${remainingImpression}`);
         cy.wrap(remainingImpression.trim()).as("remainingImpression");
       });
+    cy.xpath('//*[@id="simple-tabpanel-0"]/div/div[1]/table/tbody/tr[1]/td[12]')
+      .invoke("text")
+      .then((clickThroughURL) => {
+        cy.log(`${clickThroughURL}`);
+        cy.wrap(clickThroughURL.trim()).as("clickThroughURL");
+      });
   }
 
   navigateToAllLineItemsPage() {
@@ -307,6 +313,7 @@ class LineItemPOM {
         cy.get("@lineItemName").then((lineItemName) => {
           cy.get("@status").then((status) => {
             cy.get("@remainingImpression").then((remainingImpression) => {
+            cy.get("@clickThroughURL").then((clickThroughURL) => {
               let LineItemFound = false;
 
               const searchAndLineItemID = () => {
@@ -328,10 +335,13 @@ class LineItemPOM {
                       cy.wrap($row)
                         .find("td:nth-child(7)")
                         .should("contain", `${remainingImpression}`);
+                      cy.wrap($row)
+                        .find("td:nth-child(12)")
+                        .should("contain", `${clickThroughURL}`);
 
                       return true;
                     }
-                  });
+                  });        
                 });
               };
 
@@ -362,6 +372,7 @@ class LineItemPOM {
             });
           });
         });
+      });
       });
     });
   }
