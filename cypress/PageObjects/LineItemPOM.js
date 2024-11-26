@@ -260,7 +260,7 @@ class LineItemPOM {
         cy.wrap(lineItemId.trim()).as("lineItemId");
       });
 
-    cy.xpath('\//*[@id="simple-tabpanel-0"]/div/div[1]/table/tbody/tr[1]/td[2]')
+    cy.xpath('//*[@id="simple-tabpanel-0"]/div/div[1]/table/tbody/tr[1]/td[2]')
       .invoke("text")
       .then((orderId) => {
         cy.log(`${orderId}`);
@@ -279,6 +279,13 @@ class LineItemPOM {
         cy.log(`${status}`);
         cy.wrap(status.trim()).as("status");
       });
+
+    cy.xpath('//*[@id="simple-tabpanel-0"]/div/div[1]/table/tbody/tr[1]/td[9]')
+      .invoke("text")
+      .then((remainingImpression) => {
+        cy.log(`${remainingImpression}`);
+        cy.wrap(remainingImpression.trim()).as("remainingImpression");
+      });
   }
 
   navigateToAllLineItemsPage() {
@@ -296,60 +303,65 @@ class LineItemPOM {
 
   selectLineItemUsingLineId() {
     cy.get("@lineItemId").then((lineItemId) => {
-    cy.get("@orderId").then((orderId) => {
-      cy.get("@lineItemName").then((lineItemName) => {
-        cy.get("@status").then((status) => {
-          let LineItemFound = false;
+      cy.get("@orderId").then((orderId) => {
+        cy.get("@lineItemName").then((lineItemName) => {
+          cy.get("@status").then((status) => {
+            cy.get("@remainingImpression").then((remainingImpression) => {
+              let LineItemFound = false;
 
-          const searchAndLineItemID = () => {
-            cy.get("table tbody tr").then(($rows) => {
-              Cypress._.some($rows, ($row) => {
-                const text = Cypress.$($row).find("td:nth-child(2)").text();
-                if (text == lineItemId) {
-                  LineItemFound = true;
+              const searchAndLineItemID = () => {
+                cy.get("table tbody tr").then(($rows) => {
+                  Cypress._.some($rows, ($row) => {
+                    const text = Cypress.$($row).find("td:nth-child(2)").text();
+                    if (text == lineItemId) {
+                      LineItemFound = true;
 
-                  cy.wrap($row)
-                    .find("td:nth-child(3)")
-                    .should("contain", `${orderId}`);
-                  cy.wrap($row)
-                    .find("td:nth-child(1)")
-                    .should("contain", `${lineItemName}`);
-                  cy.wrap($row)
-                    .find("td:nth-child(4)")
-                    .should("contain", `${status}`);
-                 
-                  return true;
-                }
-              });
-            });
-          };
+                      cy.wrap($row)
+                        .find("td:nth-child(3)")
+                        .should("contain", `${orderId}`);
+                      cy.wrap($row)
+                        .find("td:nth-child(1)")
+                        .should("contain", `${lineItemName}`);
+                      cy.wrap($row)
+                        .find("td:nth-child(4)")
+                        .should("contain", `${status}`);
+                      cy.wrap($row)
+                        .find("td:nth-child(7)")
+                        .should("contain", `${remainingImpression}`);
 
-          const paginateAndSearch = () => {
-            searchAndLineItemID();
-
-            cy.get("body").then(($body) => {
-              if (LineItemFound) return;
-
-              if ($body.find('[aria-label="Go to next page"]')) {
-                cy.get('[aria-label="Go to next page"]')
-                  .click()
-                  .then(() => {
-                    cy.wait(1000);
-                    paginateAndSearch();
+                      return true;
+                    }
                   });
-              } else if (!LineItemFound) {
-                cy.log(`LineItem ID ${lineItemId} not found.`);
-                expect(
-                  LineItemFound,
-                  `LineItem ID ${lineItemId} should exist in the table`
-                ).to.be.true;
-              }
-            });
-          };
+                });
+              };
 
-          paginateAndSearch();
+              const paginateAndSearch = () => {
+                searchAndLineItemID();
+
+                cy.get("body").then(($body) => {
+                  if (LineItemFound) return;
+
+                  if ($body.find('[aria-label="Go to next page"]')) {
+                    cy.get('[aria-label="Go to next page"]')
+                      .click()
+                      .then(() => {
+                        cy.wait(1000);
+                        paginateAndSearch();
+                      });
+                  } else if (!LineItemFound) {
+                    cy.log(`LineItem ID ${lineItemId} not found.`);
+                    expect(
+                      LineItemFound,
+                      `LineItem ID ${lineItemId} should exist in the table`
+                    ).to.be.true;
+                  }
+                });
+              };
+
+              paginateAndSearch();
+            });
+          });
         });
-      });
       });
     });
   }
