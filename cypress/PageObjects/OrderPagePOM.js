@@ -1,4 +1,4 @@
-class OrderPagePOM {
+ class OrderPagePOM {
   clickDeliveryDropDownOrderElement() {
     cy.xpath(
       '//*[@id="root"]/div/nav/div/div/ul/div[3]/div/div/ul/a[2]'

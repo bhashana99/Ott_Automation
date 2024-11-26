@@ -2,6 +2,7 @@
 
 import HomePagePOM from "../PageObjects/HomePagePOM.js";
 import OrderPagePOM from "../PageObjects/OrderPagePOM.js";
+import ReportingPOM from "../PageObjects/ReportingPOM.js";
 
 let user, urls,reportingData;
 
@@ -19,6 +20,7 @@ before(() => {
 
 const home = new HomePagePOM();
 const order = new OrderPagePOM();
+const reporting = new ReportingPOM()
 
 beforeEach(() => {
     cy.loginToHomePage(
@@ -36,6 +38,6 @@ beforeEach(() => {
   describe("Validate Report Lind Item Details",()=>{
     it("Check Line Item Using Order Id",()=>{  
         order.selectAdCampaignUsingOrderId(reportingData.orderId);
-      
+      reporting.storeLineId()
     })
   })
