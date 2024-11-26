@@ -18,6 +18,8 @@ class LineItemPOM {
     );
   }
 
+//*[@id="root"]/div/main/div/div[2]/table/tbody/tr[5]/td[3]
+//*[@id="root"]/div/main/div/div[2]/table/tbody/tr[2]/td[2]
   setTrafficker(trafficker) {
     cy.xpath('//*[@id="root"]/div/main/div/div/div[1]/div[2]/div/div').type(
       trafficker
