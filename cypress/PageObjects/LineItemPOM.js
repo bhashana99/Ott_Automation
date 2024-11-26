@@ -260,6 +260,12 @@ class LineItemPOM {
         cy.wrap(lineItemId.trim()).as("lineItemId");
       });
 
+    cy.xpath('\//*[@id="simple-tabpanel-0"]/div/div[1]/table/tbody/tr[1]/td[2]')
+      .invoke("text")
+      .then((orderId) => {
+        cy.log(`${orderId}`);
+        cy.wrap(orderId.trim()).as("orderId");
+      });
     cy.xpath('//*[@id="simple-tabpanel-0"]/div/div[1]/table/tbody/tr[1]/td[3]')
       .invoke("text")
       .then((lineItemName) => {
@@ -290,6 +296,7 @@ class LineItemPOM {
 
   selectLineItemUsingLineId() {
     cy.get("@lineItemId").then((lineItemId) => {
+    cy.get("@orderId").then((orderId) => {
       cy.get("@lineItemName").then((lineItemName) => {
         cy.get("@status").then((status) => {
           let LineItemFound = false;
@@ -302,12 +309,15 @@ class LineItemPOM {
                   LineItemFound = true;
 
                   cy.wrap($row)
+                    .find("td:nth-child(3)")
+                    .should("contain", `${orderId}`);
+                  cy.wrap($row)
                     .find("td:nth-child(1)")
                     .should("contain", `${lineItemName}`);
                   cy.wrap($row)
                     .find("td:nth-child(4)")
                     .should("contain", `${status}`);
-                  cy.log("line item found");
+                 
                   return true;
                 }
               });
@@ -339,6 +349,7 @@ class LineItemPOM {
 
           paginateAndSearch();
         });
+      });
       });
     });
   }
